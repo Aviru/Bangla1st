@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dropDownCell" rowHeight="55" id="KGk-i7-Jjw" customClass="DropDownTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yQ1-bM-KEx">
+                        <rect key="frame" x="0.0" y="-1" width="320" height="52"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2J8-ok-s8V">
+                        <rect key="frame" x="11" y="12" width="26" height="26"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="2J8-ok-s8V" secondAttribute="height" id="0eF-Ig-XWG"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHL-S5-5Sz">
+                        <rect key="frame" x="143" y="17" width="35" height="17"/>
+                        <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o7u-RH-vfy">
+                        <rect key="frame" x="0.0" y="49" width="320" height="1"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="lZj-0R-HUu"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="o7u-RH-vfy" firstAttribute="width" secondItem="yQ1-bM-KEx" secondAttribute="width" id="2eI-3e-BPg"/>
+                    <constraint firstItem="yQ1-bM-KEx" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="3hS-KD-N7Y"/>
+                    <constraint firstItem="HHL-S5-5Sz" firstAttribute="centerX" secondItem="yQ1-bM-KEx" secondAttribute="centerX" id="41m-Vf-6Fk"/>
+                    <constraint firstItem="o7u-RH-vfy" firstAttribute="bottom" secondItem="yQ1-bM-KEx" secondAttribute="bottom" multiplier="0.98" id="6jk-c7-Ecg"/>
+                    <constraint firstItem="yQ1-bM-KEx" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="I6E-Sw-uWB"/>
+                    <constraint firstItem="2J8-ok-s8V" firstAttribute="centerY" secondItem="yQ1-bM-KEx" secondAttribute="centerY" id="Nap-Cq-hdL"/>
+                    <constraint firstItem="yQ1-bM-KEx" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="PaL-Fl-z1H"/>
+                    <constraint firstItem="2J8-ok-s8V" firstAttribute="width" secondItem="yQ1-bM-KEx" secondAttribute="width" multiplier="0.08" id="cTw-j4-Cvc"/>
+                    <constraint firstItem="2J8-ok-s8V" firstAttribute="leading" secondItem="yQ1-bM-KEx" secondAttribute="centerX" multiplier="0.07" id="h5P-Ee-6CM"/>
+                    <constraint firstItem="o7u-RH-vfy" firstAttribute="centerX" secondItem="yQ1-bM-KEx" secondAttribute="centerX" id="jPK-Hw-JIf"/>
+                    <constraint firstItem="yQ1-bM-KEx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="nJ1-Oc-JjR"/>
+                    <constraint firstItem="HHL-S5-5Sz" firstAttribute="centerY" secondItem="yQ1-bM-KEx" secondAttribute="centerY" id="xif-db-fEP"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="imgVwIcon" destination="2J8-ok-s8V" id="UyJ-bi-V5J"/>
+                <outlet property="lblMenuName" destination="HHL-S5-5Sz" id="dqv-vZ-lCq"/>
+                <outlet property="vwunderLine" destination="o7u-RH-vfy" id="7d8-Yw-bKc"/>
+            </connections>
+            <point key="canvasLocation" x="-28" y="48"/>
+        </tableViewCell>
+    </objects>
+</document>

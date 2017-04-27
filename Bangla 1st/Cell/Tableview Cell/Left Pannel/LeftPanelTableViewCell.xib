@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="firstCell" id="KGk-i7-Jjw" customClass="LeftPanelTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4oz-u1-vAU" userLabel="BG image view">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BRy-7c-fud" userLabel="Icon image view">
+                        <rect key="frame" x="14.5" y="10" width="22" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="BRy-7c-fud" secondAttribute="height" id="5Jh-19-xqI"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnR-oj-Q8f">
+                        <rect key="frame" x="58.5" y="13" width="36" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="PnR-oj-Q8f" firstAttribute="leading" secondItem="BRy-7c-fud" secondAttribute="trailing" multiplier="1.6" id="3hx-wz-2yI"/>
+                    <constraint firstItem="4oz-u1-vAU" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="3tw-a8-EDo"/>
+                    <constraint firstItem="BRy-7c-fud" firstAttribute="width" secondItem="4oz-u1-vAU" secondAttribute="width" multiplier="0.07" id="5Cd-OB-gT8"/>
+                    <constraint firstItem="4oz-u1-vAU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FTi-Dp-Yko"/>
+                    <constraint firstItem="BRy-7c-fud" firstAttribute="centerY" secondItem="4oz-u1-vAU" secondAttribute="centerY" id="HWh-ie-H7u"/>
+                    <constraint firstItem="PnR-oj-Q8f" firstAttribute="centerY" secondItem="4oz-u1-vAU" secondAttribute="centerY" id="KbK-bb-e1S"/>
+                    <constraint firstItem="4oz-u1-vAU" firstAttribute="centerX" secondItem="BRy-7c-fud" secondAttribute="leading" multiplier="11" id="YUl-F4-E5H"/>
+                    <constraint firstItem="4oz-u1-vAU" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="Z53-JO-E65"/>
+                    <constraint firstItem="4oz-u1-vAU" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="zym-3d-QtW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imgVwMenuIcon" destination="BRy-7c-fud" id="WEN-qL-aki"/>
+                <outlet property="lblMenuName" destination="PnR-oj-Q8f" id="cgl-Sa-jlI"/>
+            </connections>
+            <point key="canvasLocation" x="-48" y="101"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="secondCell" id="QmJ-4e-ydH" customClass="LeftPanelTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QmJ-4e-ydH" id="bI1-Og-oK8">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Udb-17-Khp" userLabel="BG image view">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xOx-2U-NAt">
+                        <rect key="frame" x="0.0" y="2.5" width="320" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="O1U-Kd-qrn"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="st4-ra-wIE">
+                        <rect key="frame" x="62" y="13" width="36" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="st4-ra-wIE" firstAttribute="centerY" secondItem="Udb-17-Khp" secondAttribute="centerY" id="AKR-HZ-il4"/>
+                    <constraint firstItem="Udb-17-Khp" firstAttribute="centerY" secondItem="xOx-2U-NAt" secondAttribute="top" multiplier="8" id="PLR-mu-GSa"/>
+                    <constraint firstItem="Udb-17-Khp" firstAttribute="height" secondItem="bI1-Og-oK8" secondAttribute="height" id="Wrd-VW-ZP6"/>
+                    <constraint firstItem="st4-ra-wIE" firstAttribute="centerX" secondItem="Udb-17-Khp" secondAttribute="centerX" multiplier="0.5" id="XMZ-en-cfE"/>
+                    <constraint firstItem="xOx-2U-NAt" firstAttribute="width" secondItem="Udb-17-Khp" secondAttribute="width" id="gBd-TA-8E4"/>
+                    <constraint firstItem="xOx-2U-NAt" firstAttribute="centerX" secondItem="Udb-17-Khp" secondAttribute="centerX" id="k4u-UD-KRr"/>
+                    <constraint firstItem="Udb-17-Khp" firstAttribute="centerX" secondItem="bI1-Og-oK8" secondAttribute="centerX" id="mm9-P3-7Vo"/>
+                    <constraint firstItem="Udb-17-Khp" firstAttribute="width" secondItem="bI1-Og-oK8" secondAttribute="width" id="qjU-RI-uHt"/>
+                    <constraint firstItem="Udb-17-Khp" firstAttribute="centerY" secondItem="bI1-Og-oK8" secondAttribute="centerY" id="xxe-FL-pSA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lblSecondCellName" destination="st4-ra-wIE" id="WOq-La-SKv"/>
+            </connections>
+            <point key="canvasLocation" x="-48" y="215"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userProfileCell" rowHeight="120" id="4kH-Bv-5c2" customClass="LeftPanelTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4kH-Bv-5c2" id="Jnf-lv-Xez">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wVr-9a-qYY" userLabel="BG image view">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
+                        <color key="backgroundColor" red="1" green="0.32549019610000002" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar.png" translatesAutoresizingMaskIntoConstraints="NO" id="vCV-tC-DfR" userLabel="Icon image view">
+                        <rect key="frame" x="14.5" y="7.5" width="64" height="64"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="vCV-tC-DfR" secondAttribute="height" id="h5R-9k-UBp"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gib-uL-e8j">
+                        <rect key="frame" x="14.5" y="73.5" width="36" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Bangla1st" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eab-fl-Cjt">
+                        <rect key="frame" x="14.5" y="92.5" width="134" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="eab-fl-Cjt" firstAttribute="top" secondItem="Gib-uL-e8j" secondAttribute="bottom" constant="2" id="5kr-aY-Vtk"/>
+                    <constraint firstItem="wVr-9a-qYY" firstAttribute="centerX" secondItem="Jnf-lv-Xez" secondAttribute="centerX" id="IEH-Zq-TY1"/>
+                    <constraint firstItem="wVr-9a-qYY" firstAttribute="centerX" secondItem="vCV-tC-DfR" secondAttribute="leading" multiplier="11" id="O7m-Fs-tUV"/>
+                    <constraint firstItem="wVr-9a-qYY" firstAttribute="centerY" secondItem="vCV-tC-DfR" secondAttribute="top" multiplier="8" id="Pjg-ci-S1D"/>
+                    <constraint firstItem="wVr-9a-qYY" firstAttribute="height" secondItem="Jnf-lv-Xez" secondAttribute="height" id="U1z-tF-gsn"/>
+                    <constraint firstItem="Gib-uL-e8j" firstAttribute="top" secondItem="vCV-tC-DfR" secondAttribute="bottom" constant="2" id="V12-7L-xor"/>
+                    <constraint firstItem="Gib-uL-e8j" firstAttribute="leading" secondItem="vCV-tC-DfR" secondAttribute="leading" id="YHz-cY-5jv"/>
+                    <constraint firstItem="wVr-9a-qYY" firstAttribute="width" secondItem="Jnf-lv-Xez" secondAttribute="width" id="maB-uA-I8p"/>
+                    <constraint firstItem="vCV-tC-DfR" firstAttribute="width" secondItem="wVr-9a-qYY" secondAttribute="width" multiplier="0.2" id="vq6-B5-yFR"/>
+                    <constraint firstItem="eab-fl-Cjt" firstAttribute="leading" secondItem="vCV-tC-DfR" secondAttribute="leading" id="wDq-QZ-PzX"/>
+                    <constraint firstItem="wVr-9a-qYY" firstAttribute="centerY" secondItem="Jnf-lv-Xez" secondAttribute="centerY" id="ydw-ta-cjT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imgVwUserPic" destination="vCV-tC-DfR" id="1mV-H3-ygn"/>
+                <outlet property="lblUserName" destination="Gib-uL-e8j" id="6uM-ff-AJi"/>
+            </connections>
+            <point key="canvasLocation" x="-48" y="374"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="avatar.png" width="100" height="100"/>
+    </resources>
+</document>
