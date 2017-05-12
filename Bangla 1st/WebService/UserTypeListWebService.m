@@ -26,28 +26,43 @@
     {
         NSLog(@"urlService=%@",urlForService);
         
-        [self requestPostUrl:urlForService parameters:dictParams success:^(id _Nullable response) {
-            
-            NSError *errorJsonConversion=nil;
-            NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingAllowFragments error:&errorJsonConversion];
-            
-            NSLog(@"Response dictionary: %@",responseDict);
-            
-            if ([responseDict[@"ResponseCode"] integerValue] == 200)
-            {
-                successHandler(responseDict[@"ResponseData"],SUCCESS);
+        @try
+        {
+            [self requestPostUrl:urlForService parameters:dictParams success:^(id _Nullable response) {
+                
+                NSError *errorJsonConversion=nil;
+                NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingAllowFragments error:&errorJsonConversion];
+                
+                NSLog(@"Response dictionary: %@",responseDict);
+                
+                if ([responseDict[@"ResponseCode"] integerValue] == 200)
+                {
+                    successHandler(responseDict[@"ResponseData"],SUCCESS);
+                }
+                else
+                {
+                    successHandler(nil,UNSUCCESS);
+                }
+                
             }
-            else
-            {
-                successHandler(nil,UNSUCCESS);
-            }
-            
+            failure:^(NSError * _Nullable error)
+             {
+                 failureHandler(error,SOMETHING_WRONG);
+                 
+             }];
         }
-        failure:^(NSError * _Nullable error)
-         {
-             failureHandler(error,SOMETHING_WRONG);
-             
-         }];
+        @catch(NSException *anException)
+        {
+            NSLog(@"Exception in User type Listing Webservice:%@",anException);
+            
+            NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"Could not execute User type Listing Webservice because an Exception occured."};
+            
+            NSError *error = [NSError errorWithDomain:WebServiceErrorDomain
+                                                 code:WebServiceExceptionError userInfo:userInfo];
+            
+            failureHandler(error,anException.reason);
+        }
+       
     }
     else
     {

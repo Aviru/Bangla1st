@@ -50,40 +50,49 @@
             self.strUserEmail=@"";
         }
         
-        if ([dict objectForKey:@"UserStatus"] && ![[dict objectForKey:@"UserStatus"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"userstatus"] && ![[dict objectForKey:@"userstatus"] isKindOfClass:[NSNull class]])
         {
-            self.strUserStatus=[dict objectForKey:@"UserStatus"];
+            self.strUserStatus=[dict objectForKey:@"userstatus"];
         }
         else
         {
             self.strUserStatus=@"";
         }
         
-        if ([dict objectForKey:@"Sex"] && ![[dict objectForKey:@"Sex"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"sex"] && ![[dict objectForKey:@"sex"] isKindOfClass:[NSNull class]])
         {
-            self.strUserSex=[dict objectForKey:@"Sex"];
+            self.strUserSex=[dict objectForKey:@"sex"];
         }
         else
         {
             self.strUserSex=@"";
         }
         
-        if ([dict objectForKey:@"Dob"] && ![[dict objectForKey:@"Dob"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"dob"] && ![[dict objectForKey:@"dob"] isKindOfClass:[NSNull class]])
         {
-            self.strUserDob=[dict objectForKey:@"Dob"];
+            self.strUserDob=[dict objectForKey:@"dob"];
         }
         else
         {
             self.strUserSex=@"";
         }
         
-        if ([dict objectForKey:@"Country"] && ![[dict objectForKey:@"Country"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"country"] && ![[dict objectForKey:@"country"] isKindOfClass:[NSNull class]])
         {
-            self.strUserCountry=[dict objectForKey:@"Country"];
+            self.strUserCountry=[dict objectForKey:@"country"];
         }
         else
         {
             self.strUserCountry=@"";
+        }
+        
+        if ([dict objectForKey:@"country_code"] && ![[dict objectForKey:@"country_code"] isKindOfClass:[NSNull class]])
+        {
+            self.strUserCountryCode=[dict objectForKey:@"country_code"];
+        }
+        else
+        {
+            self.strUserCountryCode=@"";
         }
         
         if ([dict objectForKey:PROFILE_IMAGE] && ![[dict objectForKey:PROFILE_IMAGE] isKindOfClass:[NSNull class]])

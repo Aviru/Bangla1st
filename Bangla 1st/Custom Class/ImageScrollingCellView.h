@@ -17,7 +17,8 @@
 
 @optional
 - (void)collectionView:(ImageScrollingCellView *)collectionView didSelectImageItemAtIndexPath:(NSIndexPath*)indexPath withSelectedContent:(ModelContentListing *)objSelectedContent;
-- (void)collectionView:(UICollectionView *)collectionView didTapOnDotsButtonAtIndexPath:(NSIndexPath*)indexPath withCollectionVwCell:(CollectionCell_Video *)selectedCollectionVwCell;
+
+- (void)collectionView:(UICollectionView *)collectionView didTapOnDotsButtonAtIndexPath:(NSIndexPath*)indexPath withCollectionVwCell:(CollectionCell_Video *)selectedCollectionVwCell withSelectedContent:(ModelContentListing *)objSelectedContent;
 @end
 
 

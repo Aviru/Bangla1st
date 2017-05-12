@@ -17,6 +17,16 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblName;
 @property (strong, nonatomic) IBOutlet RoundedButton *btnEditProfileOutlet;
 
+
+///PROFILE DETAILS CELL
+
+@property (strong, nonatomic) IBOutlet UILabel *lblProfileName;
+@property (strong, nonatomic) IBOutlet UILabel *lblProfileEmail;
+@property (strong, nonatomic) IBOutlet UILabel *lblProfileGender;
+@property (strong, nonatomic) IBOutlet UILabel *lblProfileDob;
+@property (strong, nonatomic) IBOutlet UILabel *lblProfileCountry;
+
+
 ///CURRENT PLAN CELL
 
 @property (strong, nonatomic) IBOutlet UILabel *lblHeader;

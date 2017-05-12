@@ -25,6 +25,8 @@
 
 @property(assign,nonatomic) BOOL isAdRequested;
 
+@property(assign,nonatomic) BOOL isDownLoading;
+
 @property (strong, nonatomic) UITabBarController *tabBarController;
 
 @property (strong, nonatomic) ModelIMAad *objModelAdId;

@@ -24,7 +24,7 @@
 @property id delegate;
 @property float current_value;
 
-- (id)initWithContainerViewFrame:(CGRect)VwFrame;
+- (id)init;
 - (void)setProgress:(NSNumber*)value;
 
 @end

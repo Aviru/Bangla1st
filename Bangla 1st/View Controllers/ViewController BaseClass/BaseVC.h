@@ -21,6 +21,8 @@
 
 -(void)getOfflineSavedVideoCount;
 
+-(void)openLeftPanel;
+
 -(AviSpinner *)initializeAndStartActivityIndicator:(UIView *)view;
 -(AviSpinner *)StopActivityIndicator:(UIView *)view;
 
@@ -35,5 +37,13 @@
 -(void)displayErrorWithMessage:(NSString*)strMsg;
 
 -(BOOL)isEmpty:(NSString *)str;
+
+-(UIColor*)colorWithHexString:(NSString*)hex;
+
+- (BOOL)image:(UIImage *)image1 isEqualTo:(UIImage *)image2;
+
+- (NSString *)timeDifference:(NSString *)commentTimeStamp;
+
+-(void)callLogOut;
 
 @end

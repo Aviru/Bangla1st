@@ -7,6 +7,8 @@
 //
 
 
+#import "AVPlayerVC.h"
+
 #import "ListVC.h"
 #import "Cell_List.h"
 #import "Cell_ListAd.h"
@@ -17,19 +19,15 @@
 
 #import "ListWebService.h"
 #import "ModelList.h"
-#import "DownloadManager.h"
+#import "MemberSubscriptionDetailsWebService.h"
+#import "ModelMemberSubscriptionDetails.h"
 #import "VideoDetails+CoreDataClass.h"
 #import "Constants.h"
+#import "FileDownloadInfo.h"
 
 #import "Utilis.h"
 
-
-#define degreeToRadian(x) (M_PI * x / 180.0)
-#define radianToDegree(x) (180.0 * x / M_PI)
-
-
-
-@interface ListVC () <UITableViewDelegate,UITableViewDataSource,CustomDropMenuDelegate>
+@interface ListVC () <UITableViewDelegate,UITableViewDataSource,CustomDropMenuDelegate,NSURLSessionDelegate>
 {
     NSMutableArray *arrList,*arrVideoThumbImg;
     ModelList *objModelList;
@@ -41,9 +39,21 @@
     
     IBOutlet UIView *navBarVwContainer;
     
+    AVPlayerVC *avPlayerViewcontroller;
+    
+    FileDownloadInfo *fdi;
+    
     
 }
 
+@property (nonatomic, strong) NSURLSession *session;
+
+@property (nonatomic, strong) NSMutableArray *arrFileDownloadData;
+
+@property (nonatomic, strong) NSURL *docDirectoryURL;
+
+-(void)initializeFileDownloadDataArray:(NSDictionary *)dict;
+-(int)getFileDownloadInfoIndexWithTaskIdentifier:(unsigned long)taskIdentifier;
 
 @end
 
@@ -60,16 +70,39 @@
     return context;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     arrList=[NSMutableArray new];
     arrVideoThumbImg = [NSMutableArray new];
+    self.arrFileDownloadData = [NSMutableArray new];
     kTestAppAdTagUrl = self.appDel.objModelAdId.strIMAadTagURL;
 
     
     [self initWithParentView:navBarVwContainer isTranslateToAutoResizingMaskNeeded:NO leftButton:YES rightButton:YES navigationTitle:nil navigationTitleTextAlignment:NSTextAlignmentCenter navigationTitleFontType:nil leftImageName:@"menu_white_icon.png" leftLabelName:@"  Bangla1st" rightImageName:@"Search_white_icon.png" rightLabelName:nil];
     
+     [self.navBar.navBarLeftButtonOutlet addTarget:self action:@selector(ListVCOpenMenu) forControlEvents:UIControlEventTouchUpInside];
+    
     [self getCategoryDatas];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    _tblList.dataSource = self;
+    _tblList.delegate = self;
+    
+    NSArray *URLs = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
+    self.docDirectoryURL = [URLs objectAtIndex:0];
+    
+    NSString * uniqueId = [NSString stringWithFormat:@"Bangla1stBackgroundUpload:%f",[[NSDate date] timeIntervalSince1970] * 1000];
+    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:uniqueId];
+    sessionConfiguration.HTTPMaximumConnectionsPerHost = 5;
+    
+    self.session = [NSURLSession sessionWithConfiguration:sessionConfiguration
+                                                 delegate:self
+                                            delegateQueue:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -83,11 +116,19 @@
         dropDownvc=nil;
         btnDotscell.VwDropDowncontainer.hidden = YES;
     }
+    
+    avPlayerViewcontroller = nil;
+    
+    _tblList = nil;
+    _tblList.dataSource = nil;
+    _tblList.delegate = nil;
+    
 }
 
-- (void)getCategoryDatas{
+- (void)getCategoryDatas
+{
     
-     [self initializeAndStartActivityIndicator:self.view];
+    [self initializeAndStartActivityIndicator:self.view];
     
     NSDictionary *dictParams= @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",
                                 @"contentType":@"video",
@@ -107,9 +148,15 @@
                     objModelList = [[ModelList alloc]initWithDictionary:arr[i]];
                     
                     [arrList addObject:objModelList];
+                    
+                    NSDictionary *dict = @{@"VideoId":objModelList.strVideoId,@"VideoUrl":objModelList.strVideoFileUrl,@"VideoTitle":objModelList.strVideoTitle};
+                    
+                    [self initializeFileDownloadDataArray:dict];
+                    
+                    
                 }
                 
-               // arrList = [response mutableCopy];
+                // arrList = [response mutableCopy];
                 
                 NSString *strAdThumb = [arrList[0] strAdCodeUrl];  //content[@"adCode"];
                 
@@ -133,6 +180,8 @@
         
         [self StopActivityIndicator:self.view];
         
+        NSLog(@"Error:%@",error.localizedDescription);
+        
         UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:strMsg preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             [alertController dismissViewControllerAnimated:YES completion:^{
@@ -143,9 +192,9 @@
         [self presentViewController:alertController animated:YES completion:^{
             
         }];
-
+        
     }];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -153,6 +202,41 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark
+#pragma mark
+#pragma mark - Open Left Pannel
+#pragma mark
+
+-(void)ListVCOpenMenu
+{
+    [self.view endEditing:YES];
+    [self openLeftPanel];
+}
+
+#pragma mark
+#pragma mark - initialize FileDownload DataArray
+#pragma mark
+
+-(void)initializeFileDownloadDataArray:(NSDictionary *)dict
+{
+    [self.arrFileDownloadData addObject:[[FileDownloadInfo alloc]initWithFileTitle:dict[@"VideoTitle"] andDownloadSource:dict]];
+}
+
+-(int)getFileDownloadInfoIndexWithTaskIdentifier:(unsigned long)taskIdentifier
+{
+    int index = 0;
+    for (int i=0; i<[self.arrFileDownloadData count]; i++) {
+        fdi = [self.arrFileDownloadData objectAtIndex:i];
+        if (fdi.taskIdentifier == taskIdentifier) {
+            index = i;
+            break;
+        }
+    }
+    
+    return index;
+}
+
+#pragma mark
 
 #pragma mark
 #pragma mark - TableView Delegates and Datasource
@@ -218,6 +302,8 @@
     
     objModelList = arrList[indexPath.row];
     
+    fdi = [self.arrFileDownloadData objectAtIndex:indexPath.row];
+    
     if (![self isEmpty:objModelList.strVideoId])
     {
         //its a vid
@@ -239,8 +325,20 @@
         
         cell.progressVw.tag = indexPath.row;
         
+        if (![self isEmpty:fdi.downloadSource[@"VideoId"]])
+        {
+            if (!fdi.isDownloading)
+            {
+                cell.progressVw.hidden = YES;
+            }
+            else
+            {
+                cell.progressVw.hidden = NO;
+                cell.progressVw.progress = fdi.downloadProgress;
+            }
+        }
+                
         [cell.btndotsOutlet addTarget:self action:@selector(btnDotsTap:) forControlEvents:UIControlEventTouchUpInside];
-        
         
         [cell.ivImage sd_setImageWithURL:[NSURL URLWithString:strVidThumb]
                                 placeholderImage:nil
@@ -327,8 +425,89 @@
     
     if(![self isEmpty:objModelList.strVideoId])
     {
-        [self performSegueWithIdentifier:@"segueToViedoDetailsFromListVC" sender:nil];
+       // [self performSegueWithIdentifier:@"segueToViedoDetailsFromListVC" sender:nil];
         
+        
+        [self initializeAndStartActivityIndicator:self.view];
+        NSDictionary *videoDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",USERID:self.appDel.objModelUserInfo.strUserId,@"contentType":@"video",@"contentID":objModelList.strVideoId};
+        
+        [[MemberSubscriptionDetailsWebService service]callMemberSubscriptionDetailsWebServiceWithDictParams:videoDict success:^(id  _Nullable response, NSString * _Nullable strMsg) {
+            
+            [self StopActivityIndicator:self.view];
+            
+            if (response != nil)
+            {
+                ModelMemberSubscriptionDetails *objModel = [[ModelMemberSubscriptionDetails alloc]initWithDictionary:response[@"ResponseData"]];
+                
+                int totalLimit = [objModel.strSubscriptionPackageTotalLimit intValue];
+                int watchedCount = [objModel.strSubscriptionWatchedVideo intValue];
+                
+                if (watchedCount < totalLimit)
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        avPlayerViewcontroller = [[AVPlayerVC alloc] initWithNibName:@"AVPlayerVC" bundle:nil];
+                        [avPlayerViewcontroller.navigationController.navigationBar setHidden:YES];
+                        
+                        avPlayerViewcontroller.isFromListVC = YES;
+                        avPlayerViewcontroller.strVideoURL = objModelList.strVideoFileUrl;
+                        avPlayerViewcontroller.strIMAAddURL = kTestAppAdTagUrl;
+                        
+                        [self presentViewController:avPlayerViewcontroller animated:YES completion:NULL];
+                        
+                    });
+
+                }
+                
+                else
+                {
+                    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:@"Sorry! You have reached your Video limit.To see more Videos please Subscribe to another Plan" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                        [alertController dismissViewControllerAnimated:YES completion:^{
+                            
+                        }];
+                    }];
+                    [alertController addAction:actionOK];
+                    [self presentViewController:alertController animated:YES completion:^{
+                        
+                    }];
+                }
+                
+            }
+            else
+            {
+                NSLog(@"%@", strMsg);
+                
+                UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:strMsg preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    [alertController dismissViewControllerAnimated:YES completion:^{
+                        
+                    }];
+                }];
+                [alertController addAction:actionOK];
+                [self presentViewController:alertController animated:YES completion:^{
+                    
+                }];
+            }
+            
+        }
+        failure:^(NSError * _Nullable error, NSString * _Nullable strMsg)
+         {
+             
+             [self StopActivityIndicator:self.view];
+             
+             UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:strMsg preferredStyle:UIAlertControllerStyleAlert];
+             UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                 [alertController dismissViewControllerAnimated:YES completion:^{
+                     
+                 }];
+             }];
+             [alertController addAction:actionOK];
+             [self presentViewController:alertController animated:YES completion:^{
+                 
+             }];
+             
+         }];
     }
 }
 
@@ -409,121 +588,79 @@
             }
             else
             {
-                
-                //NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-                
-                NSString * uniqueId = [NSString stringWithFormat:@"Bangla1stBackgroundUpload:%f",[[NSDate date] timeIntervalSince1970] * 1000];
-                NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:uniqueId];
-                
-                AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-                
-                NSURL *URL = [NSURL URLWithString:objModelList.strVideoFileUrl];
-                NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-                
-                btnDotscell.progressVw.hidden = NO;
-                
-                NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        //Update the progress view
-                        [btnDotscell.progressVw setProgress:downloadProgress.fractionCompleted];
-                        
-                    });
-                    
-                }
-                                                          
-                destination:^NSURL *(NSURL *targetPath, NSURLResponse *response)
+                if (self.appDel.isRechable)
                 {
-                    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-                    return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
-                    
-                    /*
-                    NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-                    
-                    NSString *fileName = [NSString stringWithFormat:@"video%d.mov",++self.appDel.videoCount];
-                    
-                    NSString  *savedVideoPath = [documentsPath stringByAppendingPathComponent:fileName];
-                    NSFileManager *fileManager = [NSFileManager defaultManager];
-                    
-                    NSError *error;
-                    if ([fileManager fileExistsAtPath:savedVideoPath]) {
+                    if (self.appDel.videoCount <= 3)
+                    {
+                        // Get the FileDownloadInfo object being at the cellIndex position of the array.
+                        fdi = [self.arrFileDownloadData objectAtIndex:selectedDotsBtnIndexPath.row];
                         
-                        if ([fileManager removeItemAtPath:savedVideoPath error:&error])
+                        // The isDownloading property of the fdi object defines whether a downloading should be started
+                        // or be stopped.
+                        if (!fdi.isDownloading)
                         {
-                            NSLog(@"removeItemAtPath successful");
+                            btnDotscell.btndotsOutlet.userInteractionEnabled = YES;
+                            
+                            // This is the case where a download task should be started.
+                            
+                            // Create a new task, but check whether it should be created using a URL or resume data.
+                            if (fdi.taskIdentifier == -1) {
+                                // If the taskIdentifier property of the fdi object has value -1, then create a new task
+                                // providing the appropriate URL as the download source.
+                                fdi.downloadTask = [self.session downloadTaskWithURL:[NSURL URLWithString:fdi.downloadSource[@"VideoUrl"]]];
+                                
+                                // Keep the new task identifier.
+                                fdi.taskIdentifier = fdi.downloadTask.taskIdentifier;
+                                
+                                NSLog(@"task identifier:%lu",fdi.taskIdentifier);
+                                
+                                // Start the task.
+                                [fdi.downloadTask resume];
+                            }
+                            else{
+                                // Create a new download task, which will use the stored resume data.
+                                fdi.downloadTask = [self.session downloadTaskWithResumeData:fdi.taskResumeData];
+                                [fdi.downloadTask resume];
+                                
+                                // Keep the new download task identifier.
+                                fdi.taskIdentifier = fdi.downloadTask.taskIdentifier;
+                            }
                         }
                         else
-                            NSLog(@"failed to removeItemAtPath: %@",[error userInfo]);
-                        
-                    }
-                    
-                    if ([fileManager moveItemAtURL:location
-                                             toURL:[NSURL fileURLWithPath:savedVideoPath]
-                                             error: &error])
-                    {
-                        NSLog(@"File is saved to =%@",savedVideoPath);
-                    }
-                    else
-                    {
-                        NSLog(@"failed to move: %@",[error userInfo]);
-                        --self.appDel.videoCount;
-                    }
-                     */
-
-                }
-                
-                completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-                    // Do operation after download is complete
-                    
-                    if (error)
-                    {
-                        NSLog(@"error video download: %@",error.userInfo);
-                    }
-                    else
-                    {
-                        self.appDel.videoCount++;
-                        
-                        NSString *encodedURL = [[response.URL absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                        
-                        NSArray *filtered = [arrList filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.strVideoFileUrl contains[cd] %@", encodedURL]];
-                        
-                        if (filtered.count > 0)
                         {
-                            objModelList = [filtered objectAtIndex:0];
+                            btnDotscell.btndotsOutlet.userInteractionEnabled = NO;
                             
-                           int idx = (int) [arrList indexOfObject:objModelList];
-                            
-                            NSIndexPath *completedDwnloadIndxPath = [NSIndexPath indexPathForRow:idx inSection:0];
-                            
-                            Cell_List *completedDwnloadListCell = (Cell_List *)[_tblList cellForRowAtIndexPath:completedDwnloadIndxPath];
-                            
-                            completedDwnloadListCell.progressVw.hidden = YES;
-                            
-                            [VideoDetails createInManagedObjectContextWithVideoURL:objModelList.strVideoFileUrl  videoAssetURL:[filePath absoluteString] videoID:objModelList.strVideoId videoDate:[NSDate date] title:objModelList.strVideoTitle description:objModelList.strVideoDescription duration:objModelList.strVideoDuration postedTime:objModelList.strPostedTime views:objModelList.strViews likes:objModelList.strLikes commentCount:objModelList.strCommentCount thumbImageURL:objModelList.strThumbImageUrl managedObjectContext:[self managedObjectContext]];
-                            
-                            
-                            NSError *DBerror = nil;
-                            // Save the object to persistent store
-                            if (![[self managedObjectContext] save:&DBerror])
-                            {
-                                NSLog(@"Can't Save! %@ %@", DBerror, [DBerror localizedDescription]);
-                            }
-                            else
-                            {
-                                NSLog(@"Data Saved Successfully.");
-                                
-                                [[self.tabBarController.tabBar.items objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%d",self.appDel.videoCount]];
-                            }
-                            
+                            /*
+                            // Pause the task by canceling it and storing the resume data.
+                            [fdi.downloadTask cancelByProducingResumeData:^(NSData *resumeData) {
+                                if (resumeData != nil) {
+                                    fdi.taskResumeData = [[NSData alloc] initWithData:resumeData];
+                                }
+                            }];
+                             */
                         }
+                        
+                        // Change the isDownloading property value.
+                        fdi.isDownloading = !fdi.isDownloading;
+                        
+                        // Reload the table view.
+                        [_tblList reloadRowsAtIndexPaths:@[selectedDotsBtnIndexPath] withRowAnimation:UITableViewRowAnimationNone];
                     }
-
-                }];
-                
-                NSLog(@"download taskm identifier:%lu",(unsigned long)downloadTask.taskIdentifier);
-                
-                [downloadTask resume];
-                
+                    else
+                    {
+                        UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:@"Sorry! You can download only 3 videos for offline viewing" preferredStyle:UIAlertControllerStyleAlert];
+                        UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                            [alertController dismissViewControllerAnimated:YES completion:^{
+                                
+                            }];
+                        }];
+                        [alertController addAction:actionOK];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self presentViewController:alertController animated:YES completion:nil];
+                        });
+                    }
+                }
+                                
             }
             
         }
@@ -550,12 +687,21 @@
         }
         else
         {
-            controller.completionHandler = ^(NSString *activityType, BOOL completed) {
-                // When completed flag is YES, user performed specific activity
-                
-                 NSLog(@"completed dialog - activity: %@ - finished flag: %d", activityType, completed);
-                
+            controller.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError)
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                });
+                if (completed)
+                {
+                    NSLog(@"The Activity: %@ was completed", activityType);
+                }
+                else
+                {
+                    NSLog(@"The Activity: %@ was NOT completed", activityType);
+                };
             };
+            
         }
         
         [self presentViewController:controller animated:YES completion:nil];
@@ -576,6 +722,156 @@
     }
 }
 */
+
+#pragma mark - NSURLSession Delegate method implementation
+
+-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location{
+    
+    NSError *error;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSString *destinationFilename = downloadTask.originalRequest.URL.lastPathComponent;
+    NSURL *destinationURL = [self.docDirectoryURL URLByAppendingPathComponent:destinationFilename];
+    
+    if ([fileManager fileExistsAtPath:[destinationURL path]]) {
+        [fileManager removeItemAtURL:destinationURL error:nil];
+    }
+    
+    BOOL success = [fileManager copyItemAtURL:location
+                                        toURL:destinationURL
+                                        error:&error];
+    
+    if (success)
+    {
+        // Change the flag values of the respective FileDownloadInfo object.
+        int index = [self getFileDownloadInfoIndexWithTaskIdentifier:downloadTask.taskIdentifier];
+        fdi = [self.arrFileDownloadData objectAtIndex:index];
+        
+        fdi.isDownloading = NO;
+        fdi.downloadComplete = YES;
+        
+        // Set the initial value to the taskIdentifier property of the fdi object,
+        // so when the start button gets tapped again to start over the file download.
+        fdi.taskIdentifier = -1;
+        
+        // In case there is any resume data stored in the fdi object, just make it nil.
+        fdi.taskResumeData = nil;
+        
+        self.appDel.videoCount++;
+        
+        NSString *encodedURL = [[downloadTask.originalRequest.URL absoluteString] stringByRemovingPercentEncoding];
+        NSArray *filtered = [arrList filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.strVideoFileUrl contains[cd] %@", encodedURL]];
+        
+        if (filtered.count > 0)
+        {
+            objModelList = [filtered objectAtIndex:0];
+            
+            // int idx = (int) [arrList indexOfObject:objModelList];
+            
+            // NSIndexPath *completedDwnloadIndxPath = [NSIndexPath indexPathForRow:idx inSection:0];
+            
+            //Cell_List *completedDwnloadListCell = (Cell_List *)[_tblList cellForRowAtIndexPath:completedDwnloadIndxPath];
+            
+            // completedDwnloadListCell.progressVw.hidden = YES;
+            
+            [VideoDetails createInManagedObjectContextWithVideoURL:objModelList.strVideoFileUrl  videoAssetURL:[destinationURL absoluteString] videoID:objModelList.strVideoId videoDate:[NSDate date] title:objModelList.strVideoTitle description:objModelList.strVideoDescription duration:objModelList.strVideoDuration postedTime:objModelList.strPostedTime views:objModelList.strViews likes:objModelList.strLikes commentCount:objModelList.strCommentCount thumbImageURL:objModelList.strThumbImageUrl managedObjectContext:[self managedObjectContext]];
+            
+            
+            NSError *DBerror = nil;
+            // Save the object to persistent store
+            if (![[self managedObjectContext] save:&DBerror])
+            {
+                NSLog(@"Can't Save! %@ %@", DBerror, [DBerror localizedDescription]);
+            }
+            else
+            {
+                NSLog(@"Data Saved Successfully.");
+                
+                
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [[self.tabBarController.tabBar.items objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%d",self.appDel.videoCount]];
+                
+                // Reload the respective table view row using the main thread.
+                [_tblList reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]]
+                                withRowAnimation:UITableViewRowAnimationNone];
+                
+            });
+            
+        }
+    }
+    else
+    {
+        NSLog(@"Unable to copy temp file. Error: %@", [error localizedDescription]);
+    }
+}
+
+
+-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error{
+    if (error != nil) {
+        NSLog(@"Download completed with error: %@", [error localizedDescription]);
+    }
+    else{
+        NSLog(@"Download finished successfully.");
+    }
+}
+
+
+-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite{
+    
+    if (totalBytesExpectedToWrite == NSURLSessionTransferSizeUnknown) {
+        NSLog(@"Unknown transfer size");
+    }
+    else{
+        // Locate the FileDownloadInfo object among all based on the taskIdentifier property of the task.
+        int index = [self getFileDownloadInfoIndexWithTaskIdentifier:downloadTask.taskIdentifier];
+        fdi = [self.arrFileDownloadData objectAtIndex:index];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            // Calculate the progress.
+            fdi.downloadProgress = (double)totalBytesWritten / (double)totalBytesExpectedToWrite;
+            
+            // Get the progress view of the appropriate cell and update its progress.
+            Cell_List *cell = [_tblList cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+            UIProgressView *progressView = cell.progressVw;
+            progressView.progress = fdi.downloadProgress;
+        });
+        
+    }
+}
+
+
+-(void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session{
+    
+    // Check if all download tasks have been finished.
+    [self.session getTasksWithCompletionHandler:^(NSArray *dataTasks, NSArray *uploadTasks, NSArray *downloadTasks) {
+        
+        if ([downloadTasks count] == 0) {
+            if (self.appDel.backgroundSessionCompletionHandler != nil) {
+                // Copy locally the completion handler.
+                void(^completionHandler)() = self.appDel.backgroundSessionCompletionHandler;
+                
+                // Make nil the backgroundTransferCompletionHandler.
+                self.appDel.backgroundSessionCompletionHandler = nil;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    // Call the completion handler to tell the system that there are no other background transfers.
+                    completionHandler();
+                    
+                    // Show a local notification when all downloads are over.
+                    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+                    localNotification.alertBody = @"All files have been downloaded!";
+                    [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
+                });
+                
+            }
+        }
+    }];
+}
 
 
 #pragma mark - Navigation

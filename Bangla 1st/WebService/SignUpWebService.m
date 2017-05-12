@@ -25,28 +25,43 @@
     {
         NSLog(@"urlService=%@",urlForService);
         
-        [self requestPostUrl:urlForService parameters:dictParams success:^(id _Nullable response) {
-            
-            NSError *errorJsonConversion=nil;
-            NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingAllowFragments error:&errorJsonConversion];
-            
-            NSLog(@"Response dictionary: %@",responseDict);
-            
-            if ([responseDict[@"ResponseCode"] integerValue] == 200)
-            {
-                successHandler(responseDict,SUCCESS);
+        @try
+        {
+            [self requestPostUrl:urlForService parameters:dictParams success:^(id _Nullable response) {
+                
+                NSError *errorJsonConversion=nil;
+                NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingAllowFragments error:&errorJsonConversion];
+                
+                NSLog(@"Response dictionary: %@",responseDict);
+                
+                if ([responseDict[@"ResponseCode"] integerValue] == 200)
+                {
+                    successHandler(responseDict,SUCCESS);
+                }
+                else
+                {
+                    successHandler(nil,responseDict[@"message"]);
+                }
+                
             }
-            else
-            {
-                successHandler(nil,responseDict[@"message"]);
-            }
-            
+            failure:^(NSError * _Nullable error)
+             {
+                 failureHandler(error,SOMETHING_WRONG);
+                 
+             }];
         }
-        failure:^(NSError * _Nullable error)
-         {
-             failureHandler(error,SOMETHING_WRONG);
-             
-         }];
+        @catch(NSException *anException)
+        {
+            NSLog(@"Exception in Signup Webservice:%@",anException);
+            
+            NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"Could not execute Signup Webservice because an Exception occured."};
+            
+            NSError *error = [NSError errorWithDomain:WebServiceErrorDomain
+                                                 code:WebServiceExceptionError userInfo:userInfo];
+            
+            failureHandler(error,anException.reason);
+        }
+        
     }
     else
     {

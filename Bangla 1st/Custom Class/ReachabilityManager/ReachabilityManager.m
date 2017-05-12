@@ -97,9 +97,32 @@
             appDel.isRechable=YES;
             NSLog(@"Internet rechable via WAN");
             
+            UIApplication *app = [UIApplication sharedApplication];
+            NSArray *subviews = [[[app valueForKey:@"statusBar"]     valueForKey:@"foregroundView"] subviews];
+            NSString *dataNetworkItemView = nil;
+            for (id subview in subviews) {
+                if([subview isKindOfClass:[NSClassFromString(@"UIStatusBarSignalStrengthItemView") class]])
+                {
+                    dataNetworkItemView = subview;
+                    break;
+                }
+            }
+            int signalStrength = [[dataNetworkItemView valueForKey:@"signalStrengthRaw"] intValue];
+            NSLog(@"signal %d", signalStrength);
+            
             if (![[GlobalUserDefaults getObjectWithKey:IS_FIRST_TIME] isEqualToString:@"YES"])
             {
                 [self getIMAadLink];
+            }
+            
+            if (![GlobalUserDefaults getObjectWithKey:COUNTRY_LIST])
+            {
+                [self getCountryList];
+            }
+            
+            if (![GlobalUserDefaults getObjectWithKey:USER_TYPE])
+            {
+                [self getUsertypeList];
             }
             
             break;
@@ -108,6 +131,19 @@
         {
             appDel.isRechable=YES;
             NSLog(@"Internet rechable via WIFI");
+            
+            UIApplication *app = [UIApplication sharedApplication];
+            NSArray *subviews = [[[app valueForKey:@"statusBar"] valueForKey:@"foregroundView"] subviews];
+            NSString *dataNetworkItemView = nil;
+            for (id subview in subviews) {
+                if([subview isKindOfClass:[NSClassFromString(@"UIStatusBarSignalStrengthItemView") class]])
+                {
+                    dataNetworkItemView = subview;
+                    break;
+                }
+            }
+            int signalStrength = [[dataNetworkItemView valueForKey:@"signalStrengthRaw"] intValue];
+            NSLog(@"signal %d", signalStrength);
           
             if (![[GlobalUserDefaults getObjectWithKey:IS_FIRST_TIME] isEqualToString:@"YES"])
             {

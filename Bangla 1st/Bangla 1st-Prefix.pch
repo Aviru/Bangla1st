@@ -19,6 +19,7 @@
 
 #import <Google/SignIn.h>
 #import "REFrostedViewController.h"
+#import "LeftPanelProtocols.h"
 
 #import "UIImageView+WebCache.h"
 #import "UIImage+animatedGIF.h"

@@ -20,6 +20,7 @@
 @property(nonatomic,strong)NSString *strUserSex;
 @property(nonatomic,strong)NSString *strUserDob;
 @property(nonatomic,strong)NSString *strUserCountry;
+@property(nonatomic,strong)NSString *strUserCountryCode;
 @property(nonatomic,strong)NSString *strUserProfileImageUrl;
 
 @end

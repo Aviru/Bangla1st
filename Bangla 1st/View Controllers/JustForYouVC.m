@@ -15,6 +15,7 @@
 #import "JustForYouTableViewCell.h"
 #import "VideoDetailsVC.h"
 #import "ModelList.h"
+#import "AVPlayerVC.h"
 
 @interface JustForYouVC ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -27,6 +28,8 @@
     NSMutableArray *arrJustForYouDetails;
     VideoDetails *videoDetails;
     NSString *kTestAppAdTagUrl;
+    
+     AVPlayerVC *avPlayerViewcontroller;
 }
 
 @end
@@ -49,12 +52,16 @@
     
     [self initWithParentView:navBarContainerVw isTranslateToAutoResizingMaskNeeded:NO leftButton:YES rightButton:YES navigationTitle:nil navigationTitleTextAlignment:NSTextAlignmentCenter navigationTitleFontType:nil leftImageName:@"menu_white_icon.png" leftLabelName:@"  Bangla1st" rightImageName:@"Search_white_icon.png" rightLabelName:nil];
     
+     [self.navBar.navBarLeftButtonOutlet addTarget:self action:@selector(justForYouVCOpenMenu) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    tblJustForYou.dataSource = self;
+    tblJustForYou.delegate = self;
     
     NSMutableArray *results = [VideoDetails fetchVideoDetailsWithEntityName:@"VideoDetails" managedObjectContext:[self managedObjectContext]];
     
@@ -73,6 +80,25 @@
     }
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    tblJustForYou = nil;
+    tblJustForYou.dataSource = nil;
+    tblJustForYou.delegate = nil;
+    
+}
+
+#pragma mark
+#pragma mark
+#pragma mark - Open Left Pannel
+#pragma mark
+
+-(void)justForYouVCOpenMenu
+{
+    [self.view endEditing:YES];
+    [self openLeftPanel];
+}
 
 #pragma mark
 #pragma mark - TableView Delegates and Datasource
@@ -130,7 +156,16 @@
     
     if(![self isEmpty:videoDetails.videoID])
     {
-         [self performSegueWithIdentifier:@"segueToViedoDetailsFromJustForYouVC" sender:nil];
+       //  [self performSegueWithIdentifier:@"segueToViedoDetailsFromJustForYouVC" sender:nil];
+        
+        avPlayerViewcontroller = [[AVPlayerVC alloc] initWithNibName:@"AVPlayerVC" bundle:nil];
+        [avPlayerViewcontroller.navigationController.navigationBar setHidden:YES];
+        
+        avPlayerViewcontroller.isFromListVC = NO;
+        avPlayerViewcontroller.strVideoURL = videoDetails.videoLocalPath;
+        avPlayerViewcontroller.strIMAAddURL = kTestAppAdTagUrl;
+        
+        [self presentViewController:avPlayerViewcontroller animated:YES completion:NULL];
     }
 }
 

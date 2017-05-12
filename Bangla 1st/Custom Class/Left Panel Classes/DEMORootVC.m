@@ -7,6 +7,7 @@
 //
 
 #import "DEMORootVC.h"
+#import "DEMOMenuViewController.h"
 
 @interface DEMORootVC ()
 
@@ -20,7 +21,9 @@
    
     if([[GlobalUserDefaults getObjectWithKey:ISLOGGEDIN] isEqualToString:@"YES"])
     {
-        self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"showTabBarController"];
+       // self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"showTabBarController"];
+        self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"showSplashScreenController"];
+        
         [GlobalUserDefaults saveObject:@"showTabBarController" withKey:ROOTCONTROL];
         self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menuController"];
     }
@@ -30,6 +33,8 @@
         [GlobalUserDefaults saveObject:@"showLoginPageController" withKey:ROOTCONTROL];
         self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menuController"];
     }
+    
+    
 }
 
 - (void)viewDidLoad {

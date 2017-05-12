@@ -13,18 +13,16 @@
 @synthesize current_value;
 @synthesize delegate;
 
-- (id)initWithContainerViewFrame:(CGRect)VwFrame
+- (id)init
 {
-    /*
     CGRect frame;
     if ([[UIApplication sharedApplication] statusBarOrientation] == UIDeviceOrientationLandscapeLeft || [[UIApplication sharedApplication] statusBarOrientation] == UIDeviceOrientationLandscapeRight)
         frame = CGRectMake(0.0, ([[UIScreen mainScreen] bounds].size.width-[[UIScreen mainScreen] bounds].size.height)/2, [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.height);
     else
         frame = CGRectMake([[UIScreen mainScreen] bounds].size.width/2-50 , [[UIScreen mainScreen] bounds].size.height/2-50, 100, 100);
        // frame = CGRectMake(([[UIScreen mainScreen] bounds].size.width-[[UIScreen mainScreen] bounds].size.height)/2, 0.0, [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.height);
-    */
 
-    self = [super initWithFrame:VwFrame];
+    self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
         current_value = 0.0;
@@ -34,18 +32,18 @@
         [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
         
         self.alpha = 0.95;
-        //self.layer.cornerRadius = 8.0f;
+        self.layer.cornerRadius = 8.0f;
         self.layer.masksToBounds = YES;
         //self.backgroundColor = [UIColor colorWithRed:104.0/255.0 green:165.0/255.0 blue:194.0/255.0 alpha:1.0];
-        self.backgroundColor = [UIColor colorWithRed:242.0/255.0 green:242.0/255.0 blue:242.0/255.0 alpha:1.0];
+        self.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:83.0/255.0 blue:31.0/255.0 alpha:1.0];
         self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         
        // ProgressLbl = [[UILabel alloc] initWithFrame:CGRectMake((self.frame.size.width-200)/2, self.frame.size.height/2-150, 200, 40.0)];
          ProgressLbl = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/2-20, self.frame.size.height/2-20, 40, 40.0)];
-        ProgressLbl.font = [UIFont boldSystemFontOfSize:10.0];
+        ProgressLbl.font = [UIFont boldSystemFontOfSize:15.0];
         ProgressLbl.text = @"0%";
         ProgressLbl.backgroundColor = [UIColor clearColor];
-        ProgressLbl.textColor = [UIColor darkGrayColor];
+        ProgressLbl.textColor = [UIColor whiteColor];
         ProgressLbl.textAlignment = NSTextAlignmentCenter ;
         ProgressLbl.alpha = self.alpha;
         [self addSubview:ProgressLbl];
@@ -112,7 +110,7 @@
     float start_angle = 2*M_PI*self.current_value-M_PI_2;
     float end_angle = 2*M_PI*to_value-M_PI_2;
     
-    float radius = 5.0; //75.0;
+    float radius = 30.0; //75.0;
     
     CAShapeLayer *circle = [CAShapeLayer layer];
 
@@ -122,8 +120,8 @@
                                                  radius:radius startAngle:start_angle endAngle:end_angle clockwise:YES].CGPath;
     
     // Configure the apperence of the circle
-    circle.fillColor = [UIColor whiteColor].CGColor;
-    circle.strokeColor = [UIColor colorWithRed:255.0/255.0 green:83.0/255.0 blue:31.0/255.0 alpha:1.0].CGColor; //[UIColor whiteColor]
+    circle.fillColor = [UIColor clearColor].CGColor;
+    circle.strokeColor = [UIColor whiteColor].CGColor;
     circle.lineWidth = 3;
     
     // Add to parent layer

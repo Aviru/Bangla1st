@@ -41,16 +41,6 @@
         
         self.videoCount = 0;
         
-        _arrCountryList = [NSMutableArray new];
-        
-        NSData *countryListData = [GlobalUserDefaults getObjectWithKey:COUNTRY_LIST];
-        _arrCountryList = [NSKeyedUnarchiver unarchiveObjectWithData:countryListData];
-        
-        _arrUserTypeList = [NSMutableArray new];
-        
-        NSData *userTypeListData = [GlobalUserDefaults getObjectWithKey:USER_TYPE];
-        _arrUserTypeList = [NSKeyedUnarchiver unarchiveObjectWithData:userTypeListData];
-        
     }
     
     ///TODO: Remove these lines later
@@ -98,7 +88,8 @@
 
 
 
--(UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window{
+-(UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
     if ([window.rootViewController isKindOfClass:[AVPlayerViewController class]])
     {
         NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
@@ -110,19 +101,45 @@
     {
         if ([window.rootViewController.presentedViewController isKindOfClass:[AVPlayerViewController class]] || [window.rootViewController.presentedViewController isKindOfClass:NSClassFromString(@"AVFullScreenViewController")])
         {
+            //[window.rootViewController.presentedViewController.view setTranslatesAutoresizingMaskIntoConstraints:YES];
+            
             if ([window.rootViewController.presentedViewController isKindOfClass:NSClassFromString(@"AVFullScreenViewController")])
             {
-                [self findAllButton:window.rootViewController.presentedViewController.view];
+               // [self findAllButton:window.rootViewController.presentedViewController.view];
+                
+                NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
+                [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+                
+                return  UIInterfaceOrientationMaskLandscapeLeft;
             }
             
-            NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
-            [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+           
+            else
+            {
+                UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+                
+                if (orientation == UIInterfaceOrientationPortrait)
+                {
+                    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
+                    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+                    
+                    return  UIInterfaceOrientationMaskLandscapeLeft;
+                }
+                else
+                {
+                    [self findAllButton:window.rootViewController.presentedViewController.view];
+                    return UIInterfaceOrientationMaskPortrait;
+                }
+                
+                
+            }
             
-            return  UIInterfaceOrientationMaskLandscapeLeft;  //UIInterfaceOrientationMaskAll;
+            
+             //UIInterfaceOrientationMaskAll;
         }
     }
     [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [UIApplication sharedApplication].statusBarHidden = NO;
     return UIInterfaceOrientationMaskPortrait;
 }
 
@@ -143,6 +160,10 @@
 -(IBAction)doneButtonCliked
 {
     NSLog(@"DONECLICK");
+    
+    [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
+    [UIApplication sharedApplication].statusBarHidden = NO;
+    
 }
 
 

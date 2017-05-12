@@ -12,6 +12,7 @@
 #import "SignUpTableViewCell.h"
 #import "SignUpWebService.h"
 #import "LoginWebService.h"
+#import "TermsAndConditionsVC.h"
 
 #import "ModelCountryList.h"
 #import "ModelUserTypeList.h"
@@ -62,9 +63,9 @@
     
     arrCountry = [self.appDel.arrCountryList copy];
     
-    arrPlaceHolder = [[NSMutableArray alloc]initWithObjects:@"Your Name",@"Email",@"Password",@"Re-enter Password",@"Date of birth",@"Country",@"State",@"City",@"",@"User Type", nil];
+    arrPlaceHolder = [[NSMutableArray alloc]initWithObjects:@"Your Name",@"Email",@"Password",@"Re-enter Password",@"Date of birth",@"Country",@"State",@"City",@"", nil]; //@"User Type"
     
-    arrCellIcon = [[NSArray alloc]initWithObjects:@"user.png",@"email_icon.png",@"password_key.png",@"password_key.png",@"calendar.png",@"country.png",@"location.png",@"location.png",@"",@"subscription_icon.png", nil];
+    arrCellIcon = [[NSArray alloc]initWithObjects:@"user.png",@"email_icon.png",@"password_key.png",@"password_key.png",@"calendar.png",@"country.png",@"location.png",@"location.png",@"", nil]; //@"subscription_icon.png"
    
     /*
     NSArray *fontFamilies = [UIFont familyNames];
@@ -498,6 +499,8 @@
 
 - (IBAction)btnTermsAndServicesAction:(id)sender
 {
+    TermsAndConditionsVC *termsVC=(TermsAndConditionsVC *)[MainStoryBoard instantiateViewControllerWithIdentifier:@"TermsAndConditionsVC"];
+    [self.navigationController pushViewController:termsVC animated:YES];
 }
 
 
@@ -511,7 +514,8 @@
     {
          [self initializeAndStartActivityIndicator:self.view];
         
-        NSDictionary *signUpDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"username":strFullName,@"password":strPassword,@"email":strEmail,@"dob":strDob,@"country":strCountryId,@"state":strState,@"city":strCity,@"gender":strGender,@"usercategory":strUserTypeId};
+        NSDictionary *signUpDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"username":strFullName,@"password":strPassword,@"email":strEmail,@"dob":strDob,@"country":strCountryId,@"state":strState,@"city":strCity,@"gender":strGender};
+        //@"usercategory":strUserTypeId
         
         NSLog(@"signUpDict:%@",signUpDict);
         

@@ -105,7 +105,7 @@ static void * kBoundsContext = &kBoundsContext;
         
         NSLog(@"files array %@", filePathsArray);
         
-        NSString *strVideoNamesavedInDb = [[_objModelList.strVideoLocalPath lastPathComponent] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *strVideoNamesavedInDb = [[_objModelList.strVideoLocalPath lastPathComponent] stringByRemovingPercentEncoding];
         
         NSString *fullpath;
         NSURL *videoURL;

@@ -12,4 +12,9 @@
 
 @property(nonatomic,strong)AVPlayerViewController *avPlayerVC;
 
+@property(nonatomic,assign)BOOL isFromListVC;
+
+@property(nonatomic,strong)NSString *strVideoURL;
+@property(nonatomic,strong)NSString *strIMAAddURL;
+
 @end

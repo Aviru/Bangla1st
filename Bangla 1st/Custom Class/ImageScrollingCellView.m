@@ -195,7 +195,19 @@
     indexPath = [self.collectionView indexPathForItemAtPoint:[self.collectionView convertPoint:sender.center fromView:sender.superview]];
     collVwDotscell = (CollectionCell_Video *)[_collectionView cellForItemAtIndexPath:indexPath];
     
-    [self.delegate collectionView:self.collectionView didTapOnDotsButtonAtIndexPath:indexPath withCollectionVwCell:collVwDotscell];
+    ModelContentListing *objModelContent;
+    
+    if (![self isEmpty:[_collectionContent[indexPath.row] strVideoId]])
+    {
+        objModelContent =  _collectionContent[indexPath.row];
+    }
+    
+    else if (![self isEmpty:[_collectionContent[indexPath.row] strAdId]])
+    {
+        objModelContent = _collectionContent[indexPath.row];
+    }
+    
+    [self.delegate collectionView:self.collectionView didTapOnDotsButtonAtIndexPath:indexPath withCollectionVwCell:collVwDotscell withSelectedContent:objModelContent];
     
 }
 

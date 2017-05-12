@@ -466,6 +466,7 @@
 
            
            [GlobalUserDefaults saveObject:@"YES" withKey:ISLOGGEDIN];
+           [GlobalUserDefaults saveObject:@"normal" withKey:LOGINTYPE];
            
            // TODO: Move this to where you establish a user session
            [self logUser];
@@ -545,6 +546,7 @@
            [task resume];
            
            [GlobalUserDefaults saveObject:@"YES" withKey:ISLOGGEDIN];
+           [GlobalUserDefaults saveObject:@"social" withKey:LOGINTYPE];
            
            [self logUser];
            

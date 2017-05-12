@@ -10,8 +10,11 @@
 #import "LeftPanelTableViewCell.h"
 #import "DEMONavigationController.h"
 #import "MyProfileVC.h"
+#import "TransactionHistoryVC.h"
+#import "LeftPanelProtocols.h"
+#import "AboutUsVC.h"
 
-@interface DEMOMenuViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface DEMOMenuViewController ()<UITableViewDelegate,UITableViewDataSource,LeftPanelProtocols>
 {
     IBOutlet UITableView *tblMenu;
     
@@ -39,6 +42,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 #pragma mark
 #pragma mark - TableView Delegates and Datasource
@@ -73,6 +78,8 @@
         
         cell.lblMenuName.text = arrMenuNames[indexPath.row];
         cell.imgVwMenuIcon.image = [UIImage imageNamed:arrGrayIconNames[indexPath.row]];
+        
+        [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     }
     
     if (indexPath.row == 5)
@@ -84,6 +91,8 @@
         }
         
         cell.lblSecondCellName.text = arrMenuNames[indexPath.row];
+        
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     if (indexPath.row == 0)
     {
@@ -93,17 +102,17 @@
             cell=[[[NSBundle mainBundle]loadNibNamed:@"LeftPanelTableViewCell" owner:self options:nil]objectAtIndex:2];
         }
         
-        cell.imgVwUserPic.layer.cornerRadius = cell.imgVwUserPic.frame.size.width/2;
+        cell.imgVwUserPic.layer.cornerRadius = tblMenu.frame.size.width/2 * 0.2 ;
         
         cell.imgVwUserPic.clipsToBounds = YES;
         
         cell.lblUserName.text = self.appDel.objModelUserInfo.strUserName;
         
         cell.imgVwUserPic.image = [UIImage imageWithData:[GlobalUserDefaults getObjectWithKey:PROFILE_IMAGE]];
+        
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
-    
-    [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-    
+        
     return cell;
     
 }
@@ -122,51 +131,142 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     navigationController = [MainStoryBoard instantiateViewControllerWithIdentifier:[GlobalUserDefaults getObjectWithKey:ROOTCONTROL]]; //contentController
+    navigationController = [MainStoryBoard instantiateViewControllerWithIdentifier:[GlobalUserDefaults getObjectWithKey:ROOTCONTROL]]; //contentController
     
     NSLog(@"%@",navigationController.viewControllers);
     
-    UITabBarController *tbc = [navigationController.viewControllers objectAtIndex:0];
+    if ([[navigationController.viewControllers objectAtIndex:0] isKindOfClass:[UITabBarController class]])
+    {
+        UITabBarController *tbc = [navigationController.viewControllers objectAtIndex:0];
+        
+        NSLog(@"%@",tbc.viewControllers);
+    }
     
-    NSLog(@"%@",tbc.viewControllers);
+    
     
     if (indexPath.row == 0)
     {
-        self.frostedViewController.contentViewController = tbc;
+        // self.frostedViewController.contentViewController = tbc;
         
-       // [self.appDel setTabBarControllerInHome:3 tabBar:tbc];
+        // [self.appDel setTabBarControllerInHome:3 tabBar:tbc];
+        
         
         /*
-        MyProfileVC *profileVC = [MainStoryBoard instantiateViewControllerWithIdentifier:@"MyProfileVC"];
-        navigationController.viewControllers =  @[profileVC]; //@[ [tbc.viewControllers objectAtIndex:3]];   //@[profileVC];
-        //profileVC.hidesBottomBarWhenPushed = NO;
-        self.frostedViewController.contentViewController =  [tbc.viewControllers objectAtIndex:3]; //navigationController;
-        self.frostedViewController.contentViewController.hidesBottomBarWhenPushed = NO;
+         //@[ [tbc.viewControllers objectAtIndex:3]];   //@[profileVC];
+         //profileVC.hidesBottomBarWhenPushed = NO;
+         self.frostedViewController.contentViewController =  [tbc.viewControllers objectAtIndex:3]; //navigationController;
+         self.frostedViewController.contentViewController.hidesBottomBarWhenPushed = NO;
          */
-        [self.frostedViewController hideMenuViewController];
     }
     
-    if (indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 6 || indexPath.row == 7)
-    {
-        LeftPanelTableViewCell *cell = (LeftPanelTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-        
-        cell.lblMenuName.textColor = [UIColor colorWithRed:255.0/255.0 green:83.0/255.0 blue:31.0/255.0 alpha:1.0];
-        cell.imgVwMenuIcon.image = [UIImage imageNamed:arrRedIconNames[indexPath.row]];
     
+    LeftPanelTableViewCell *cell = (LeftPanelTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    
+    cell.lblMenuName.textColor = [UIColor colorWithRed:255.0/255.0 green:83.0/255.0 blue:31.0/255.0 alpha:1.0];
+    cell.imgVwMenuIcon.image = [UIImage imageNamed:arrRedIconNames[indexPath.row]];
+    
+    switch (indexPath.row)
+    {
+        case 0:
+            break;
+            
+        case 1:
+        {
+            TransactionHistoryVC *transactionVC = [MainStoryBoard instantiateViewControllerWithIdentifier:@"TransactionHistoryVC"];
+            transactionVC.leftPanelDelegate = self;
+            navigationController.viewControllers =  @[transactionVC];
+            self.frostedViewController.contentViewController = navigationController;
+            [self.frostedViewController hideMenuViewController];
+            break;
+        }
+            
+        case 2:
+            
+            [self.frostedViewController hideMenuViewController];
+            break;
+            
+        case 3:
+            [self.frostedViewController hideMenuViewController];
+            break;
+            
+        case 4:
+        {
+            AboutUsVC *aboutVC = [MainStoryBoard instantiateViewControllerWithIdentifier:@"AboutUsVC"];
+            aboutVC.leftPanelDelegate = self;
+            navigationController.viewControllers =  @[aboutVC];
+            self.frostedViewController.contentViewController = navigationController;
+            [self.frostedViewController hideMenuViewController];
+            break;
+        }
+
+            
+        case 6:
+            
+            [self.frostedViewController hideMenuViewController];
+            break;
+            
+        case 7:
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                UIAlertController * alert=   [UIAlertController
+                                              alertControllerWithTitle:@""
+                                              message:@"Do you want to logOut?"
+                                              preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                    
+                    [alert dismissViewControllerAnimated:YES completion:nil];
+                    
+                }];
+                
+                [alert addAction:cancelButton];
+                
+                UIAlertAction* yesButton = [UIAlertAction
+                                            actionWithTitle:@"OK"
+                                            style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction * action)
+                                            {
+                                                [alert dismissViewControllerAnimated:YES completion:nil];
+                                                
+                                                [self callLogOut];
+                                                
+                                            }];
+                [alert addAction:yesButton];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self presentViewController:alert animated:YES completion:nil];
+                });
+ 
+                
+            });
+            
+            break;
+            
+          
     }
     
     
     /*
-    if (indexPath.row == 1) {
-        DEMOHomeViewController *homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];
-        navigationController.viewControllers = @[homeViewController];
-    } else {
-    }
+     if (indexPath.row == 1) {
+     DEMOHomeViewController *homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];
+     navigationController.viewControllers = @[homeViewController];
+     } else {
+     }
      */
-  //  self.frostedViewController.contentViewController = navigationController;
-   // [self.frostedViewController hideMenuViewController];
+    //  self.frostedViewController.contentViewController = navigationController;
+    // [self.frostedViewController hideMenuViewController];
 }
 
+#pragma mark
+#pragma mark - Left Panel Delegate
+#pragma mark
+
+-(void)showHomePage:(REFrostedViewController *)REFrostedObj
+{
+    REFrostedObj.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"showTabBarController"];
+}
+
+#pragma mark
 
 /*
 #pragma mark - Navigation

@@ -8,6 +8,8 @@
 
 #import "BaseVC.h"
 #import "VideoDetails+CoreDataClass.h"
+#import "LogOutWebService.h"
+#import "LoginVC.h"
 
 NSString *const kUIActivityIndicatorView = @"UIActivityIndicatorView";
 NSString *const kAviActivityIndicator = @"AviActivityIndicator";
@@ -15,6 +17,9 @@ NSString *const kAviCircularSpinner = @"AviCircularSpinner";
 NSString *const kAviBeachBallSpinner = @"AviBeachBallSpinner";
 
 @interface BaseVC ()
+{
+    UINavigationController *navController;
+}
 
 @property(nonatomic,strong) AviSpinner *spinner;
 
@@ -125,11 +130,22 @@ NSString *const kAviBeachBallSpinner = @"AviBeachBallSpinner";
     [parentView addConstraint:top];
     [parentView addConstraint:leading];
 }
- 
+
+
+#pragma mark
+#pragma mark - Open Left Panel
+#pragma mark
+
+-(void)openLeftPanel
+{
+    [self.frostedViewController.view endEditing:YES];
+    [self.frostedViewController presentMenuViewController];
+}
 
 #pragma mark
 #pragma mark - Get Offline saved Video count
 #pragma mark
+
 -(void)getOfflineSavedVideoCount
 {
     NSMutableArray *results = [VideoDetails fetchVideoDetailsWithEntityName:@"VideoDetails" managedObjectContext:[self managedObjectContext]];
@@ -141,7 +157,7 @@ NSString *const kAviBeachBallSpinner = @"AviBeachBallSpinner";
 }
 
 #pragma mark
-#pragma mark - ACtivity Indicator
+#pragma mark - Activity Indicator
 #pragma mark
 
 -(AviSpinner *)initializeAndStartActivityIndicator:(UIView *)view
@@ -344,6 +360,203 @@ NSString *const kAviBeachBallSpinner = @"AviBeachBallSpinner";
     }
     return NO;
 }
+
+#pragma mark
+#pragma mark - colorWithHexString
+#pragma mark
+
+-(UIColor*)colorWithHexString:(NSString*)hex
+{
+    NSString *cString = [[hex stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
+    
+    // String should be 6 or 8 characters
+    if ([cString length] < 6) return [UIColor grayColor];
+    
+    // strip 0X if it appears
+    if ([cString hasPrefix:@"0X"]) cString = [cString substringFromIndex:2];
+    
+    if ([cString length] != 6) return  [UIColor grayColor];
+    
+    // Separate into r, g, b substrings
+    NSRange range;
+    range.location = 0;
+    range.length = 2;
+    NSString *rString = [cString substringWithRange:range];
+    
+    range.location = 2;
+    NSString *gString = [cString substringWithRange:range];
+    
+    range.location = 4;
+    NSString *bString = [cString substringWithRange:range];
+    
+    // Scan values
+    unsigned int r, g, b;
+    [[NSScanner scannerWithString:rString] scanHexInt:&r];
+    [[NSScanner scannerWithString:gString] scanHexInt:&g];
+    [[NSScanner scannerWithString:bString] scanHexInt:&b];
+    
+    return [UIColor colorWithRed:((float) r / 255.0f)
+                           green:((float) g / 255.0f)
+                            blue:((float) b / 255.0f)
+                           alpha:1.0f];
+}
+
+
+#pragma mark
+#pragma mark - Check Image equality
+#pragma mark
+
+- (BOOL)image:(UIImage *)image1 isEqualTo:(UIImage *)image2
+{
+    NSData *data1 = UIImagePNGRepresentation(image1);
+    NSData *data2 = UIImagePNGRepresentation(image2);
+    
+    return [data1 isEqual:data2];
+}
+
+#pragma mark
+#pragma mark - Calculate Time Difference
+#pragma mark
+
+- (NSString *)timeDifference:(NSString *)commentTimeStamp
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    NSDate *commentDate = [formatter dateFromString:commentTimeStamp];
+    
+    NSTimeInterval diff = [commentDate timeIntervalSinceNow];//[commentDate timeIntervalSinceDate:[NSDate date]];
+    int d = diff/86400;
+    if (d)
+    {
+        if((abs(d)) > 1)
+        {
+            return [NSString stringWithFormat:@"%d days ago",(abs(d))];
+        }
+        else
+        {
+            return [NSString stringWithFormat:@"%d day ago",(abs(d))];
+        }
+        
+    }
+    else
+    {
+        int hour = diff/3600;
+        if (hour)
+        {
+            if((abs(hour)) > 1)
+            {
+                return [NSString stringWithFormat:@"%d hours ago",(abs(hour))];
+            }
+            else
+            {
+                return [NSString stringWithFormat:@"%d hour ago",(abs(hour))];
+            }
+            
+        }
+        else
+        {
+            int min = diff/60;
+            if (min)
+            {
+                if((abs(min)) > 1)
+                {
+                    return [NSString stringWithFormat:@"%d mins ago",(abs(min))];
+                }
+                else
+                {
+                    return [NSString stringWithFormat:@"%d min ago",(abs(min))];
+                }
+                
+            }
+            else
+            {
+                if((abs((int)diff)) > 1)
+                {
+                    return [NSString stringWithFormat:@"%d secs ago",(abs((int)diff))];
+                }
+                else
+                {
+                    return [NSString stringWithFormat:@"%d sec ago",(abs((int)diff))];
+                }
+                
+            }
+        }
+    }
+}
+
+#pragma mark
+
+#pragma mark
+#pragma mark - Log Out
+#pragma mark
+
+-(void)callLogOut
+{
+    [self initializeAndStartActivityIndicator:self.view];
+    
+    navController =[MainStoryBoard instantiateViewControllerWithIdentifier:[GlobalUserDefaults getObjectWithKey:ROOTCONTROL]];
+    
+    NSString *strDeviceToken = @"fe3c1c39fb267847300fd9bd5fb30fc3df6a22c5d00f59743c138bfe15429d48";
+    
+    NSDictionary *logOutDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",USERID:self.appDel.objModelUserInfo.strUserId,@"deviceToken": strDeviceToken};
+    
+    [[LogOutWebService service]callLogOutWebServiceWithDictParams:logOutDict success:^(id  _Nullable response, NSString * _Nullable strMsg)
+     {
+         
+         [self StopActivityIndicator:self.view];
+         
+         if (response != nil)
+         {
+             [GlobalUserDefaults RemoveUserDefaultValueForKey:USER_INFO];
+             [GlobalUserDefaults RemoveUserDefaultValueForKey:PROFILE_IMAGE];
+            // [GlobalUserDefaults RemoveUserDefaultValueForKey:USER_TYPE];
+             [GlobalUserDefaults saveObject:@"NO" withKey:ISLOGGEDIN];
+             
+             LoginVC *loginVC
+             =[MainStoryBoard instantiateViewControllerWithIdentifier:@"LoginVC"];
+             
+             navController.viewControllers=@[loginVC];
+             
+             self.frostedViewController.contentViewController = navController;
+             [self.frostedViewController hideMenuViewController];
+         }
+         else
+         {
+             NSLog(@"%@", strMsg);
+             
+             UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:strMsg preferredStyle:UIAlertControllerStyleAlert];
+             UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                 [alertController dismissViewControllerAnimated:YES completion:^{
+                     
+                 }];
+             }];
+             [alertController addAction:actionOK];
+             [self presentViewController:alertController animated:YES completion:^{
+                 
+             }];
+         }
+         
+     }
+    failure:^(NSError * _Nullable error, NSString * _Nullable strMsg) {
+        
+        [self StopActivityIndicator:self.view];
+        
+        UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:strMsg preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [alertController dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+        }];
+        [alertController addAction:actionOK];
+        [self presentViewController:alertController animated:YES completion:^{
+            
+        }];
+        
+    }];
+}
+
+#pragma mark
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
