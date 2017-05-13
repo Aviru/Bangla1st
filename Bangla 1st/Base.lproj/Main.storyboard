@@ -1825,16 +1825,16 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOGIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLh-Ab-7p0">
-                                <rect key="frame" x="166" y="110.5" width="44" height="17"/>
+                                <rect key="frame" x="166" y="111.5" width="44" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <color key="textColor" red="0.55056029681714702" green="0.55056029681714702" blue="0.55056029681714702" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vwa-qG-4Hu">
-                                <rect key="frame" x="18.5" y="152.5" width="337" height="52"/>
+                                <rect key="frame" x="18.5" y="153.5" width="337" height="52"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9Q-fH-wY7">
-                                <rect key="frame" x="19" y="152.5" width="337" height="52"/>
+                                <rect key="frame" x="19" y="153.5" width="337" height="52"/>
                                 <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="LOGIN WITH FACEBOOK"/>
@@ -1843,10 +1843,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="qJR-4D-cuQ">
-                                <rect key="frame" x="27.5" y="168.5" width="20.5" height="21"/>
+                                <rect key="frame" x="27.5" y="169.5" width="20.5" height="21"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptb-3N-WtT">
-                                <rect key="frame" x="19" y="215" width="337" height="52"/>
+                                <rect key="frame" x="19" y="217" width="337" height="52"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="LOGIN WITH GMAIL">
@@ -1857,13 +1857,13 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google_logo_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="bDn-If-7DX">
-                                <rect key="frame" x="28.5" y="231" width="20" height="20"/>
+                                <rect key="frame" x="28.5" y="233" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bDn-If-7DX" secondAttribute="height" id="aP4-t8-d2v"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IaL-k6-e22">
-                                <rect key="frame" x="0.0" y="286" width="375" height="381"/>
+                                <rect key="frame" x="0.0" y="288" width="375" height="379"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEJ-uX-BI0">
                                         <rect key="frame" x="10" y="28" width="168" height="1"/>
@@ -1886,7 +1886,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7vH-yl-MOZ" customClass="EmailTextFieldDesignable">
-                                        <rect key="frame" x="19" y="51" width="338" height="54"/>
+                                        <rect key="frame" x="19" y="50" width="338" height="54"/>
                                         <color key="textColor" red="1" green="0.32549019610000002" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
@@ -1910,7 +1910,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0gr-NU-aNN" customClass="PasswordTextFieldDesignable">
-                                        <rect key="frame" x="18" y="120" width="338" height="55"/>
+                                        <rect key="frame" x="18" y="119" width="338" height="54"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
@@ -1976,7 +1976,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytQ-6E-ZgE">
-                                <rect key="frame" x="86" y="546.5" width="203" height="46"/>
+                                <rect key="frame" x="86" y="545.5" width="203" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal">
                                     <color key="titleColor" red="1" green="0.32549019610000002" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>

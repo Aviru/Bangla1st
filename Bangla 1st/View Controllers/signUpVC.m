@@ -1136,6 +1136,12 @@
         return NO;
     }
     
+    if (isCheckBoxSelected == NO)
+    {
+        [self displayErrorWithMessage:@"Please Agree to Terms Of Services And Privacy Policy"];
+        return NO;
+    }
+    
     return YES;
 }
 
