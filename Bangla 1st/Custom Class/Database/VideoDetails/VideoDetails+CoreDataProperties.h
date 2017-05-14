@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, copy) NSString *commentCount;
 @property (nullable, nonatomic, copy) NSString *videoDescription;
-@property (nullable, nonatomic, copy) NSDate *videoDownloadDate;
+@property (nullable, nonatomic, copy) NSDate   *videoDownloadDate;
 @property (nullable, nonatomic, copy) NSString *videoID;
 @property (nullable, nonatomic, copy) NSString *likes;
 @property (nullable, nonatomic, copy) NSString *videoLocalPath;

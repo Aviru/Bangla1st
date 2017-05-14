@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivImage;
 @property (strong, nonatomic) IBOutlet UIView *VwDropDowncontainer;
 
+@property (strong, nonatomic) IBOutlet UIImageView *imageViewThreeDots;
+
 @property (strong, nonatomic) IBOutlet UIButton *btndotsOutlet;
 
 @property (strong, nonatomic) IBOutlet UIView *VwProgressContainer;

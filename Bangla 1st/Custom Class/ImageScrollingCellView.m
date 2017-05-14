@@ -21,6 +21,8 @@
     AppDelegate *appDelegate;
     ModelContentListing *objContentList;
     CollectionCell_Video *collVwDotscell;
+    NSIndexPath *prevIndexPath;
+    BOOL isDotsBtnTap;
 }
 
 @property (strong, nonatomic) UICollectionView *collectionView;
@@ -37,6 +39,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.collectionView= collectionView;
+        
+         appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
         
         self.collectionView.frame = CGRectMake(collectionView.frame.origin.x, collectionView.frame.origin.y,[UIScreen mainScreen].bounds.size.width , collectionView.frame.size.height);
         
@@ -109,8 +113,10 @@
 
 #pragma mark - UICollectionViewDataSource methods
 
-
-
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.delegate removeDropDown];
+}
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
@@ -148,22 +154,29 @@
      "category": "1"
      },
      */
-   CollectionCell_Video *cell = (CollectionCell_Video*)[collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell_Video" forIndexPath:indexPath];
+    CollectionCell_Video *cell;
     
     if (![self isEmpty:[_collectionContent[indexPath.row] strVideoId]])
     {
-        // its a video
-        cell.ivAd.hidden=YES;
-        cell.lblVidName.text = [_collectionContent[indexPath.row] strVideoTitle];
-        [cell.ivThumb sd_setImageWithURL:[NSURL URLWithString:[_collectionContent[indexPath.row] strThumbImageUrl]]
-                        placeholderImage:nil];
+        cell = (CollectionCell_Video*)[collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell_Video" forIndexPath:indexPath];
+            
+            // its a video
+            cell.ivAd.hidden=YES;
+            cell.lblVidName.text = [_collectionContent[indexPath.row] strVideoTitle];
+            [cell.ivThumb sd_setImageWithURL:[NSURL URLWithString:[_collectionContent[indexPath.row] strThumbImageUrl]]
+                            placeholderImage:nil];
+            
+            [cell.btnThreedotsOutlet addTarget:self action:@selector(btnDotsTap:) forControlEvents:UIControlEventTouchUpInside];
+            
+            [cell.btnVideoPlayOutlet addTarget:self action:@selector(btnVideoPlayTap:) forControlEvents:UIControlEventTouchUpInside];
         
-        [cell.btnThreedotsOutlet addTarget:self action:@selector(btnDotsTap:) forControlEvents:UIControlEventTouchUpInside];
-        
-         [cell.btnVideoPlayOutlet addTarget:self action:@selector(btnVideoPlayTap:) forControlEvents:UIControlEventTouchUpInside];
     }
     
-    else if (![self isEmpty:[_collectionContent[indexPath.row] strAdId]]){
+    else if (![self isEmpty:[_collectionContent[indexPath.row] strAdId]])
+    {
+        
+        cell = (CollectionCell_Video*)[collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell_Video" forIndexPath:indexPath];
+        
        // its a ad
         cell.ivAd.hidden=NO;
         
@@ -190,10 +203,11 @@
 
 -(void)btnDotsTap:(UIButton *)sender
 {
-       
+    isDotsBtnTap = YES;
     NSIndexPath *indexPath = nil;
     indexPath = [self.collectionView indexPathForItemAtPoint:[self.collectionView convertPoint:sender.center fromView:sender.superview]];
     collVwDotscell = (CollectionCell_Video *)[_collectionView cellForItemAtIndexPath:indexPath];
+    
     
     ModelContentListing *objModelContent;
     

@@ -103,6 +103,7 @@
     arrVideoThumbImg = [NSMutableArray new];
     self.arrFileDownloadData = [NSMutableArray new];
     shouldRotate = NO;
+    selectedDotsBtnIndexPath = 0;
     
     [self getOfflineSavedVideoCount];
     
@@ -677,7 +678,7 @@
     }
     
     objContentListing = objSelectedContent;
-    
+        
     selectedDotsBtnIndexPath = [collectionView indexPathForCell:selectedCollectionVwCell];
     
     UICollectionViewLayoutAttributes *attributes = [collectionView layoutAttributesForItemAtIndexPath:indexPath];
@@ -876,6 +877,16 @@
    
 }
 
+-(void)removeDropDown
+{
+    if (dropDownvc !=nil)
+    {
+        [dropDownvc.view removeFromSuperview];
+        [[[[UIApplication sharedApplication] delegate]window] setNeedsLayout];
+        dropDownvc=nil;
+    }
+}
+
 #pragma mark
 #pragma mark - Custom Drop Down Delegate
 #pragma mark
@@ -912,60 +923,135 @@
         {
             if (self.appDel.isRechable)
             {
+                // Get the FileDownloadInfo object being at the cellIndex position of the array.
+                fdi = [self.arrFileDownloadData objectAtIndex:selectedDotsBtnIndexPath.row];
+                
                 if (self.appDel.videoCount <= 3)
                 {
-                    // Get the FileDownloadInfo object being at the cellIndex position of the array.
-                    fdi = [self.arrFileDownloadData objectAtIndex:selectedDotsBtnIndexPath.row];
                     
-                    // The isDownloading property of the fdi object defines whether a downloading should be started
-                    // or be stopped.
-                    if (!fdi.isDownloading)
+                    if (self.appDel.arrDownloadInfo.count > 0)
                     {
-                        // This is the case where a download task should be started.
+                        NSArray *filtered = [self.appDel.arrDownloadInfo filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.downloadSource.VideoId contains[cd] %@", fdi.downloadSource[@"VideoId"]]];
                         
-                        customProgressView = [[CustomProgressView alloc] init];
-                        customProgressView.delegate = self;
-                        [[[UIApplication sharedApplication] keyWindow] addSubview:customProgressView];
-                        
-                        // Create a new task, but check whether it should be created using a URL or resume data.
-                        if (fdi.taskIdentifier == -1) {
-                            // If the taskIdentifier property of the fdi object has value -1, then create a new task
-                            // providing the appropriate URL as the download source.
-                            fdi.downloadTask = [self.session downloadTaskWithURL:[NSURL URLWithString:fdi.downloadSource[@"VideoUrl"]]];
-                            
-                            // Keep the new task identifier.
-                            fdi.taskIdentifier = fdi.downloadTask.taskIdentifier;
-                            
-                            NSLog(@"task identifier:%lu",fdi.taskIdentifier);
-                            
-                            // Start the task.
-                            [fdi.downloadTask resume];
+                        if (filtered.count > 0)
+                        {
+                            UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:@"This Video is already downloading" preferredStyle:UIAlertControllerStyleAlert];
+                            UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                                [alertController dismissViewControllerAnimated:YES completion:^{
+                                    
+                                }];
+                            }];
+                            [alertController addAction:actionOK];
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self presentViewController:alertController animated:YES completion:nil];
+                            });
                         }
                         else
                         {
-                            // Create a new download task, which will use the stored resume data.
-                            fdi.downloadTask = [self.session downloadTaskWithResumeData:fdi.taskResumeData];
-                            [fdi.downloadTask resume];
+                            // The isDownloading property of the fdi object defines whether a downloading should be started
+                            // or be stopped.
+                            if (!fdi.isDownloading)
+                            {
+                                // This is the case where a download task should be started.
+                                
+                                customProgressView = [[CustomProgressView alloc] init];
+                                customProgressView.delegate = self;
+                                [[[UIApplication sharedApplication] keyWindow] addSubview:customProgressView];
+                                
+                                // Create a new task, but check whether it should be created using a URL or resume data.
+                                if (fdi.taskIdentifier == -1) {
+                                    // If the taskIdentifier property of the fdi object has value -1, then create a new task
+                                    // providing the appropriate URL as the download source.
+                                    fdi.downloadTask = [self.session downloadTaskWithURL:[NSURL URLWithString:fdi.downloadSource[@"VideoUrl"]]];
+                                    
+                                    // Keep the new task identifier.
+                                    fdi.taskIdentifier = fdi.downloadTask.taskIdentifier;
+                                    
+                                    NSLog(@"task identifier:%lu",fdi.taskIdentifier);
+                                    
+                                    // Start the task.
+                                    [fdi.downloadTask resume];
+                                }
+                                else
+                                {
+                                    // Create a new download task, which will use the stored resume data.
+                                    fdi.downloadTask = [self.session downloadTaskWithResumeData:fdi.taskResumeData];
+                                    [fdi.downloadTask resume];
+                                    
+                                    // Keep the new download task identifier.
+                                    fdi.taskIdentifier = fdi.downloadTask.taskIdentifier;
+                                }
+                            }
+                            else
+                            {
+                                
+                                /*
+                                 // Pause the task by canceling it and storing the resume data.
+                                 [fdi.downloadTask cancelByProducingResumeData:^(NSData *resumeData) {
+                                 if (resumeData != nil) {
+                                 fdi.taskResumeData = [[NSData alloc] initWithData:resumeData];
+                                 }
+                                 }];
+                                 */
+                            }
                             
-                            // Keep the new download task identifier.
-                            fdi.taskIdentifier = fdi.downloadTask.taskIdentifier;
+                            // Change the isDownloading property value.
+                            fdi.isDownloading = !fdi.isDownloading;
                         }
+                        
                     }
                     else
                     {
+                        // The isDownloading property of the fdi object defines whether a downloading should be started
+                        // or be stopped.
+                        if (!fdi.isDownloading)
+                        {
+                            // This is the case where a download task should be started.
+                            
+                            customProgressView = [[CustomProgressView alloc] init];
+                            customProgressView.delegate = self;
+                            [[[UIApplication sharedApplication] keyWindow] addSubview:customProgressView];
+                            
+                            // Create a new task, but check whether it should be created using a URL or resume data.
+                            if (fdi.taskIdentifier == -1) {
+                                // If the taskIdentifier property of the fdi object has value -1, then create a new task
+                                // providing the appropriate URL as the download source.
+                                fdi.downloadTask = [self.session downloadTaskWithURL:[NSURL URLWithString:fdi.downloadSource[@"VideoUrl"]]];
+                                
+                                // Keep the new task identifier.
+                                fdi.taskIdentifier = fdi.downloadTask.taskIdentifier;
+                                
+                                NSLog(@"task identifier:%lu",fdi.taskIdentifier);
+                                
+                                // Start the task.
+                                [fdi.downloadTask resume];
+                            }
+                            else
+                            {
+                                // Create a new download task, which will use the stored resume data.
+                                fdi.downloadTask = [self.session downloadTaskWithResumeData:fdi.taskResumeData];
+                                [fdi.downloadTask resume];
+                                
+                                // Keep the new download task identifier.
+                                fdi.taskIdentifier = fdi.downloadTask.taskIdentifier;
+                            }
+                        }
+                        else
+                        {
+                            
+                            /*
+                             // Pause the task by canceling it and storing the resume data.
+                             [fdi.downloadTask cancelByProducingResumeData:^(NSData *resumeData) {
+                             if (resumeData != nil) {
+                             fdi.taskResumeData = [[NSData alloc] initWithData:resumeData];
+                             }
+                             }];
+                             */
+                        }
                         
-                        /*
-                         // Pause the task by canceling it and storing the resume data.
-                         [fdi.downloadTask cancelByProducingResumeData:^(NSData *resumeData) {
-                         if (resumeData != nil) {
-                         fdi.taskResumeData = [[NSData alloc] initWithData:resumeData];
-                         }
-                         }];
-                         */
+                        // Change the isDownloading property value.
+                        fdi.isDownloading = !fdi.isDownloading;  
                     }
-                    
-                    // Change the isDownloading property value.
-                    fdi.isDownloading = !fdi.isDownloading;
                 }
             }
         }
@@ -1196,12 +1282,12 @@
         
         self.appDel.videoCount++;
         
-        NSString *encodedURL = [[downloadTask.originalRequest.URL absoluteString] stringByRemovingPercentEncoding];
-        NSArray *filtered = [arrContents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.strVideoFileUrl contains[cd] %@", encodedURL]];
-        
-        if (filtered.count > 0)
-        {
-            objContentListing = [filtered objectAtIndex:0];
+//        NSString *encodedURL = [[downloadTask.originalRequest.URL absoluteString] stringByRemovingPercentEncoding];
+//        NSArray *filtered = [arrContents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.strVideoFileUrl contains[cd] %@", encodedURL]];
+//        
+//        if (filtered.count > 0)
+//        {
+           // objContentListing = [filtered objectAtIndex:0];
             
             [VideoDetails createInManagedObjectContextWithVideoURL:objContentListing.strVideoFileUrl  videoAssetURL:[destinationURL absoluteString] videoID:objContentListing.strVideoId videoDate:[NSDate date] title:objContentListing.strVideoTitle description:objContentListing.strVideoDescription duration:objContentListing.strVideoDuration postedTime:objContentListing.strPostedTime views:objContentListing.strViews likes:objContentListing.strLikes commentCount:objContentListing.strCommentCount thumbImageURL:objContentListing.strThumbImageUrl managedObjectContext:[self managedObjectContext]];
             
@@ -1222,10 +1308,9 @@
                 
                 [[self.tabBarController.tabBar.items objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%d",self.appDel.videoCount]];
                 
-                
             });
             
-        }
+       // }
     }
     else
     {

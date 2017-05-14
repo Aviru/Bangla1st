@@ -19,6 +19,8 @@
 - (void)collectionView:(ImageScrollingCellView *)collectionView didSelectImageItemAtIndexPath:(NSIndexPath*)indexPath withSelectedContent:(ModelContentListing *)objSelectedContent;
 
 - (void)collectionView:(UICollectionView *)collectionView didTapOnDotsButtonAtIndexPath:(NSIndexPath*)indexPath withCollectionVwCell:(CollectionCell_Video *)selectedCollectionVwCell withSelectedContent:(ModelContentListing *)objSelectedContent;
+
+-(void)removeDropDown;
 @end
 
 
@@ -29,8 +31,5 @@
 @property (strong, nonatomic) CollectionCell_Video *collectionViewCell;
 - (id)initWithCollectionView: (UICollectionView *)collectionView andFrame :(CGRect)frame;
 
-
-- (void) setImageData:(NSArray*)collectionImageData;
-- (void) setTypeImageScrollingCellView:(int)type;
 
 @end

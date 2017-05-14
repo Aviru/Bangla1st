@@ -60,9 +60,6 @@
 {
     [super viewDidAppear:animated];
     
-    tblJustForYou.dataSource = self;
-    tblJustForYou.delegate = self;
-    
     NSMutableArray *results = [VideoDetails fetchVideoDetailsWithEntityName:@"VideoDetails" managedObjectContext:[self managedObjectContext]];
     
     if (results.count > 0)
@@ -83,9 +80,6 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    tblJustForYou = nil;
-    tblJustForYou.dataSource = nil;
-    tblJustForYou.delegate = nil;
     
 }
 
@@ -133,6 +127,7 @@
     cell.lblVideoTitle.text = videoDetails.videoTitle;
     cell.lblVideoDescription.text = videoDetails.videoDescription;
     cell.lblPostedTimeAndViews.text = [NSString stringWithFormat:@"%@(%@ views)",videoDetails.postedTime,videoDetails.views];
+    [cell.btnDeleteOutlet addTarget:self action:@selector(btnDeleteTap:) forControlEvents:UIControlEventTouchUpInside];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -174,6 +169,88 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark
+#pragma mark Button Action
+#pragma mark
+
+-(void)btnDeleteTap:(UIButton *)sender
+{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@""
+                                  message:@"Do you want to delete this video?"
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+        [alert dismissViewControllerAnimated:YES completion:nil];
+        
+    }];
+    
+    [alert addAction:cancelButton];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"Yes"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action)
+                                {
+                                    [alert dismissViewControllerAnimated:YES completion:nil];
+                                    
+                                    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tblJustForYou];
+                                    NSIndexPath *indxPath = [tblJustForYou indexPathForRowAtPoint:buttonPosition];
+                                    
+                                    videoDetails = [arrJustForYouDetails objectAtIndex:indxPath.row];
+                                    
+                                    if ([VideoDetails deleteRecordWithEntityName:@"VideoDetails" predicateName:@"videoFile" recordToDelete:videoDetails.videoFile managedObjectContext:[self managedObjectContext]])
+                                    {
+                                        NSLog(@"Video Deleted Successfully");
+                                        
+                                        UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:@"Video successfully deletd" preferredStyle:UIAlertControllerStyleAlert];
+                                        UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                                            [alertController dismissViewControllerAnimated:YES completion:^{
+                                                
+                                            }];
+                                            
+                                            self.appDel.videoCount -= 1;
+                                            
+                                            if (self.appDel.videoCount == 0)
+                                            {
+                                                [[self.tabBarController.tabBar.items objectAtIndex:2] setBadgeValue:nil];
+                                            }
+                                            else
+                                                [[self.tabBarController.tabBar.items objectAtIndex:2] setBadgeValue:[NSString stringWithFormat:@"%d",self.appDel.videoCount]];
+                                            
+                                            
+                                            [arrJustForYouDetails removeObjectAtIndex:indxPath.row];
+                                            [tblJustForYou reloadData];
+                                        }];
+                                        [alertController addAction:actionOK];
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            [self presentViewController:alertController animated:YES completion:nil];
+                                        });
+                                    }
+                                    else
+                                    {
+                                        UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:@"Sorry! Unable to delete Video" preferredStyle:UIAlertControllerStyleAlert];
+                                        UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                                            [alertController dismissViewControllerAnimated:YES completion:^{
+                                                
+                                            }];
+                                        }];
+                                        [alertController addAction:actionOK];
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            [self presentViewController:alertController animated:YES completion:nil];
+                                        });
+                                    }
+
+                                    
+                                }];
+    [alert addAction:yesButton];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alert animated:YES completion:nil];
+    });
+    
+}
 
 #pragma mark - Navigation
 

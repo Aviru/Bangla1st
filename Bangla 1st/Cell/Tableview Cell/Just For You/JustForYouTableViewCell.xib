@@ -24,7 +24,7 @@
                         <rect key="frame" x="7" y="6" width="307" height="108"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="R1u-vi-cp1">
-                                <rect key="frame" x="6" y="9.5" width="98" height="89"/>
+                                <rect key="frame" x="6" y="10" width="98" height="89"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="R1u-vi-cp1" secondAttribute="height" multiplier="1.1" id="ZmB-WA-5RQ"/>
@@ -36,28 +36,35 @@
                                     <constraint firstAttribute="width" secondItem="5Yb-by-pge" secondAttribute="height" id="GAx-tN-NqA"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5xE-hX-XhP">
-                                <rect key="frame" x="267" y="0.0" width="40" height="40"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete_red_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="5xE-hX-XhP">
+                                <rect key="frame" x="282.5" y="3.5" width="24.5" height="24.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="5xE-hX-XhP" secondAttribute="height" id="JLE-HH-01t"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJe-mg-FFM">
+                                <rect key="frame" x="262.5" y="-3.5" width="52" height="38"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="R1u-vi-cp1" firstAttribute="leading" secondItem="GlR-1Q-cTF" secondAttribute="leading" constant="6" id="5tz-0m-tlU"/>
                             <constraint firstAttribute="trailing" secondItem="5xE-hX-XhP" secondAttribute="trailing" id="Aus-24-y1w"/>
-                            <constraint firstItem="5xE-hX-XhP" firstAttribute="top" secondItem="GlR-1Q-cTF" secondAttribute="top" id="DBa-fJ-uiC"/>
+                            <constraint firstItem="zJe-mg-FFM" firstAttribute="centerY" secondItem="5xE-hX-XhP" secondAttribute="centerY" id="Cce-9V-0X3"/>
+                            <constraint firstAttribute="centerY" secondItem="5xE-hX-XhP" secondAttribute="top" multiplier="15" id="DBa-fJ-uiC"/>
                             <constraint firstItem="5Yb-by-pge" firstAttribute="centerY" secondItem="R1u-vi-cp1" secondAttribute="centerY" id="Tv6-Ly-n6h"/>
                             <constraint firstItem="5Yb-by-pge" firstAttribute="centerX" secondItem="R1u-vi-cp1" secondAttribute="centerX" id="U5T-1y-fuQ"/>
                             <constraint firstItem="R1u-vi-cp1" firstAttribute="width" secondItem="GlR-1Q-cTF" secondAttribute="width" multiplier="0.32" id="UMc-aJ-GsD"/>
-                            <constraint firstItem="5xE-hX-XhP" firstAttribute="width" secondItem="GlR-1Q-cTF" secondAttribute="width" multiplier="0.13" id="k52-BZ-EjZ"/>
+                            <constraint firstItem="zJe-mg-FFM" firstAttribute="height" secondItem="GlR-1Q-cTF" secondAttribute="height" multiplier="0.35" id="Waq-9o-ASq"/>
+                            <constraint firstItem="zJe-mg-FFM" firstAttribute="centerX" secondItem="5xE-hX-XhP" secondAttribute="centerX" multiplier="0.98" id="eZG-wz-GMC"/>
+                            <constraint firstItem="5xE-hX-XhP" firstAttribute="width" secondItem="GlR-1Q-cTF" secondAttribute="width" multiplier="0.08" id="k52-BZ-EjZ"/>
                             <constraint firstItem="R1u-vi-cp1" firstAttribute="centerY" secondItem="GlR-1Q-cTF" secondAttribute="centerY" id="lrk-Wk-aA7"/>
                             <constraint firstItem="5Yb-by-pge" firstAttribute="width" secondItem="R1u-vi-cp1" secondAttribute="width" multiplier="0.4" id="rrd-oN-O8x"/>
+                            <constraint firstItem="zJe-mg-FFM" firstAttribute="width" secondItem="GlR-1Q-cTF" secondAttribute="width" multiplier="0.17" id="ubN-Vr-GvY"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="3" translatesAutoresizingMaskIntoConstraints="NO" id="zwK-gL-5xn">
-                        <rect key="frame" x="120.5" y="23.5" width="148.5" height="30"/>
+                        <rect key="frame" x="120" y="24" width="163.5" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="hHr-wx-vdv"/>
                         </constraints>
@@ -66,13 +73,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdx-4v-YN5">
-                        <rect key="frame" x="120.5" y="59.5" width="178" height="30"/>
+                        <rect key="frame" x="120" y="60" width="196.5" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="s0Z-T0-Myf">
-                        <rect key="frame" x="120.5" y="96.5" width="187" height="24"/>
+                        <rect key="frame" x="120" y="97" width="206" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -97,16 +104,18 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnDeleteOutlet" destination="zJe-mg-FFM" id="i3S-m3-Vmg"/>
                 <outlet property="containerVw" destination="GlR-1Q-cTF" id="FGC-J9-v5z"/>
                 <outlet property="imgVwThumbImage" destination="R1u-vi-cp1" id="9xq-QN-8tH"/>
                 <outlet property="lblPostedTimeAndViews" destination="s0Z-T0-Myf" id="vdT-Qd-6Y7"/>
                 <outlet property="lblVideoDescription" destination="Mdx-4v-YN5" id="nWN-ak-fvh"/>
                 <outlet property="lblVideoTitle" destination="zwK-gL-5xn" id="b1M-iP-pkg"/>
             </connections>
-            <point key="canvasLocation" x="-83" y="71"/>
+            <point key="canvasLocation" x="-317" y="42"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="delete_red_icon.png" width="150" height="150"/>
         <image name="ic_play_circle_fill_black_48dp.png" width="48" height="48"/>
         <image name="placeholder.png" width="605" height="341"/>
     </resources>

@@ -43,6 +43,8 @@
         
     }
     
+    _arrDownloadInfo = [NSMutableArray new];
+    
     ///TODO: Remove these lines later
     _arrCountryList = [NSMutableArray new];
     

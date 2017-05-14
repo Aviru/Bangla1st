@@ -26,6 +26,7 @@ NSString *const strAPI[]={
     [WEB_SERVICES_MEMBER_SUBSCRIPTION] =           @"subscribe.php",
     [WEB_SERVICES_MEMBER_SUBSCRIPTION_DETAILS] =   @"userSubscriptionData.php",
     [WEB_SERVICES_TRANSACTION_HISTORY] =           @"transactions.php",
+    [WEB_SERVICES_COUPON_CODE_POST] =              @"",
     [WEB_SERVICES_LOGOUT] =                        @"logout.php"
 };
 

@@ -20,5 +20,6 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *imgVwThumbImage;
 
+@property (strong, nonatomic) IBOutlet UIButton *btnDeleteOutlet;
 
 @end

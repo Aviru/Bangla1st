@@ -36,6 +36,7 @@
     Cell_List *btnDotscell;
     NSString *kTestAppAdTagUrl;
     NSIndexPath *selectedDotsBtnIndexPath;
+    NSIndexPath *prevIndexPath;
     
     IBOutlet UIView *navBarVwContainer;
     
@@ -90,9 +91,6 @@
 {
     [super viewWillAppear:animated];
     
-    _tblList.dataSource = self;
-    _tblList.delegate = self;
-    
     NSArray *URLs = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
     self.docDirectoryURL = [URLs objectAtIndex:0];
     
@@ -119,9 +117,6 @@
     
     avPlayerViewcontroller = nil;
     
-    _tblList = nil;
-    _tblList.dataSource = nil;
-    _tblList.delegate = nil;
     
 }
 
@@ -241,6 +236,21 @@
 #pragma mark
 #pragma mark - TableView Delegates and Datasource
 #pragma mark
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    if(scrollView == _tblList)
+    {
+        if (dropDownvc !=nil)
+        {
+            [dropDownvc.view removeFromSuperview];
+            // [[[[UIApplication sharedApplication] delegate]window] setNeedsLayout];
+            dropDownvc=nil;
+            btnDotscell.VwDropDowncontainer.hidden = YES;
+            btnDotscell.imageViewThreeDots.image = [UIImage imageNamed:@"dots_icon.png"];
+        }
+    }
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return arrList.count;
@@ -528,9 +538,32 @@
         
     }
     
+    Cell_List *prevSelectedDotsCell;
     CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:_tblList];
     selectedDotsBtnIndexPath = [_tblList indexPathForRowAtPoint:buttonPosition];
     btnDotscell = (Cell_List *)[_tblList cellForRowAtIndexPath:selectedDotsBtnIndexPath];
+    
+    if (prevIndexPath == nil)
+    {
+        btnDotscell.imageViewThreeDots.image = [UIImage imageNamed:@"dots_red_icon.png"];
+    }
+    else
+    {
+        prevSelectedDotsCell = (Cell_List *)[_tblList cellForRowAtIndexPath:prevIndexPath];
+        if (selectedDotsBtnIndexPath.row != prevIndexPath.row)
+        {
+            prevSelectedDotsCell.imageViewThreeDots.image = [UIImage imageNamed:@"dots_icon.png"];
+            btnDotscell.imageViewThreeDots.image = [UIImage imageNamed:@"dots_red_icon.png"];
+        }
+        else
+        {
+            prevSelectedDotsCell.imageViewThreeDots.image = [UIImage imageNamed:@"dots_red_icon.png"];
+            btnDotscell.imageViewThreeDots.image = [UIImage imageNamed:@"dots_red_icon.png"];
+        }
+    }
+    
+    
+    prevIndexPath = selectedDotsBtnIndexPath;
     
     btnDotscell.VwDropDowncontainer.hidden = NO;
     
@@ -590,61 +623,144 @@
             {
                 if (self.appDel.isRechable)
                 {
+                    // Get the FileDownloadInfo object being at the cellIndex position of the array.
+                   // fdi = nil;
+                    FileDownloadInfo *Objfdi = [self.arrFileDownloadData objectAtIndex:selectedDotsBtnIndexPath.row];
+                    
                     if (self.appDel.videoCount <= 3)
                     {
-                        // Get the FileDownloadInfo object being at the cellIndex position of the array.
-                        fdi = [self.arrFileDownloadData objectAtIndex:selectedDotsBtnIndexPath.row];
-                        
-                        // The isDownloading property of the fdi object defines whether a downloading should be started
-                        // or be stopped.
-                        if (!fdi.isDownloading)
+                        if (self.appDel.arrDownloadInfo.count > 0)
                         {
-                            btnDotscell.btndotsOutlet.userInteractionEnabled = YES;
+                            NSArray *filtered = [self.appDel.arrDownloadInfo filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.downloadSource.VideoId contains[cd] %@", Objfdi.downloadSource[@"VideoId"]]];
                             
-                            // This is the case where a download task should be started.
-                            
-                            // Create a new task, but check whether it should be created using a URL or resume data.
-                            if (fdi.taskIdentifier == -1) {
-                                // If the taskIdentifier property of the fdi object has value -1, then create a new task
-                                // providing the appropriate URL as the download source.
-                                fdi.downloadTask = [self.session downloadTaskWithURL:[NSURL URLWithString:fdi.downloadSource[@"VideoUrl"]]];
-                                
-                                // Keep the new task identifier.
-                                fdi.taskIdentifier = fdi.downloadTask.taskIdentifier;
-                                
-                                NSLog(@"task identifier:%lu",fdi.taskIdentifier);
-                                
-                                // Start the task.
-                                [fdi.downloadTask resume];
+                            if (filtered.count > 0)
+                            {
+                                UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:@"This Video is already downloading" preferredStyle:UIAlertControllerStyleAlert];
+                                UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                                    [alertController dismissViewControllerAnimated:YES completion:^{
+                                        
+                                    }];
+                                }];
+                                [alertController addAction:actionOK];
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [self presentViewController:alertController animated:YES completion:nil];
+                                });
                             }
-                            else{
-                                // Create a new download task, which will use the stored resume data.
-                                fdi.downloadTask = [self.session downloadTaskWithResumeData:fdi.taskResumeData];
-                                [fdi.downloadTask resume];
+                            else
+                            {
+                                [self.appDel.arrDownloadInfo addObject:Objfdi];
                                 
-                                // Keep the new download task identifier.
-                                fdi.taskIdentifier = fdi.downloadTask.taskIdentifier;
+                                // The isDownloading property of the fdi object defines whether a downloading should be started
+                                // or be stopped.
+                                if (!Objfdi.isDownloading)
+                                {
+                                    btnDotscell.btndotsOutlet.userInteractionEnabled = YES;
+                                    
+                                    // This is the case where a download task should be started.
+                                    
+                                    // Create a new task, but check whether it should be created using a URL or resume data.
+                                    if (Objfdi.taskIdentifier == -1)
+                                    {
+                                        // If the taskIdentifier property of the fdi object has value -1, then create a new task
+                                        // providing the appropriate URL as the download source.
+                                        Objfdi.downloadTask = [self.session downloadTaskWithURL:[NSURL URLWithString:Objfdi.downloadSource[@"VideoUrl"]]];
+                                        
+                                        // Keep the new task identifier.
+                                        Objfdi.taskIdentifier = Objfdi.downloadTask.taskIdentifier;
+                                        
+                                        NSLog(@"task identifier:%lu",Objfdi.taskIdentifier);
+                                        
+                                        // Start the task.
+                                        [Objfdi.downloadTask resume];
+                                    }
+                                    else
+                                    {
+                                        // Create a new download task, which will use the stored resume data.
+                                        Objfdi.downloadTask = [self.session downloadTaskWithResumeData:Objfdi.taskResumeData];
+                                        [Objfdi.downloadTask resume];
+                                        
+                                        // Keep the new download task identifier.
+                                        Objfdi.taskIdentifier = fdi.downloadTask.taskIdentifier;
+                                    }
+                                }
+                                else
+                                {
+                                    btnDotscell.btndotsOutlet.userInteractionEnabled = NO;
+                                    
+                                    /*
+                                     // Pause the task by canceling it and storing the resume data.
+                                     [fdi.downloadTask cancelByProducingResumeData:^(NSData *resumeData) {
+                                     if (resumeData != nil) {
+                                     fdi.taskResumeData = [[NSData alloc] initWithData:resumeData];
+                                     }
+                                     }];
+                                     */
+                                }
+                                
+                                // Change the isDownloading property value.
+                                Objfdi.isDownloading = !Objfdi.isDownloading;
+                                
+                                // Reload the table view.
+                                [_tblList reloadRowsAtIndexPaths:@[selectedDotsBtnIndexPath] withRowAnimation:UITableViewRowAnimationNone];
                             }
                         }
                         else
                         {
-                            btnDotscell.btndotsOutlet.userInteractionEnabled = NO;
+                            [self.appDel.arrDownloadInfo addObject:Objfdi];
                             
-                            /*
-                            // Pause the task by canceling it and storing the resume data.
-                            [fdi.downloadTask cancelByProducingResumeData:^(NSData *resumeData) {
-                                if (resumeData != nil) {
-                                    fdi.taskResumeData = [[NSData alloc] initWithData:resumeData];
+                            // The isDownloading property of the fdi object defines whether a downloading should be started
+                            // or be stopped.
+                            if (!Objfdi.isDownloading)
+                            {
+                                btnDotscell.btndotsOutlet.userInteractionEnabled = YES;
+                                
+                                // This is the case where a download task should be started.
+                                
+                                // Create a new task, but check whether it should be created using a URL or resume data.
+                                if (Objfdi.taskIdentifier == -1)
+                                {
+                                    // If the taskIdentifier property of the fdi object has value -1, then create a new task
+                                    // providing the appropriate URL as the download source.
+                                    Objfdi.downloadTask = [self.session downloadTaskWithURL:[NSURL URLWithString:Objfdi.downloadSource[@"VideoUrl"]]];
+                                    
+                                    // Keep the new task identifier.
+                                    Objfdi.taskIdentifier = Objfdi.downloadTask.taskIdentifier;
+                                    
+                                    NSLog(@"task identifier:%lu",Objfdi.taskIdentifier);
+                                    
+                                    // Start the task.
+                                    [Objfdi.downloadTask resume];
                                 }
-                            }];
-                             */
+                                else{
+                                    // Create a new download task, which will use the stored resume data.
+                                    Objfdi.downloadTask = [self.session downloadTaskWithResumeData:Objfdi.taskResumeData];
+                                    [Objfdi.downloadTask resume];
+                                    
+                                    // Keep the new download task identifier.
+                                    Objfdi.taskIdentifier = Objfdi.downloadTask.taskIdentifier;
+                                }
+                            }
+                            else
+                            {
+                                btnDotscell.btndotsOutlet.userInteractionEnabled = NO;
+                                
+                                /*
+                                 // Pause the task by canceling it and storing the resume data.
+                                 [fdi.downloadTask cancelByProducingResumeData:^(NSData *resumeData) {
+                                 if (resumeData != nil) {
+                                 fdi.taskResumeData = [[NSData alloc] initWithData:resumeData];
+                                 }
+                                 }];
+                                 */
+                            }
+                            
+                            // Change the isDownloading property value.
+                            Objfdi.isDownloading = !Objfdi.isDownloading;
+                            
+                            // Reload the table view.
+                            [_tblList reloadRowsAtIndexPaths:@[selectedDotsBtnIndexPath] withRowAnimation:UITableViewRowAnimationNone];
                         }
-                        
-                        // Change the isDownloading property value.
-                        fdi.isDownloading = !fdi.isDownloading;
-                        
-                        // Reload the table view.
-                        [_tblList reloadRowsAtIndexPaths:@[selectedDotsBtnIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+            
                     }
                     else
                     {
@@ -774,6 +890,7 @@
             
             // completedDwnloadListCell.progressVw.hidden = YES;
             
+            
             [VideoDetails createInManagedObjectContextWithVideoURL:objModelList.strVideoFileUrl  videoAssetURL:[destinationURL absoluteString] videoID:objModelList.strVideoId videoDate:[NSDate date] title:objModelList.strVideoTitle description:objModelList.strVideoDescription duration:objModelList.strVideoDuration postedTime:objModelList.strPostedTime views:objModelList.strViews likes:objModelList.strLikes commentCount:objModelList.strCommentCount thumbImageURL:objModelList.strThumbImageUrl managedObjectContext:[self managedObjectContext]];
             
             
@@ -787,7 +904,12 @@
             {
                 NSLog(@"Data Saved Successfully.");
                 
+                NSArray *filtered = [self.appDel.arrDownloadInfo filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.downloadSource.VideoId contains[cd] %@", fdi.downloadSource[@"VideoId"]]];
                 
+                if (filtered.count > 0)
+                {
+                    [self.appDel.arrDownloadInfo removeObjectsInArray:filtered];
+                }
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{
