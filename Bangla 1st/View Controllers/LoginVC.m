@@ -6,6 +6,10 @@
 //  Copyright © 2017 Abhijit Rana. All rights reserved.
 //
 
+@import Firebase;
+@import GoogleSignIn;
+
+
 #import "LoginVC.h"
 #import "LoginWebService.h"
 #import "EmailTextFieldDesignable.h"
@@ -301,39 +305,72 @@
     [self StopActivityIndicator:self.view];
     
     NSLog(@"didDisconnectWithUser: %@",error);
+    
+    [self displayErrorWithMessage:error.localizedDescription];
 }
 
 
-- (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user
+- (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)GoogleUser
      withError:(NSError *)error
 {
     
     if (error == nil)
     {
-        //user signed in
-        //get user data in "user" (GIDGoogleUser object)
         
-        // Perform any operations on signed in user here.
-        NSString *userId = user.userID;                  // For client-side use only!
-        NSString *idToken = user.authentication.idToken; // Safe to send to the server
-        NSString *fullName = user.profile.name;
-        NSString *givenName = user.profile.givenName;
-        NSString *familyName = user.profile.familyName;
-        NSString *email = user.profile.email;
-        NSString *strImageURL = @"";
+        GIDAuthentication *authentication = GoogleUser.authentication;
+        FIRAuthCredential *credential =
+        [FIRGoogleAuthProvider credentialWithIDToken:authentication.idToken
+                                         accessToken:authentication.accessToken];
         
-        CGSize thumbSize=CGSizeMake(500, 500);
-        if ([GIDSignIn sharedInstance].currentUser.profile.hasImage)
-        {
-            NSUInteger dimension = round(thumbSize.width * [[UIScreen mainScreen] scale]);
-            strImageURL = [[user.profile imageURLWithDimension:dimension] absoluteString];
-        }
-        
-        NSLog(@"Google Sign in user details:\n userid: %@, idToken: %@, fullName: %@, givenName: %@, familyName: %@, email: %@, imageUrl: %@",userId,idToken,fullName,givenName,familyName,email,strImageURL);
-        
-        globalLoginDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"username":email,@"fullName":fullName,@"social_id":userId,@"img_url":strImageURL,@"deviceToken":strDeviceToken,@"loginType":@"social"};
-        
-        [self callSocialLoginWebService];
+        [[FIRAuth auth] signInWithCredential:credential completion:^(FIRUser * _Nullable fireUser, NSError * _Nullable error) {
+            
+            if (error)
+            {
+                 [self StopActivityIndicator:self.view];
+                
+                NSLog(@"FireBase Authentication error:%@", error.localizedDescription);
+                
+                [self displayErrorWithMessage:error.localizedDescription];
+                
+                return;
+            }
+            
+            else
+            {
+                NSLog(@"FireBase Authentication Success");
+                
+                //user signed in
+                //get user data in "user" (GIDGoogleUser object)
+                
+                // Perform any operations on signed in user here.
+                NSString *userId = GoogleUser.userID;                  // For client-side use only!
+                NSString *idToken = GoogleUser.authentication.idToken; // Safe to send to the server
+                NSString *fullName = GoogleUser.profile.name;
+                NSString *givenName = GoogleUser.profile.givenName;
+                NSString *familyName = GoogleUser.profile.familyName;
+                NSString *email = GoogleUser.profile.email;
+                NSString *strImageURL = @"";
+                
+                CGSize thumbSize=CGSizeMake(500, 500);
+                if ([GIDSignIn sharedInstance].currentUser.profile.hasImage)
+                {
+                    NSUInteger dimension = round(thumbSize.width * [[UIScreen mainScreen] scale]);
+                    strImageURL = [[GoogleUser.profile imageURLWithDimension:dimension] absoluteString];
+                }
+                
+                NSLog(@"Google Sign in user details:\n userid: %@, idToken: %@, fullName: %@, givenName: %@, familyName: %@, email: %@, imageUrl: %@\n\n",userId,idToken,fullName,givenName,familyName,email,strImageURL);
+                
+                NSLog(@"Firebase Details:\n userId: %@, displayName:%@, imageurl:%@, email:%@\n\n",userId,fireUser.displayName,fireUser.photoURL,fireUser.email);
+                
+                //NSLog(@"Firebase Provider data:\n provider_UserId:%@",fireUser.providerData[0][@"value"][@"userID"]);
+                
+                globalLoginDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"username":fireUser.email,@"fullName":fireUser.displayName,@"social_id":fireUser.uid,@"img_url":fireUser.photoURL,@"deviceToken":strDeviceToken,@"loginType":@"social"};
+                
+                [self callSocialLoginWebService];
+            }
+            
+        }];
+
     }
     else
     {
@@ -477,6 +514,18 @@
        else
        {
            NSLog(@"%@", strMsg);
+           
+           UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:strMsg preferredStyle:UIAlertControllerStyleAlert];
+           UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+               [alertController dismissViewControllerAnimated:YES completion:^{
+                   
+               }];
+           }];
+           [alertController addAction:actionOK];
+           [self presentViewController:alertController animated:YES completion:^{
+               
+           }];
+
        }
        
    } failure:^(NSError * _Nullable error, NSString * _Nullable strMsg) {
@@ -558,6 +607,17 @@
        else
        {
            NSLog(@"%@", strMsg);
+           UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:strMsg preferredStyle:UIAlertControllerStyleAlert];
+           UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+               [alertController dismissViewControllerAnimated:YES completion:^{
+                   
+               }];
+           }];
+           [alertController addAction:actionOK];
+           [self presentViewController:alertController animated:YES completion:^{
+               
+           }];
+
        }
    }
   failure:^(NSError * _Nullable error, NSString * _Nullable strMsg)

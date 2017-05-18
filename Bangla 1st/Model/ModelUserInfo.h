@@ -14,6 +14,7 @@
 
 @property(nonatomic,strong)NSString *strUserId;
 @property(nonatomic,strong)NSString *strUserCategory;
+@property(nonatomic,strong)NSString *strUserIsSubscribed;
 @property(nonatomic,strong)NSString *strUserName;
 @property(nonatomic,strong)NSString *strUserEmail;
 @property(nonatomic,strong)NSString *strUserStatus;

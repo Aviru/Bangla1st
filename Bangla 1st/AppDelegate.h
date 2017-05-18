@@ -25,13 +25,14 @@
 
 @property(assign,nonatomic) BOOL isAdRequested;
 
-@property(assign,nonatomic) BOOL isDownLoading;
-
 @property (strong, nonatomic) UITabBarController *tabBarController;
 
 @property (strong, nonatomic) ModelIMAad *objModelAdId;
 
 @property (strong, nonatomic)ModelUserInfo *objModelUserInfo;
+@property (strong, nonatomic)NSMutableArray *arrDownloadInfo;
+
+@property (strong, nonatomic)NSIndexPath *prevIndexPath;
 
 @property (strong, nonatomic)NSMutableArray *arrCountryList;
 @property (strong, nonatomic)NSMutableArray *arrUserTypeList;

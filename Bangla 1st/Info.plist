@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.aviru.Bangla-1st</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -23,7 +23,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb1862673200646329</string>
+				<string>fb1714986388801479</string>
 			</array>
 		</dict>
 		<dict>
@@ -31,7 +31,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.963371718961-lk7d6i59bbhoilstris83ogtjcao3t0f</string>
+				<string>com.googleusercontent.apps.30034448233-2gomeodjqtem91de1nqp09skou9tdejs</string>
 			</array>
 		</dict>
 	</array>
@@ -52,7 +52,7 @@
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
-	<string>1862673200646329</string>
+	<string>1714986388801479</string>
 	<key>FacebookDisplayName</key>
 	<string>Bangla 1st</string>
 	<key>LSApplicationQueriesSchemes</key>

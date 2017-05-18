@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblVidName;
 @property (weak, nonatomic) IBOutlet UIImageView *ivAd;
 
+@property (strong, nonatomic) IBOutlet UIImageView *imageViewThreeDots;
+
 @property (strong, nonatomic) IBOutlet UIButton *btnThreedotsOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *btnVideoPlayOutlet;
 

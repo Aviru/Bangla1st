@@ -9,6 +9,7 @@
 #import "PackageListingVC.h"
 #import "PackageListCollectionViewCell.h"
 #import "PackageListingWebService.h"
+#import "CouponCodePostWebService.h"
 #import "ModelPackageListing.h"
 #import "ModelCouponData.h"
 #import "MemberSubscriptionWebService.h"
@@ -66,8 +67,8 @@
     [viewPromoCodeContainer.layer setShadowRadius:1.0];
     [viewPromoCodeContainer.layer setShadowOffset:CGSizeMake(1.0, 1.0)];
     
-    //[self initializeAndStartActivityIndicator:self.view];
-    //[self getPackageListing];
+  //  [self initializeAndStartActivityIndicator:self.view];
+   // [self getPackageListing];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -412,7 +413,102 @@
 
 - (IBAction)btnActivateAction:(id)sender
 {
+    if ([self alertChecking])
+    {
+        [self initializeAndStartActivityIndicator:self.view];
+        
+        NSDictionary *couponDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"userid":self.appDel.objModelUserInfo.strUserId,@"couponCode":strPromoCode};
+        
+        [[CouponCodePostWebService service] callCouponCodePostWithDictParams:couponDict success:^(id  _Nullable response, NSString * _Nullable strMsg)
+         {
+             [self StopActivityIndicator:self.view];
+             
+             if (response != nil)
+             {
+                 
+                 if ([response[@"message"] isEqualToString:@"User Subscribed Successfully"])
+                 {
+                     UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:@"User Subscribed Successfully" preferredStyle:UIAlertControllerStyleAlert];
+                     UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                         [alertController dismissViewControllerAnimated:YES completion:^{
+                             
+                         }];
+                         
+                         [self.navigationController popViewControllerAnimated:YES];
+                     }];
+                     [alertController addAction:actionOK];
+                     [self presentViewController:alertController animated:YES completion:^{
+                         
+                     }];
+                 }
+                 else
+                 {
+                     UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:strMsg preferredStyle:UIAlertControllerStyleAlert];
+                     UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                         [alertController dismissViewControllerAnimated:YES completion:^{
+                             
+                         }];
+                     }];
+                     [alertController addAction:actionOK];
+                     [self presentViewController:alertController animated:YES completion:^{
+                         
+                     }];
+                 }
+                 
+                 
+             }
+             else
+             {
+                 NSLog(@"%@", strMsg);
+                 
+                 UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:strMsg preferredStyle:UIAlertControllerStyleAlert];
+                 UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                     [alertController dismissViewControllerAnimated:YES completion:^{
+                         
+                     }];
+                 }];
+                 [alertController addAction:actionOK];
+                 [self presentViewController:alertController animated:YES completion:^{
+                     
+                 }];
+             }
+         }
+         failure:^(NSError * _Nullable error, NSString * _Nullable strMsg) {
+             
+             [self StopActivityIndicator:self.view];
+             
+             UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:strMsg preferredStyle:UIAlertControllerStyleAlert];
+             UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                 [alertController dismissViewControllerAnimated:YES completion:^{
+                     
+                 }];
+             }];
+             [alertController addAction:actionOK];
+             [self presentViewController:alertController animated:YES completion:^{
+                 
+             }];
+             
+         }];
+    }
+    
 }
+
+
+#pragma mark
+#pragma mark Alert Checking
+#pragma mark
+
+-(BOOL)alertChecking
+{
+    if (strPromoCode.length==0)
+    {
+        [self displayErrorWithMessage:@"Please enter valid Promo Code"];
+        return NO;
+    }
+    return YES;
+}
+
+#pragma mark
 
 
 /*

@@ -27,16 +27,36 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblProfileCountry;
 
 
-///CURRENT PLAN CELL
+///RECOMENDED PLAN CELL
 
 @property (strong, nonatomic) IBOutlet UILabel *lblHeader;
 @property (strong, nonatomic) IBOutlet UILabel *lblContent;
 @property (weak, nonatomic) IBOutlet UITextView *txtVwContent;
 
-///RECOMENDED PLAN CELL
+
+///CURRENT PLAN CELL
 
 @property (strong, nonatomic) IBOutlet UILabel *lblRecomendedContent;
 @property (strong, nonatomic) IBOutlet RoundedButton *btnUpgradeOutlet;
 @property (weak, nonatomic) IBOutlet UITextView *txtVwRecomendedContent;
+
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblPackageName;
+
+@property (strong, nonatomic) IBOutlet UILabel *lblPackageExpiryDt;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblPackagePrice;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblValidity;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblVideoWatchLimit;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblTotalLimit;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblPackageStatus;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblNoSubscription;
+
 
 @end

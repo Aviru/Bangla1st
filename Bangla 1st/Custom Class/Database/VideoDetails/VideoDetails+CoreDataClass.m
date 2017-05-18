@@ -79,7 +79,7 @@
         else
         {
             isDeleted = YES;
-            NSLog(@"Data Saved Successfully.");
+            NSLog(@"Data Deleted Successfully.");
         }
     }
     else

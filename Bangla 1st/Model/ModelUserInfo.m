@@ -104,6 +104,15 @@
             self.strUserProfileImageUrl=@"";
         }
         
+        if ([dict objectForKey:@"is_subsribed"] && ![[dict objectForKey:@"is_subsribed"] isKindOfClass:[NSNull class]])
+        {
+            self.strUserIsSubscribed=[dict objectForKey:@"is_subsribed"];
+        }
+        else
+        {
+            self.strUserIsSubscribed=@"";
+        }
+        
     }
     return self;
 }

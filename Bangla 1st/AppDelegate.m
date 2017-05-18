@@ -6,6 +6,9 @@
 //  Copyright © 2017 Abhijit Rana. All rights reserved.
 //
 
+@import Firebase;
+@import GoogleSignIn;
+
 #import "AppDelegate.h"
 #import "ReachabilityManager.h"
 @import AVFoundation;
@@ -29,6 +32,11 @@
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     
+    [FIRApp configure];
+    
+    [GIDSignIn sharedInstance].clientID = [FIRApp defaultApp].options.clientID;
+    [GIDSignIn sharedInstance].delegate = self;
+    
     if([[GlobalUserDefaults getObjectWithKey:ISLOGGEDIN] isEqualToString:@"YES"])
     {
         NSData *dictionaryData = [GlobalUserDefaults getObjectWithKey:USER_INFO];
@@ -42,6 +50,8 @@
         self.videoCount = 0;
         
     }
+    
+    _arrDownloadInfo = [NSMutableArray new];
     
     ///TODO: Remove these lines later
     _arrCountryList = [NSMutableArray new];
@@ -62,6 +72,29 @@
     return YES;
 }
 
+- (BOOL)application:(nonnull UIApplication *)application
+            openURL:(nonnull NSURL *)url
+            options:(nonnull NSDictionary<NSString *, id> *)options
+{
+    
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"social_type"]isEqualToString:@"facebook"])
+    {
+        return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                              openURL:url
+                                                    sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                                           annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+    }
+    else
+    {
+        return [[GIDSignIn sharedInstance] handleURL:url
+                                   sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                          annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+        
+    }
+    
+}
+
+/*
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
@@ -80,6 +113,7 @@
     }
     
 }
+ */
 
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler
 {

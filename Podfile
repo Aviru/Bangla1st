@@ -18,6 +18,9 @@ pod 'FBSDKMessengerShareKit'
 
 pod 'Google/SignIn'
 
+pod 'Firebase/Auth'
+pod 'GoogleSignIn'
+
 pod 'Fabric'
 pod 'Crashlytics'
 
