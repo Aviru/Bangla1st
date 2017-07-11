@@ -16,4 +16,6 @@
 
 -(void)callTermsAndConditionWebServiceWithDictParams:(NSDictionary *)dictParams success:(success)successHandler failure:(failure)failureHandler;
 
+-(void)callPrivacyPolicyWebServiceWithDictParams:(NSDictionary *)dictParams success:(success)successHandler failure:(failure)failureHandler;
+
 @end

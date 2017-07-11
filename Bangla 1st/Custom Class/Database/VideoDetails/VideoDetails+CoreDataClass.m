@@ -92,5 +92,29 @@
 
 }
 
++(BOOL)deleteAllRecordsWithEntityName:(NSString *)strEntityName
+                 managedObjectContext:(NSManagedObjectContext*)moc persistentSoreCoOrdinator:(NSPersistentStoreCoordinator *)myPersistentStoreCoordinator
+{
+    BOOL isDeleted;
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:strEntityName];
+    NSBatchDeleteRequest *delete = [[NSBatchDeleteRequest alloc] initWithFetchRequest:request];
+    
+    NSError *deleteError = nil;
+    if( [myPersistentStoreCoordinator executeRequest:delete withContext:moc error:&deleteError])
+    {
+        isDeleted = YES;
+        NSLog(@"Data Deleted Successfully.");
+    }
+    else
+    {
+        isDeleted = NO;
+        NSLog(@"Error: %@ %@", deleteError, [deleteError localizedDescription]);
+    }
+    
+    
+    return isDeleted;
+}
+
 
 @end

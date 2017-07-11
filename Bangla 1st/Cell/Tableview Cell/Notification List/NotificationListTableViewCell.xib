@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notificationListCell" rowHeight="130" id="KGk-i7-Jjw" customClass="NotificationListTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="129.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wKP-kS-xha">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="129.5"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMr-Qm-es4">
+                        <rect key="frame" x="8" y="4.5" width="304" height="119.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank Transfer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCt-FE-1y6">
+                                <rect key="frame" x="7.5" y="4" width="273.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eV8-Gl-dXI">
+                                <rect key="frame" x="7.5" y="31" width="90.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="1" green="0.32549019610000002" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2l-7m-hHy">
+                                <rect key="frame" x="108" y="31" width="33" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="1" green="0.32549019610000002" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnP-rH-JHA">
+                                <rect key="frame" x="7.5" y="55" width="107" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KG2-MD-TCn">
+                                <rect key="frame" x="123.5" y="55" width="29" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KG2-MD-TCn" firstAttribute="top" secondItem="KnP-rH-JHA" secondAttribute="top" id="1GK-y9-fbg"/>
+                            <constraint firstItem="XCt-FE-1y6" firstAttribute="centerY" secondItem="eV8-Gl-dXI" secondAttribute="top" multiplier="0.4" id="1bY-tG-WG0"/>
+                            <constraint firstAttribute="centerY" secondItem="XCt-FE-1y6" secondAttribute="top" multiplier="15" id="3Iy-ij-7c1"/>
+                            <constraint firstItem="KG2-MD-TCn" firstAttribute="leading" secondItem="KnP-rH-JHA" secondAttribute="trailing" multiplier="1.08" id="QCV-H7-rtK"/>
+                            <constraint firstItem="eV8-Gl-dXI" firstAttribute="leading" secondItem="XCt-FE-1y6" secondAttribute="leading" id="SXu-t6-4Wh"/>
+                            <constraint firstItem="eV8-Gl-dXI" firstAttribute="centerY" secondItem="KnP-rH-JHA" secondAttribute="top" multiplier="0.7" id="WTT-R2-JeM"/>
+                            <constraint firstItem="XCt-FE-1y6" firstAttribute="width" secondItem="lMr-Qm-es4" secondAttribute="width" multiplier="0.9" id="iXa-wy-SqX"/>
+                            <constraint firstItem="KnP-rH-JHA" firstAttribute="leading" secondItem="eV8-Gl-dXI" secondAttribute="leading" id="mkz-fi-8bc"/>
+                            <constraint firstItem="Y2l-7m-hHy" firstAttribute="top" secondItem="eV8-Gl-dXI" secondAttribute="top" id="tHQ-Nf-duu"/>
+                            <constraint firstAttribute="centerX" secondItem="XCt-FE-1y6" secondAttribute="leading" multiplier="20" constant="2" id="xib-kp-XdF"/>
+                            <constraint firstItem="Y2l-7m-hHy" firstAttribute="leading" secondItem="eV8-Gl-dXI" secondAttribute="trailing" multiplier="1.1" id="xj5-tG-Dnb"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wKP-kS-xha" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="66P-qI-YL5"/>
+                    <constraint firstItem="wKP-kS-xha" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="AbB-3n-Jna"/>
+                    <constraint firstItem="lMr-Qm-es4" firstAttribute="height" secondItem="wKP-kS-xha" secondAttribute="height" multiplier="0.92" id="Btv-vO-owY"/>
+                    <constraint firstItem="lMr-Qm-es4" firstAttribute="centerY" secondItem="wKP-kS-xha" secondAttribute="centerY" id="Ffz-m2-3ze"/>
+                    <constraint firstItem="wKP-kS-xha" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ZOu-Dg-DpC"/>
+                    <constraint firstItem="lMr-Qm-es4" firstAttribute="width" secondItem="wKP-kS-xha" secondAttribute="width" multiplier="0.95" id="eO9-lc-MiX"/>
+                    <constraint firstItem="wKP-kS-xha" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="teN-py-m4a"/>
+                    <constraint firstItem="lMr-Qm-es4" firstAttribute="centerX" secondItem="wKP-kS-xha" secondAttribute="centerX" id="zkv-3i-mqD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="containerView" destination="lMr-Qm-es4" id="oGV-DU-90h"/>
+                <outlet property="lblNotificationDate" destination="KG2-MD-TCn" id="oLn-mf-Og2"/>
+                <outlet property="lblNotificationDescription" destination="XCt-FE-1y6" id="5NZ-oP-7tN"/>
+                <outlet property="lblNotificationID" destination="Y2l-7m-hHy" id="eaC-TF-s5k"/>
+            </connections>
+            <point key="canvasLocation" x="-362" y="59"/>
+        </tableViewCell>
+    </objects>
+</document>

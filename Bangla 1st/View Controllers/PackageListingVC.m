@@ -67,8 +67,8 @@
     [viewPromoCodeContainer.layer setShadowRadius:1.0];
     [viewPromoCodeContainer.layer setShadowOffset:CGSizeMake(1.0, 1.0)];
     
-  //  [self initializeAndStartActivityIndicator:self.view];
-   // [self getPackageListing];
+    [self initializeAndStartActivityIndicator:self.view];
+    [self getPackageListing];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -331,12 +331,16 @@
                 [alertController dismissViewControllerAnimated:YES completion:^{
                     
                 }];
+                
+                 [self.navigationController popViewControllerAnimated:YES];
             }];
             [alertController addAction:actionOK];
             [self presentViewController:alertController animated:YES completion:^{
                 
             }];
             
+            
+            /*
             if ([response[@"ResponseData"] isKindOfClass:[NSArray class]])
             {
                 NSArray *arr = (id)response[@"ResponseData"];
@@ -356,6 +360,7 @@
             {
                 NSLog(@"Response is not an array");
             }
+            */
 
         }
         else

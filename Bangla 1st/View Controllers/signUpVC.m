@@ -13,6 +13,7 @@
 #import "SignUpWebService.h"
 #import "LoginWebService.h"
 #import "TermsAndConditionsVC.h"
+#import "PrivacyPolicyVC.h"
 
 #import "ModelCountryList.h"
 #import "ModelUserTypeList.h"
@@ -240,12 +241,26 @@
             
             cell.imgVwIconTextFields.image = [UIImage imageNamed:arrCellIcon[indexPath.row]];
             
+            if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2 ||indexPath.row == 3)
+            {
+                cell.imgViewRedStarIcon.hidden = NO;
+            }
+            else
+              cell.imgViewRedStarIcon.hidden = YES;
+            
             if (indexPath.row == 0)
             {
                 cell.txtSignUpFields.autocapitalizationType = UITextAutocapitalizationTypeWords;
             }
             else
                 cell.txtSignUpFields.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            
+            if (indexPath.row == 1)
+            {
+                cell.txtSignUpFields.keyboardType = UIKeyboardTypeEmailAddress;
+            }
+            else
+              cell.txtSignUpFields.keyboardType = UIKeyboardTypeDefault;  
             
             if (indexPath.row == 2 ||indexPath.row == 3)
             {
@@ -506,6 +521,8 @@
 
 - (IBAction)btnPrivacyPolicyAction:(id)sender
 {
+    PrivacyPolicyVC *privacyPolicyVC=(PrivacyPolicyVC *)[MainStoryBoard instantiateViewControllerWithIdentifier:@"PrivacyPolicyVC"];
+    [self.navigationController pushViewController:privacyPolicyVC animated:YES];
 }
 
 - (IBAction)btnSubmitAction:(id)sender
@@ -1106,6 +1123,7 @@
         return NO;
     }
     
+    /*
     if (strDob.length == 0)
     {
         [self displayErrorWithMessage:@"Please enter your date of birth"];
@@ -1135,6 +1153,7 @@
         [self displayErrorWithMessage:@"Please select subscription type"];
         return NO;
     }
+     */
     
     if (isCheckBoxSelected == NO)
     {
@@ -1226,7 +1245,9 @@
             [self logUser];
             
             
-            [self performSegueWithIdentifier:@"segueToHome" sender:self];
+           // [self performSegueWithIdentifier:@"segueToHome" sender:self];
+            
+            [self performSegueWithIdentifier:@"showTabBarFromSignUp" sender:self];
         }
         else
         {

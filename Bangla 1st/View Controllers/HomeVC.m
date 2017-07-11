@@ -35,6 +35,8 @@
 #import "VideoDetails+CoreDataClass.h"
 #import "CustomProgressView.h"
 
+#import "PackageListingVC.h"
+
 
 @interface HomeVC ()<UITableViewDelegate,UITableViewDataSource,AVPlayerViewControllerDelegate,IMAAdsLoaderDelegate, IMAAdsManagerDelegate,ImageScrollingViewDelegate,CustomDropMenuDelegate,CustomProgressViewDelegate,NSURLSessionDelegate>
 {
@@ -156,7 +158,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    self.appDel.isAdRequested = NO;
+   // self.appDel.isAdRequested = NO;
     
     isPlayerFrameAlreadySet = NO;
     
@@ -612,11 +614,12 @@
                 cell.lblHeadertitle.text =[arrContentTitles objectAtIndex:(indexPath.row/2)];
                 
                 if(indexPath.row==0){
-                    cell.btnMore.hidden=YES;
+                    cell.btnViewAll.hidden=YES;
                    // cell.lblHeadertitle.textColor= [UIColor colorWithRed:255/255.0 green:83/255.0 blue:31/255.0 alpha:1];
                 }else{
-                    cell.btnMore.hidden=NO;
+                    cell.btnViewAll.hidden=NO;
                    // cell.lblHeadertitle.textColor= [UIColor blackColor];
+                    [cell.btnViewAll addTarget:self action:@selector(btnViewAllTap:) forControlEvents:UIControlEventTouchUpInside];
                 }
                  return cell;
             }
@@ -826,11 +829,16 @@
                         [alertController dismissViewControllerAnimated:YES completion:^{
                             
                         }];
+                        
+                        
                     }];
                     [alertController addAction:actionOK];
                     [self presentViewController:alertController animated:YES completion:^{
                         
                     }];
+                    
+                    PackageListingVC *pckgListVC=(PackageListingVC *)[MainStoryBoard instantiateViewControllerWithIdentifier:@"PackageListingVC"];
+                    [self.navigationController pushViewController:pckgListVC animated:YES];
                 }
                 
             }
@@ -838,16 +846,22 @@
             {
                 NSLog(@"%@", strMsg);
                 
-                UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:strMsg preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                    [alertController dismissViewControllerAnimated:YES completion:^{
-                        
-                    }];
-                }];
-                [alertController addAction:actionOK];
-                [self presentViewController:alertController animated:YES completion:^{
-                    
-                }];
+                /*
+                 UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:strMsg preferredStyle:UIAlertControllerStyleAlert];
+                 UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                 [alertController dismissViewControllerAnimated:YES completion:^{
+                 
+                 }];
+                 }];
+                 [alertController addAction:actionOK];
+                 [self presentViewController:alertController animated:YES completion:^{
+                 
+                 }];
+                 */
+                
+                PackageListingVC *pckgListVC=(PackageListingVC *)[MainStoryBoard instantiateViewControllerWithIdentifier:@"PackageListingVC"];
+                [self.navigationController pushViewController:pckgListVC animated:YES];
+                
             }
             
         }
@@ -953,6 +967,8 @@
                             if (!fdi.isDownloading)
                             {
                                 // This is the case where a download task should be started.
+                                
+                                 self.appDel.videoCount++;
                                 
                                 customProgressView = [[CustomProgressView alloc] init];
                                 customProgressView.delegate = self;
@@ -1174,11 +1190,16 @@
                     [alertController dismissViewControllerAnimated:YES completion:^{
                         
                     }];
+                    
+                   
                 }];
                 [alertController addAction:actionOK];
                 [self presentViewController:alertController animated:YES completion:^{
                     
                 }];
+                
+                PackageListingVC *pckgListVC=(PackageListingVC *)[MainStoryBoard instantiateViewControllerWithIdentifier:@"PackageListingVC"];
+                [self.navigationController pushViewController:pckgListVC animated:YES];
             }
             
         }
@@ -1186,6 +1207,7 @@
         {
             NSLog(@"%@", strMsg);
             
+            /*
             UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:strMsg preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                 [alertController dismissViewControllerAnimated:YES completion:^{
@@ -1196,6 +1218,10 @@
             [self presentViewController:alertController animated:YES completion:^{
                 
             }];
+            */
+            
+            PackageListingVC *pckgListVC=(PackageListingVC *)[MainStoryBoard instantiateViewControllerWithIdentifier:@"PackageListingVC"];
+            [self.navigationController pushViewController:pckgListVC animated:YES];
         }
         
     }
@@ -1222,6 +1248,20 @@
     //[self.avPlayerViewcontroller.player play];
     
 
+}
+
+-(void)btnViewAllTap:(id)sender
+{
+    NSLog(@"%@",self.navigationController.viewControllers);
+    
+    if ([[self.navigationController.viewControllers objectAtIndex:0] isKindOfClass:[UITabBarController class]])
+    {
+      //  UITabBarController *tbc = [self.navigationController.viewControllers objectAtIndex:0];
+        
+        NSLog(@"%@",self.tabBarController.viewControllers);
+        
+        [self.tabBarController setSelectedIndex:1];
+    }
 }
 
 -(void)btnMaximize:(id)sender
@@ -1279,7 +1319,6 @@
         // In case there is any resume data stored in the fdi object, just make it nil.
         fdi.taskResumeData = nil;
         
-        self.appDel.videoCount++;
         
 //        NSString *encodedURL = [[downloadTask.originalRequest.URL absoluteString] stringByRemovingPercentEncoding];
 //        NSArray *filtered = [arrContents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.strVideoFileUrl contains[cd] %@", encodedURL]];
@@ -1321,6 +1360,12 @@
 -(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error{
     if (error != nil) {
         NSLog(@"Download completed with error: %@", [error localizedDescription]);
+        
+        self.appDel.videoCount -= 1;
+        
+        if (self.appDel.videoCount < 0) {
+            self.appDel.videoCount = 0;
+        }
     }
     else{
         NSLog(@"Download finished successfully.");

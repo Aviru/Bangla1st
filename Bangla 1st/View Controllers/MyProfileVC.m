@@ -19,6 +19,7 @@
 #import "PackageListingWebService.h"
 #import "ModelPackageListing.h"
 #import "ModelCouponData.h"
+#import "ModelPackageSubscriptionData.h"
 
 
 @interface MyProfileVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -27,6 +28,7 @@
     
     IBOutlet UITableView *tblVwMyProfile;
     
+    ModelPackageSubscriptionData *objModelPackageSubscription;
     ModelPackageListing *objModelPackage;
     ModelCouponData *objModelCouponData;
     NSMutableArray *arrPackgeListing;
@@ -84,6 +86,8 @@
     
   [[AccountDetailsWebService service] callgetAccountDetailsWebServiceWithDictParams:MyAccountDict success:^(id  _Nullable response, NSString * _Nullable strMsg) {
       
+       [self StopActivityIndicator:self.view];
+      
       if (response != nil)
       {
           isAccountListWebServiceCalled = YES;
@@ -96,7 +100,43 @@
           
           [GlobalUserDefaults saveObject:data withKey:USER_INFO];
           
-          [self getPackageListing];
+          if ([response[@"ResponseData"][@"coupon_active"] isEqualToString:@"yes"])
+          {
+              if (![response[@"ResponseData"][@"subscription_data"] isKindOfClass:[NSNull class]])
+              {
+                  objModelCouponData = [[ModelCouponData alloc]initWithDictionary:response[@"ResponseData"][@"subscription_data"][0]];
+              }
+              else
+              {
+                  NSLog(@"subscription_data is null");
+              }
+              
+          }
+          else if([response[@"ResponseData"][@"subscription_active"] isEqualToString:@"yes"])
+          {
+              if (![response[@"ResponseData"][@"subscription_data"] isKindOfClass:[NSNull class]])
+              {
+                  NSArray *arr = (id)response[@"ResponseData"][@"subscription_data"];
+                  
+                  arrPackgeListing = [NSMutableArray new];
+                  
+                  for (int i = 0; i<arr.count; i++)
+                  {
+                      objModelPackageSubscription = [[ModelPackageSubscriptionData alloc]initWithDictionary:arr[i]];
+                      
+                      [arrPackgeListing addObject:objModelPackageSubscription];
+                  }
+              }
+              else
+              {
+                  NSLog(@"subscription_data is null");
+              }
+              
+          }
+          
+          [tblVwMyProfile reloadData];
+          
+         // [self getPackageListing];
       }
       else
       {
@@ -245,7 +285,7 @@
 -(void)upgradeBtnTap:(UIButton *)sender
 {
    PackageListingVC *packageVc=(PackageListingVC *)[MainStoryBoard instantiateViewControllerWithIdentifier:@"PackageListingVC"];
-   packageVc.arrPkgListing = arrPackgeListing;
+   //packageVc.arrPkgListing = arrPackgeListing;
     
     [self.navigationController pushViewController:packageVc animated:YES];
 }
@@ -449,6 +489,11 @@
                     NSString *strCurrentDate = [dtFormatter stringFromDate:[NSDate date]];
                     NSDate *currentDt = [dtFormatter dateFromString:strCurrentDate];
                     
+                    cell.btnUpgradeOutlet.userInteractionEnabled = NO;
+                    cell.btnUpgradeOutlet.layer.borderColor = [UIColor lightGrayColor].CGColor;
+                    [cell.btnUpgradeOutlet setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+                    
+                    /*
                     if ([subscriptionEndDate compare:currentDt] == NSOrderedDescending)
                     {
                         NSLog(@"date1 is later than date2");
@@ -473,6 +518,7 @@
                         [cell.btnUpgradeOutlet setTitleColor:[UIColor colorWithRed:255.0/255.0 green:83.0/255.0 blue:31.0/255.0 alpha:1.0] forState:UIControlStateNormal];
                          [cell.btnUpgradeOutlet addTarget:self action:@selector(upgradeBtnTap:) forControlEvents:UIControlEventTouchUpInside];
                     }
+                     */
                     
                 }
                 
@@ -482,10 +528,21 @@
                     {
                         cell.containerView.hidden = NO;
                         cell.lblNoSubscription.hidden = YES;
-                        cell.lblPackageExpiryDt.hidden = YES;
+                        cell.lblPackageExpiryDt.hidden = NO;
                         
                         for (int  i = 0; i<arrPackgeListing.count; i++)
                         {
+                            cell.lblPackageName.text = [NSString stringWithFormat:@"PackageId:%@",[arrPackgeListing[i] strPackageID]];  //Package Title
+                            cell.lblPackagePrice.text = [NSString stringWithFormat:@"Rs. %@ /day",[arrPackgeListing[i] strPackageSubscriptionPrice]];
+                            cell.lblValidity.text = [NSString stringWithFormat:@"Valid for %@ day(s)",[arrPackgeListing[i] strPackageSubscriptionDays]];
+                            cell.lblPackageExpiryDt.text = [NSString stringWithFormat:@"Expires on %@",[arrPackgeListing[i] strPackageSubscriptionEndDate]];
+                            cell.lblVideoWatchLimit.text = [NSString stringWithFormat:@"Video Watch Limit %@",[arrPackgeListing[i] strPackageSubscriptionVideoLimit]];
+                            cell.lblTotalLimit.text = [NSString stringWithFormat:@"Total Limit %@",[arrPackgeListing[i] strPackageSubscriptionTotalLimit]];
+                            cell.lblPackageStatus.text = @"Activated";
+                            cell.lblPackageStatus.textColor = [UIColor colorWithRed:255.0/255.0 green:83.0/255.0 blue:31.0/255.0 alpha:1.0];
+                            
+                            
+                            /*
                             if([[arrPackgeListing[i] strPackageIsSubscribed] isEqualToString:@"yes"])
                             {
                                 cell.lblPackageName.text = [arrPackgeListing[i] strPackageTitle];
@@ -510,6 +567,7 @@
                             {
                                 
                             }
+                            */
                             
                         }
                         

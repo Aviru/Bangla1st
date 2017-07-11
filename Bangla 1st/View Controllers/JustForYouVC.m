@@ -137,12 +137,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (IS_IPHONE_6 || IS_IPHONE_6_PLUS)
-    {
-        return 140.0;
-    }
-    else
-     return 120.0;
+    return 140.0;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

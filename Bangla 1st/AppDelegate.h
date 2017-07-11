@@ -11,7 +11,7 @@
 #import "ModelIMAad.h"
 #import "ModelUserInfo.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,GIDSignInDelegate>
 
 @property (copy) void (^backgroundSessionCompletionHandler)();
 
@@ -19,11 +19,15 @@
 
 @property (assign,nonatomic)int videoCount;
 
+@property (assign,nonatomic)int selectedRow;
+
 @property (strong, nonatomic) UINavigationController *navigationController;
 
 @property(assign,nonatomic) BOOL isRechable;
 
-@property(assign,nonatomic) BOOL isAdRequested;
+//@property(assign,nonatomic) BOOL isAdRequested;
+
+@property(assign,nonatomic) BOOL isLogOut;
 
 @property (strong, nonatomic) UITabBarController *tabBarController;
 

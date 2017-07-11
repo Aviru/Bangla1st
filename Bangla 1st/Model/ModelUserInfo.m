@@ -74,7 +74,7 @@
         }
         else
         {
-            self.strUserSex=@"";
+            self.strUserDob=@"";
         }
         
         if ([dict objectForKey:@"country"] && ![[dict objectForKey:@"country"] isKindOfClass:[NSNull class]])

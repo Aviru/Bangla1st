@@ -360,11 +360,16 @@
                 
                 NSLog(@"Google Sign in user details:\n userid: %@, idToken: %@, fullName: %@, givenName: %@, familyName: %@, email: %@, imageUrl: %@\n\n",userId,idToken,fullName,givenName,familyName,email,strImageURL);
                 
-                NSLog(@"Firebase Details:\n userId: %@, displayName:%@, imageurl:%@, email:%@\n\n",userId,fireUser.displayName,fireUser.photoURL,fireUser.email);
+                NSLog(@"Firebase Details:\n userId: %@, displayName:%@, imageurl:%@, email:%@\n\n",fireUser.uid,fireUser.displayName,fireUser.photoURL,fireUser.email);
                 
                 //NSLog(@"Firebase Provider data:\n provider_UserId:%@",fireUser.providerData[0][@"value"][@"userID"]);
                 
-                globalLoginDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"username":fireUser.email,@"fullName":fireUser.displayName,@"social_id":fireUser.uid,@"img_url":fireUser.photoURL,@"deviceToken":strDeviceToken,@"loginType":@"social"};
+                NSString *fireUserId = ([self isEmpty:fireUser.uid])?GoogleUser.userID:fireUser.uid;
+                NSString *fireUserFullName = ([self isEmpty:fireUser.displayName])?GoogleUser.profile.name:fireUser.displayName;
+                NSString *fireUserEmail = ([self isEmpty:fireUser.email])?GoogleUser.profile.email:fireUser.email;
+                NSString *fireUserImageURL = ([self isEmpty:[fireUser.photoURL absoluteString]])?strImageURL:[fireUser.photoURL absoluteString];
+                
+                globalLoginDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"username":fireUserEmail,@"fullName":fireUserFullName,@"social_id":fireUserId,@"img_url":fireUserImageURL,@"deviceToken":strDeviceToken,@"loginType":@"social"};
                 
                 [self callSocialLoginWebService];
             }

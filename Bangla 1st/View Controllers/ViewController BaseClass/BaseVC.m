@@ -37,6 +37,16 @@ NSString *const kAviBeachBallSpinner = @"AviBeachBallSpinner";
     return context;
 }
 
+- (NSPersistentStoreCoordinator *)PersistentStoreCoordinator {
+    NSPersistentStoreCoordinator *persistentStoreCoordinator = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(persistentStoreCoordinator)]) {
+        persistentStoreCoordinator = [delegate persistentStoreCoordinator];
+    }
+    return persistentStoreCoordinator;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -513,6 +523,15 @@ NSString *const kAviBeachBallSpinner = @"AviBeachBallSpinner";
             // [GlobalUserDefaults RemoveUserDefaultValueForKey:USER_TYPE];
              [GlobalUserDefaults saveObject:@"NO" withKey:ISLOGGEDIN];
              
+             if ( [VideoDetails deleteAllRecordsWithEntityName:@"VideoDetails" managedObjectContext:[self managedObjectContext] persistentSoreCoOrdinator:[self PersistentStoreCoordinator]])
+             {
+                  NSLog(@"All Videos Deleted Successfully");
+             }
+            else
+              NSLog(@"Unable to delete all Videos");
+             
+             self.appDel.isLogOut = YES;
+                          
              LoginVC *loginVC
              =[MainStoryBoard instantiateViewControllerWithIdentifier:@"LoginVC"];
              
@@ -520,6 +539,7 @@ NSString *const kAviBeachBallSpinner = @"AviBeachBallSpinner";
              
              self.frostedViewController.contentViewController = navController;
              [self.frostedViewController hideMenuViewController];
+             
          }
          else
          {

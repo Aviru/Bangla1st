@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(BOOL)deleteRecordWithEntityName:(NSString *)strEntityName predicateName:(NSString *)strPredicate recordToDelete:(NSString *)strVideoURL managedObjectContext:(NSManagedObjectContext*)moc;
 
++(BOOL)deleteAllRecordsWithEntityName:(NSString *)strEntityName
+                 managedObjectContext:(NSManagedObjectContext*)moc persistentSoreCoOrdinator:(NSPersistentStoreCoordinator *)myPersistentStoreCoordinator;
+
 @end
 
 NS_ASSUME_NONNULL_END

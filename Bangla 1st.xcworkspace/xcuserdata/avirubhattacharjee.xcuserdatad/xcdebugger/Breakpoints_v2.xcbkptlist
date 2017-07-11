@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/HomeVC.m"
-            timestampString = "516461079.375704"
+            timestampString = "517608109.223475"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "901"
-            endingLineNumber = "901"
+            startingLineNumber = "911"
+            endingLineNumber = "911"
             landmarkName = "-didSelectDotsButtonAtIndexPath:dropDownSelctedCell:"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/signUpVC.m"
-            timestampString = "514932539.445768"
+            timestampString = "517652492.687523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/signUpVC.m"
-            timestampString = "514932539.445768"
+            timestampString = "517653595.518341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "558"
-            endingLineNumber = "558"
+            startingLineNumber = "575"
+            endingLineNumber = "575"
             landmarkName = "-btnSubmitAction:"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/signUpVC.m"
-            timestampString = "514932539.445768"
+            timestampString = "517653595.518341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "632"
-            endingLineNumber = "632"
+            startingLineNumber = "649"
+            endingLineNumber = "649"
             landmarkName = "-showDropDown:CountryDropDown:"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/signUpVC.m"
-            timestampString = "514932539.445768"
+            timestampString = "517653595.518341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "586"
-            endingLineNumber = "586"
+            startingLineNumber = "603"
+            endingLineNumber = "603"
             landmarkName = "-showDropDown:CountryDropDown:"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/signUpVC.m"
-            timestampString = "514932539.445768"
+            timestampString = "517653595.518341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
+            startingLineNumber = "394"
+            endingLineNumber = "394"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/signUpVC.m"
-            timestampString = "514932539.445768"
+            timestampString = "517652492.687523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "@implementation signUpVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/signUpVC.m"
-            timestampString = "514932539.445768"
+            timestampString = "517653595.518341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "575"
-            endingLineNumber = "575"
+            startingLineNumber = "592"
+            endingLineNumber = "592"
             landmarkName = "-showDropDown:CountryDropDown:"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/signUpVC.m"
-            timestampString = "514932539.445768"
+            timestampString = "517653595.518341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "696"
-            endingLineNumber = "696"
+            startingLineNumber = "713"
+            endingLineNumber = "713"
             landmarkName = "-showDropDown:CountryDropDown:"
             landmarkType = "7">
             <Locations>
@@ -266,26 +266,26 @@
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-05-15_Google_SignIn_Firebase/Bangla%201st/View%20Controllers/signUpVC.m"
-                  timestampString = "516836597.941736"
+                  timestampString = "517735049.273155"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "696"
-                  endingLineNumber = "696"
-                  offsetFromSymbolStart = "2736">
+                  startingLineNumber = "713"
+                  endingLineNumber = "713"
+                  offsetFromSymbolStart = "2704">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__41-[signUpVC showDropDown:CountryDropDown:]_block_invoke.449"
+                  symbolName = "__41-[signUpVC showDropDown:CountryDropDown:]_block_invoke.455"
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-05-15_Google_SignIn_Firebase/Bangla%201st/View%20Controllers/signUpVC.m"
-                  timestampString = "516836597.943"
+                  timestampString = "517735049.274499"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "698"
-                  endingLineNumber = "698"
+                  startingLineNumber = "715"
+                  endingLineNumber = "715"
                   offsetFromSymbolStart = "24">
                </Location>
             </Locations>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/signUpVC.m"
-            timestampString = "514932539.445768"
+            timestampString = "517653595.518341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "673"
-            endingLineNumber = "673"
+            startingLineNumber = "690"
+            endingLineNumber = "690"
             landmarkName = "-showDropDown:CountryDropDown:"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/signUpVC.m"
-            timestampString = "514932539.445768"
+            timestampString = "517653595.518341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "591"
-            endingLineNumber = "591"
+            startingLineNumber = "608"
+            endingLineNumber = "608"
             landmarkName = "-showDropDown:CountryDropDown:"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/signUpVC.m"
-            timestampString = "514932539.445768"
+            timestampString = "517653595.518341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "528"
-            endingLineNumber = "528"
+            startingLineNumber = "545"
+            endingLineNumber = "545"
             landmarkName = "-btnSubmitAction:"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/signUpVC.m"
-            timestampString = "514932539.445768"
+            timestampString = "517653595.518341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "847"
-            endingLineNumber = "847"
+            startingLineNumber = "864"
+            endingLineNumber = "864"
             landmarkName = "-textFieldDidChange:"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/signUpVC.m"
-            timestampString = "514932539.445768"
+            timestampString = "517653595.518341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "470"
-            endingLineNumber = "470"
+            startingLineNumber = "485"
+            endingLineNumber = "485"
             landmarkName = "-btnMalePress:"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/signUpVC.m"
-            timestampString = "514932539.445768"
+            timestampString = "517653595.518341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "454"
-            endingLineNumber = "454"
+            startingLineNumber = "469"
+            endingLineNumber = "469"
             landmarkName = "-btnFemalePress:"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/signUpVC.m"
-            timestampString = "514932539.445768"
+            timestampString = "517653595.518341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
+            startingLineNumber = "535"
+            endingLineNumber = "535"
             landmarkName = "-btnSubmitAction:"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/signUpVC.m"
-            timestampString = "514932539.445768"
+            timestampString = "517653595.518341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "510"
-            endingLineNumber = "510"
+            startingLineNumber = "527"
+            endingLineNumber = "527"
             landmarkName = "-btnSubmitAction:"
             landmarkType = "7">
          </BreakpointContent>
@@ -441,28 +441,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/View Controllers/MyProfileVC.m"
-            timestampString = "516394773.200684"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "@implementation MyProfileVC"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/LoginVC.m"
-            timestampString = "516661991.996601"
+            timestampString = "517176057.593338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "559"
-            endingLineNumber = "559"
+            startingLineNumber = "564"
+            endingLineNumber = "564"
             landmarkName = "-callSocialLoginWebService"
             landmarkType = "7">
          </BreakpointContent>
@@ -602,22 +586,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/ChangePasswordVC.m"
-            timestampString = "515275125.874828"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
-            landmarkName = "-btnSubmitAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/View Controllers/ChangePasswordVC.m"
             timestampString = "515275129.1587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -650,12 +618,12 @@
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-05-15_Google_SignIn_Firebase/Bangla%201st/View%20Controllers/ChangePasswordVC.m"
-                  timestampString = "516836598.001934"
+                  timestampString = "517735049.326193"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "257"
                   endingLineNumber = "257"
-                  offsetFromSymbolStart = "540">
+                  offsetFromSymbolStart = "548">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -665,7 +633,7 @@
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-05-15_Google_SignIn_Firebase/Bangla%201st/View%20Controllers/ChangePasswordVC.m"
-                  timestampString = "516836598.003272"
+                  timestampString = "517735049.327553"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "257"
@@ -681,28 +649,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/View Controllers/ChangePasswordVC.m"
-            timestampString = "515790278.070154"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
-            landmarkName = "-alertChecking"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/HomeVC.m"
-            timestampString = "516461079.375704"
+            timestampString = "517608109.223475"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "910"
-            endingLineNumber = "910"
+            startingLineNumber = "920"
+            endingLineNumber = "920"
             landmarkName = "-didSelectDotsButtonAtIndexPath:dropDownSelctedCell:"
             landmarkType = "7">
          </BreakpointContent>
@@ -778,11 +730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/HomeVC.m"
-            timestampString = "516357548.482997"
+            timestampString = "517177956.368061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "669"
-            endingLineNumber = "669"
+            startingLineNumber = "671"
+            endingLineNumber = "671"
             landmarkName = "@implementation HomeVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -794,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/HomeVC.m"
-            timestampString = "516357548.482997"
+            timestampString = "517177956.368061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "340"
-            endingLineNumber = "340"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
             landmarkName = "-setUpContentPlayerWithUrl:playerFrame:"
             landmarkType = "7">
          </BreakpointContent>
@@ -841,92 +793,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/View Controllers/PackageListingVC.m"
-            timestampString = "516836020.46153"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
-            landmarkName = "-callMemberSubscriptionWebServiceWithDict:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/View Controllers/PackageListingVC.m"
-            timestampString = "516836020.46153"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
-            landmarkName = "-callMemberSubscriptionWebServiceWithDict:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Bangla 1st/Custom Class/Left Panel Classes/DEMOMenuViewController.m"
-            timestampString = "515800708.291068"
+            timestampString = "517734338.278837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/Custom Class/Left Panel Classes/DEMOMenuViewController.m"
-            timestampString = "515800708.291068"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/Custom Class/Left Panel Classes/DEMOMenuViewController.m"
-            timestampString = "515800708.291068"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/Custom Class/Left Panel Classes/DEMOMenuViewController.m"
-            timestampString = "515800708.291068"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -970,11 +842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/JustForYouVC.m"
-            timestampString = "516485705.549435"
+            timestampString = "517778436.941341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1066,11 +938,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/HomeVC.m"
-            timestampString = "516461079.375704"
+            timestampString = "517177956.368061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "800"
-            endingLineNumber = "800"
+            startingLineNumber = "802"
+            endingLineNumber = "802"
             landmarkName = "-collectionView:didSelectImageItemAtIndexPath:withSelectedContent:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1082,45 +954,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/ListVC.m"
-            timestampString = "516574257.597915"
+            timestampString = "517265624.059377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "444"
-            endingLineNumber = "444"
+            startingLineNumber = "452"
+            endingLineNumber = "452"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ListVC tableView:didSelectRowAtIndexPath:]"
-                  moduleName = "Bangla 1st"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-05-15_Google_SignIn_Firebase/Bangla%201st/View%20Controllers/ListVC.m"
-                  timestampString = "516836598.135224"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "445"
-                  endingLineNumber = "445"
-                  offsetFromSymbolStart = "1228">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__44-[ListVC tableView:didSelectRowAtIndexPath:]_block_invoke"
-                  moduleName = "Bangla 1st"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-05-15_Google_SignIn_Firebase/Bangla%201st/View%20Controllers/ListVC.m"
-                  timestampString = "516836598.137054"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "445"
-                  endingLineNumber = "445"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1130,11 +970,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/ListVC.m"
-            timestampString = "516574257.597915"
+            timestampString = "517265624.059377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "450"
-            endingLineNumber = "450"
+            startingLineNumber = "458"
+            endingLineNumber = "458"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1194,11 +1034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/MyProfileVC.m"
-            timestampString = "516834249.485607"
+            timestampString = "517442938.946244"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "-getPackageListing"
             landmarkType = "7">
          </BreakpointContent>
@@ -1210,11 +1050,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/MyProfileVC.m"
-            timestampString = "516834249.485607"
+            timestampString = "517442938.946244"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "-getAccountDetails"
             landmarkType = "7">
          </BreakpointContent>
@@ -1226,29 +1066,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/MyProfileVC.m"
-            timestampString = "516837695.799439"
+            timestampString = "517442938.946244"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/View Controllers/MyProfileVC.m"
-            timestampString = "516837695.799439"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "-getPackageListing"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__32-[MyProfileVC getPackageListing]_block_invoke"
+                  moduleName = "Bangla 1st"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-05-15_Google_SignIn_Firebase/Bangla%201st/View%20Controllers/MyProfileVC.m"
+                  timestampString = "517735049.403659"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "211"
+                  endingLineNumber = "211"
+                  offsetFromSymbolStart = "1072">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__32-[MyProfileVC getPackageListing]_block_invoke"
+                  moduleName = "Bangla 1st"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-05-15_Google_SignIn_Firebase/Bangla%201st/View%20Controllers/MyProfileVC.m"
+                  timestampString = "517735049.405003"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "211"
+                  endingLineNumber = "211"
+                  offsetFromSymbolStart = "1084">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1258,27 +1114,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/MyProfileVC.m"
-            timestampString = "516837695.799439"
+            timestampString = "517442938.946244"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/View Controllers/MyProfileVC.m"
-            timestampString = "516394773.200684"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1290,11 +1130,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/HomeVC.m"
-            timestampString = "516574257.597915"
+            timestampString = "517608109.223475"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1269"
-            endingLineNumber = "1269"
+            startingLineNumber = "1303"
+            endingLineNumber = "1303"
             landmarkName = "-URLSession:downloadTask:didFinishDownloadingToURL:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1306,11 +1146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/HomeVC.m"
-            timestampString = "516574257.597915"
+            timestampString = "517608109.223475"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1262"
-            endingLineNumber = "1262"
+            startingLineNumber = "1296"
+            endingLineNumber = "1296"
             landmarkName = "-URLSession:downloadTask:didFinishDownloadingToURL:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1321,28 +1161,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/Custom Class/ImageScrollingCellView.m"
-            timestampString = "516472183.986352"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "-collectionView:cellForItemAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/ListVC.m"
-            timestampString = "516574257.597915"
+            timestampString = "517265624.059377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "634"
-            endingLineNumber = "634"
+            startingLineNumber = "649"
+            endingLineNumber = "649"
             landmarkName = "-didSelectDotsButtonAtIndexPath:dropDownSelctedCell:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1354,11 +1178,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/ListVC.m"
-            timestampString = "516574257.597915"
+            timestampString = "517651283.805112"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "709"
-            endingLineNumber = "709"
+            startingLineNumber = "728"
+            endingLineNumber = "728"
             landmarkName = "-didSelectDotsButtonAtIndexPath:dropDownSelctedCell:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1370,11 +1194,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/ListVC.m"
-            timestampString = "516574257.597915"
+            timestampString = "517265624.059377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "637"
-            endingLineNumber = "637"
+            startingLineNumber = "652"
+            endingLineNumber = "652"
             landmarkName = "-didSelectDotsButtonAtIndexPath:dropDownSelctedCell:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1386,11 +1210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/ListVC.m"
-            timestampString = "516574257.597915"
+            timestampString = "517265624.059377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "651"
-            endingLineNumber = "651"
+            startingLineNumber = "666"
+            endingLineNumber = "666"
             landmarkName = "-didSelectDotsButtonAtIndexPath:dropDownSelctedCell:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1402,11 +1226,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/ListVC.m"
-            timestampString = "516574257.597915"
+            timestampString = "517265624.059377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "657"
-            endingLineNumber = "657"
+            startingLineNumber = "672"
+            endingLineNumber = "672"
             landmarkName = "-didSelectDotsButtonAtIndexPath:dropDownSelctedCell:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1418,11 +1242,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/ListVC.m"
-            timestampString = "516574257.597915"
+            timestampString = "517265624.059377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "628"
-            endingLineNumber = "628"
+            startingLineNumber = "643"
+            endingLineNumber = "643"
             landmarkName = "-didSelectDotsButtonAtIndexPath:dropDownSelctedCell:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1434,44 +1258,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/ListVC.m"
-            timestampString = "516574257.597915"
+            timestampString = "517651283.805112"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "701"
-            endingLineNumber = "701"
+            startingLineNumber = "720"
+            endingLineNumber = "720"
             landmarkName = "-didSelectDotsButtonAtIndexPath:dropDownSelctedCell:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/View Controllers/ListVC.m"
-            timestampString = "516486214.794875"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/View Controllers/ListVC.m"
-            timestampString = "516486214.794875"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1482,11 +1274,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/JustForYouVC.m"
-            timestampString = "516485705.549435"
+            timestampString = "517778436.941341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "-btnDeleteTap:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1497,14 +1289,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/View Controllers/JustForYouVC.m"
-            timestampString = "516485705.549435"
+            filePath = "Bangla 1st/View Controllers/ListVC.m"
+            timestampString = "517265624.059377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "-viewDidAppear:"
-            landmarkType = "7">
+            startingLineNumber = "545"
+            endingLineNumber = "545"
+            landmarkName = "@implementation ListVC"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1514,27 +1306,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/ListVC.m"
-            timestampString = "516574257.597915"
+            timestampString = "517265624.059377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "530"
-            endingLineNumber = "530"
-            landmarkName = "-btnDotsTap:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/View Controllers/ListVC.m"
-            timestampString = "516574257.597915"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "582"
-            endingLineNumber = "582"
+            startingLineNumber = "597"
+            endingLineNumber = "597"
             landmarkName = "-btnDotsTap:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1546,11 +1322,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/JustForYouVC.m"
-            timestampString = "516564342.762701"
+            timestampString = "517778436.941341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "-btnDeleteTap:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1578,7 +1354,7 @@
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-05-15_Google_SignIn_Firebase/Bangla%201st/View%20Controllers/LoginVC.m"
-                  timestampString = "516836598.226976"
+                  timestampString = "517735051.388935"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "325"
@@ -1593,12 +1369,12 @@
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-05-15_Google_SignIn_Firebase/Bangla%201st/View%20Controllers/LoginVC.m"
-                  timestampString = "516836598.229057"
+                  timestampString = "517735051.391014"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "327"
                   endingLineNumber = "327"
-                  offsetFromSymbolStart = "108">
+                  offsetFromSymbolStart = "132">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1641,13 +1417,189 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/PackageListingVC.m"
+            timestampString = "517267105.753686"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "434"
+            endingLineNumber = "434"
+            landmarkName = "-btnActivateAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/PackageListingVC.m"
+            timestampString = "517267105.753686"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "469"
+            endingLineNumber = "469"
+            landmarkName = "-btnActivateAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/PackageListingVC.m"
+            timestampString = "517267105.753686"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "485"
+            endingLineNumber = "485"
+            landmarkName = "-btnActivateAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/LoginVC.m"
-            timestampString = "516661991.996601"
+            timestampString = "517176057.593338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "369"
-            endingLineNumber = "369"
-            landmarkName = "-signIn:didSignInForUser:withError:"
+            startingLineNumber = "556"
+            endingLineNumber = "556"
+            landmarkName = "-callSocialLoginWebService"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/WebService/LoginWebService.m"
+            timestampString = "517173425.726815"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-callSocialLoginWebServiceWithDictParams:success:failure:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[LoginWebService callSocialLoginWebServiceWithDictParams:success:failure:]"
+                  moduleName = "Bangla 1st"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-05-15_Google_SignIn_Firebase/Bangla%201st/WebService/LoginWebService.m"
+                  timestampString = "517735051.448244"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__75-[LoginWebService callSocialLoginWebServiceWithDictParams:success:failure:]_block_invoke"
+                  moduleName = "Bangla 1st"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-05-15_Google_SignIn_Firebase/Bangla%201st/WebService/LoginWebService.m"
+                  timestampString = "517735051.449607"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/Custom Class/Database/VideoDetails/VideoDetails+CoreDataClass.m"
+            timestampString = "517176580.888235"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "+deleteAllRecordsWithEntityName:managedObjectContext:persistentSoreCoOrdinator:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/Custom Class/Database/VideoDetails/VideoDetails+CoreDataClass.m"
+            timestampString = "517176252.965354"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "+deleteAllRecordsWithEntityName:managedObjectContext:persistentSoreCoOrdinator:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/Custom Class/Database/VideoDetails/VideoDetails+CoreDataClass.m"
+            timestampString = "517176582.070345"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "+deleteAllRecordsWithEntityName:managedObjectContext:persistentSoreCoOrdinator:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/ListVC.m"
+            timestampString = "517265624.059377"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "401"
+            endingLineNumber = "401"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/ListVC.m"
+            timestampString = "517265710.917685"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "384"
+            endingLineNumber = "384"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1658,11 +1610,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/PackageListingVC.m"
-            timestampString = "516836587.478883"
+            timestampString = "517266596.773509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
+            startingLineNumber = "451"
+            endingLineNumber = "451"
             landmarkName = "-btnActivateAction:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1674,11 +1626,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/PackageListingVC.m"
-            timestampString = "516836596.142953"
+            timestampString = "517266609.261523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "429"
-            endingLineNumber = "429"
+            startingLineNumber = "419"
+            endingLineNumber = "419"
             landmarkName = "-btnActivateAction:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1689,13 +1641,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/View Controllers/PackageListingVC.m"
-            timestampString = "516836598.820775"
+            filePath = "Bangla 1st/View Controllers/MyProfileVC.m"
+            timestampString = "517442938.946244"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "-getAccountDetails"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/MyProfileVC.m"
+            timestampString = "517442938.946244"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "-getAccountDetails"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/MyProfileVC.m"
+            timestampString = "517442938.946244"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "464"
             endingLineNumber = "464"
-            landmarkName = "-btnActivateAction:"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1705,13 +1689,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/View Controllers/PackageListingVC.m"
-            timestampString = "516836600.634952"
+            filePath = "Bangla 1st/View Controllers/MyProfileVC.m"
+            timestampString = "517442938.946244"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "480"
-            endingLineNumber = "480"
-            landmarkName = "-btnActivateAction:"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-getAccountDetails"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1721,13 +1705,109 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/View Controllers/PackageListingVC.m"
-            timestampString = "516836604.201003"
+            filePath = "Bangla 1st/View Controllers/MyProfileVC.m"
+            timestampString = "517443063.6431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "426"
-            endingLineNumber = "426"
-            landmarkName = "-btnActivateAction:"
+            startingLineNumber = "460"
+            endingLineNumber = "460"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/MyProfileVC.m"
+            timestampString = "517443083.201201"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "527"
+            endingLineNumber = "527"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/Custom Class/Left Panel Classes/DEMOMenuViewController.m"
+            timestampString = "517734338.278837"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "-tableView:didDeselectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/Custom Class/Left Panel Classes/DEMOMenuViewController.m"
+            timestampString = "517734338.278837"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/Custom Class/Left Panel Classes/DEMOMenuViewController.m"
+            timestampString = "517734338.278837"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/ViewController BaseClass/BaseVC.m"
+            timestampString = "517735043.857063"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "519"
+            endingLineNumber = "519"
+            landmarkName = "-callLogOut"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/ViewController BaseClass/BaseVC.m"
+            timestampString = "517735046.620837"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "535"
+            endingLineNumber = "535"
+            landmarkName = "-callLogOut"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

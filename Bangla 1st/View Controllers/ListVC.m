@@ -16,6 +16,7 @@
 #import "CustomDropMenu.h"
 #import "DropDownTableViewCell.h"
 #import "VideoDetailsVC.h"
+#import "PackageListingVC.h"
 
 #import "ListWebService.h"
 #import "ModelList.h"
@@ -351,19 +352,23 @@
                 
         [cell.btndotsOutlet addTarget:self action:@selector(btnDotsTap:) forControlEvents:UIControlEventTouchUpInside];
         
-        [cell.ivImage sd_setImageWithURL:[NSURL URLWithString:strVidThumb]
-                                placeholderImage:nil
-                                         options:SDWebImageHighPriority
-                                        progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                            
-                                        }
-                                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                           
-                                           [arrVideoThumbImg addObject:image];
-                                           
-                                       }];
+          if (arrVideoThumbImg.count <= indexPath.row)
+          {
+              [cell.ivImage sd_setImageWithURL:[NSURL URLWithString:strVidThumb]
+                              placeholderImage:nil
+                                       options:SDWebImageHighPriority
+                                      progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                          
+                                      }
+                                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                         
+                                         [arrVideoThumbImg addObject:image];
+                                         
+                                     }];
+          }
+    
 
-        
+    
          cell.selectionStyle=UITableViewCellSelectionStyleNone;
         
         return cell;
@@ -376,7 +381,11 @@
        
        NSString *strAdThumb = objModelList.strAdCodeUrl; //content[@"adCode"];
        
-       listAdCell.adImage.image = [UIImage animatedImageWithAnimatedGIFURL:[NSURL URLWithString:strAdThumb]];
+       if ( listAdCell.adImage.image == nil)
+       {
+            listAdCell.adImage.image = [UIImage animatedImageWithAnimatedGIFURL:[NSURL URLWithString:strAdThumb]];
+       }
+      
        
        listAdCell.adImage.animationDuration = 1.0f;
        listAdCell.adImage.animationRepeatCount = 0;
@@ -472,23 +481,29 @@
                 
                 else
                 {
+                    
                     UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:@"Sorry! You have reached your Video limit.To see more Videos please Subscribe to another Plan" preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                        [alertController dismissViewControllerAnimated:YES completion:^{
-                            
-                        }];
-                    }];
-                    [alertController addAction:actionOK];
-                    [self presentViewController:alertController animated:YES completion:^{
-                        
-                    }];
+                     UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                     [alertController dismissViewControllerAnimated:YES completion:^{
+                     
+                     }];
+                     
+                     }];
+                     [alertController addAction:actionOK];
+                     [self presentViewController:alertController animated:YES completion:^{
+                     
+                     }];
+                    
+                    PackageListingVC *pckgListVC=(PackageListingVC *)[MainStoryBoard instantiateViewControllerWithIdentifier:@"PackageListingVC"];
+                    [self.navigationController pushViewController:pckgListVC animated:YES];
                 }
                 
             }
             else
             {
                 NSLog(@"%@", strMsg);
-                
+               
+                /*
                 UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:strMsg preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                     [alertController dismissViewControllerAnimated:YES completion:^{
@@ -499,6 +514,10 @@
                 [self presentViewController:alertController animated:YES completion:^{
                     
                 }];
+                 */
+                
+                PackageListingVC *pckgListVC=(PackageListingVC *)[MainStoryBoard instantiateViewControllerWithIdentifier:@"PackageListingVC"];
+                [self.navigationController pushViewController:pckgListVC animated:YES];
             }
             
         }
@@ -656,6 +675,9 @@
                                 if (!Objfdi.isDownloading)
                                 {
                                     btnDotscell.btndotsOutlet.userInteractionEnabled = YES;
+                                    btnDotscell.imageViewThreeDots.image = [UIImage imageNamed:@"dots_icon.png"];
+                                    
+                                    self.appDel.videoCount++;
                                     
                                     // This is the case where a download task should be started.
                                     
@@ -671,8 +693,10 @@
                                         
                                         NSLog(@"task identifier:%lu",Objfdi.taskIdentifier);
                                         
+                                        
                                         // Start the task.
                                         [Objfdi.downloadTask resume];
+                                    
                                     }
                                     else
                                     {
@@ -874,8 +898,6 @@
         // In case there is any resume data stored in the fdi object, just make it nil.
         ObjFileDwnldInfo.taskResumeData = nil;
         
-        self.appDel.videoCount++;
-        
         NSString *encodedURL = [[downloadTask.originalRequest.URL absoluteString] stringByRemovingPercentEncoding];
         NSArray *filtered = [arrList filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.strVideoFileUrl contains[cd] %@", encodedURL]];
         
@@ -935,6 +957,11 @@
 -(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error{
     if (error != nil) {
         NSLog(@"Download completed with error: %@", [error localizedDescription]);
+        
+         self.appDel.videoCount -= 1;
+        if (self.appDel.videoCount < 0) {
+            self.appDel.videoCount = 0;
+        }
     }
     else{
         NSLog(@"Download finished successfully.");

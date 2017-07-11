@@ -13,6 +13,7 @@
 #import "TransactionHistoryVC.h"
 #import "LeftPanelProtocols.h"
 #import "AboutUsVC.h"
+#import "NotificationListVC.h"
 
 @interface DEMOMenuViewController ()<UITableViewDelegate,UITableViewDataSource,LeftPanelProtocols>
 {
@@ -31,12 +32,53 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    arrMenuNames = [[NSMutableArray alloc]initWithObjects:@"",@"Transaction History",@"Settings",@"Notification",@"About Us",@"Send Invitation",@"Share",@"LogOut", nil];
+    arrMenuNames = [[NSMutableArray alloc]initWithObjects:@"",@"Transaction History",@"Notification",@"About Us",@"Send Invitation",@"Share",@"LogOut", nil]; //,@"Settings"
     
-    arrGrayIconNames = [[NSMutableArray alloc]initWithObjects:@"",@"history_gray_icon.png",@"settings_gray_icon.png",@"notification_gray_icon.png",@"aboutUs_gray_icon.png",@"",@"share_gray_icon.png",@"logOut_gray_icon.png", nil];
+    arrGrayIconNames = [[NSMutableArray alloc]initWithObjects:@"",@"history_gray_icon.png",@"notification_gray_icon.png",@"aboutUs_gray_icon.png",@"",@"share_gray_icon.png",@"logOut_gray_icon.png", nil]; //,@"settings_gray_icon.png"
     
-    arrRedIconNames = [[NSMutableArray alloc]initWithObjects:@"",@"history_red_icon.png",@"settings_red_icon.png",@"notification_red_icon.png",@"aboutUs_red_icon.png",@"",@"share_red_icon.png",@"logOut_red_icon.png", nil];
+    arrRedIconNames = [[NSMutableArray alloc]initWithObjects:@"",@"history_red_icon.png",@"notification_red_icon.png",@"aboutUs_red_icon.png",@"",@"share_red_icon.png",@"logOut_red_icon.png", nil]; //,@"settings_red_icon.png"
+    
+    
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (self.appDel.isLogOut)
+    {
+        self.appDel.isLogOut = NO;
+        
+        /*
+        [tblMenu setBackgroundView:nil];
+        [tblMenu setBackgroundColor:[UIColor clearColor]];
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.appDel.selectedRow inSection:0];
+        LeftPanelTableViewCell *Cell = (LeftPanelTableViewCell *)[tblMenu cellForRowAtIndexPath:indexPath];
+        
+        Cell.lblMenuName.textColor = [UIColor darkGrayColor];
+        Cell.imgVwMenuIcon.image = [UIImage imageNamed:arrGrayIconNames[indexPath.row]];
+        [Cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
+        [tblMenu reloadData];
+        */
+        
+        NSIndexPath *selectedRowidxPath = [NSIndexPath indexPathForRow:self.appDel.selectedRow inSection:0];
+        NSArray *arrIndexPaths = [[NSArray alloc] initWithObjects:selectedRowidxPath, nil];
+        [tblMenu beginUpdates];
+        [tblMenu reloadRowsAtIndexPaths:arrIndexPaths withRowAnimation:UITableViewRowAnimationNone];
+        [tblMenu endUpdates];
+        
+    }
+    
+    NSIndexPath *selectedRowidxPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    NSArray *arrIndexPaths = [[NSArray alloc] initWithObjects:selectedRowidxPath, nil];
+    [tblMenu beginUpdates];
+    [tblMenu reloadRowsAtIndexPaths:arrIndexPaths withRowAnimation:UITableViewRowAnimationNone];
+    [tblMenu endUpdates];
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -68,7 +110,7 @@
 {
     LeftPanelTableViewCell *cell;
     
-    if (indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 6 || indexPath.row == 7)
+    if (indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 6) //||indexPath.row == 7
     {
         cell = (LeftPanelTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"firstCell"];
         if (cell==nil)
@@ -82,7 +124,7 @@
         [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     }
     
-    if (indexPath.row == 5)
+    if (indexPath.row == 4)
     {
         cell = (LeftPanelTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"secondCell"];
         if (cell==nil)
@@ -120,7 +162,7 @@
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 6 || indexPath.row == 7)
+    if (indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 6 ) //|| indexPath.row == 7
     {
         LeftPanelTableViewCell *cell = (LeftPanelTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
         
@@ -131,6 +173,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.appDel.selectedRow = (int)indexPath.row;
+    
     navigationController = [MainStoryBoard instantiateViewControllerWithIdentifier:[GlobalUserDefaults getObjectWithKey:ROOTCONTROL]]; //contentController
     
     NSLog(@"%@",navigationController.viewControllers);
@@ -181,15 +225,17 @@
         }
             
         case 2:
-            
+        {
+            NotificationListVC *notificationVC = [MainStoryBoard instantiateViewControllerWithIdentifier:@"NotificationListVC"];
+            notificationVC.leftPanelDelegate = self;
+            navigationController.viewControllers =  @[notificationVC];
+            self.frostedViewController.contentViewController = navigationController;
             [self.frostedViewController hideMenuViewController];
             break;
+        }
+            
             
         case 3:
-            [self.frostedViewController hideMenuViewController];
-            break;
-            
-        case 4:
         {
             AboutUsVC *aboutVC = [MainStoryBoard instantiateViewControllerWithIdentifier:@"AboutUsVC"];
             aboutVC.leftPanelDelegate = self;
@@ -198,14 +244,13 @@
             [self.frostedViewController hideMenuViewController];
             break;
         }
+           
+        case 4:
+        
 
             
         case 6:
-            
-            [self.frostedViewController hideMenuViewController];
-            break;
-            
-        case 7:
+        {
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 UIAlertController * alert=   [UIAlertController
@@ -236,13 +281,16 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self presentViewController:alert animated:YES completion:nil];
                 });
- 
+                
                 
             });
             
             break;
+  
+        }
             
-          
+        default:
+            break;
     }
     
     

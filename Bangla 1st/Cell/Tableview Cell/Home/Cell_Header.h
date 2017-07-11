@@ -11,6 +11,6 @@
 
 @interface Cell_Header : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblHeadertitle;
-@property (weak, nonatomic) IBOutlet ARButton *btnMore;
+@property (weak, nonatomic) IBOutlet ARButton *btnViewAll;
 
 @end

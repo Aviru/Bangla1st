@@ -266,7 +266,7 @@
                         
                     }];
                     
-                    [self callLogOut];
+                   // [self callLogOut];
                 }];
                 [alertController addAction:actionOK];
                 [self presentViewController:alertController animated:YES completion:^{

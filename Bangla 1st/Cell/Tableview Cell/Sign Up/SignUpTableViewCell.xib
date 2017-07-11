@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="58.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qti-dW-ysb">
@@ -45,6 +44,9 @@
                             <constraint firstAttribute="width" secondItem="RxV-AU-3Fc" secondAttribute="height" id="JyH-eU-RqQ"/>
                         </constraints>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_red_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="QBo-n6-vcH">
+                        <rect key="frame" x="21" y="10" width="8" height="7.5"/>
+                    </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q88-LY-UkH">
                         <rect key="frame" x="272" y="9" width="42" height="41"/>
                     </button>
@@ -58,18 +60,22 @@
                     <constraint firstItem="Qti-dW-ysb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="BPZ-TS-mra"/>
                     <constraint firstItem="Q88-LY-UkH" firstAttribute="height" secondItem="Qti-dW-ysb" secondAttribute="height" multiplier="0.7" id="EvF-tM-Jx0"/>
                     <constraint firstItem="1WJ-qd-Jou" firstAttribute="width" secondItem="Qti-dW-ysb" secondAttribute="width" multiplier="0.87" id="Frn-fS-kUg"/>
+                    <constraint firstItem="QBo-n6-vcH" firstAttribute="top" secondItem="RxV-AU-3Fc" secondAttribute="top" multiplier="0.5" id="HWy-fE-4sF"/>
                     <constraint firstItem="EHD-Hi-sWM" firstAttribute="centerY" secondItem="1WJ-qd-Jou" secondAttribute="centerY" id="Lo9-Aa-Tec"/>
                     <constraint firstItem="Qti-dW-ysb" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="MFW-Hq-0d3"/>
                     <constraint firstItem="Qti-dW-ysb" firstAttribute="centerX" secondItem="RxV-AU-3Fc" secondAttribute="leading" multiplier="30" id="O1H-tN-Jp4"/>
+                    <constraint firstItem="QBo-n6-vcH" firstAttribute="width" secondItem="RxV-AU-3Fc" secondAttribute="width" multiplier="0.4" id="PfR-lc-wOc"/>
                     <constraint firstItem="1WJ-qd-Jou" firstAttribute="height" secondItem="Qti-dW-ysb" secondAttribute="height" multiplier="0.7" id="R24-IZ-IeN"/>
                     <constraint firstItem="Q88-LY-UkH" firstAttribute="width" secondItem="Qti-dW-ysb" secondAttribute="width" multiplier="0.13" id="V8t-Oh-z1q"/>
                     <constraint firstItem="Q88-LY-UkH" firstAttribute="centerY" secondItem="Qti-dW-ysb" secondAttribute="centerY" id="Ykv-xP-CHB"/>
                     <constraint firstItem="jhx-QK-1s5" firstAttribute="height" secondItem="Qti-dW-ysb" secondAttribute="height" multiplier="0.7" id="d1E-Vx-Gyf"/>
                     <constraint firstItem="EHD-Hi-sWM" firstAttribute="centerX" secondItem="1WJ-qd-Jou" secondAttribute="centerX" multiplier="1.7" id="fDH-K7-cKZ"/>
+                    <constraint firstItem="QBo-n6-vcH" firstAttribute="height" secondItem="RxV-AU-3Fc" secondAttribute="height" multiplier="0.4" id="gaB-IA-JtX"/>
                     <constraint firstItem="jhx-QK-1s5" firstAttribute="width" secondItem="Qti-dW-ysb" secondAttribute="width" multiplier="0.75" id="hi6-th-6lC"/>
                     <constraint firstItem="1WJ-qd-Jou" firstAttribute="centerX" secondItem="Qti-dW-ysb" secondAttribute="centerX" multiplier="1.07" id="ke9-Lv-sTR"/>
                     <constraint firstItem="RxV-AU-3Fc" firstAttribute="width" secondItem="Qti-dW-ysb" secondAttribute="width" multiplier="0.06" id="no5-ce-m7p"/>
                     <constraint firstItem="Q88-LY-UkH" firstAttribute="leading" secondItem="jhx-QK-1s5" secondAttribute="trailing" id="nva-rp-v4c"/>
+                    <constraint firstItem="QBo-n6-vcH" firstAttribute="trailing" secondItem="RxV-AU-3Fc" secondAttribute="trailing" multiplier="1.2" id="ud0-rg-pz9"/>
                     <constraint firstItem="Qti-dW-ysb" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="vjV-TT-YSK"/>
                     <constraint firstItem="jhx-QK-1s5" firstAttribute="centerX" secondItem="Qti-dW-ysb" secondAttribute="centerX" multiplier="0.95" id="zU5-pT-NXs"/>
                     <constraint firstItem="EHD-Hi-sWM" firstAttribute="width" secondItem="1WJ-qd-Jou" secondAttribute="width" multiplier="0.06" id="zZy-fT-l3U"/>
@@ -78,6 +84,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="btnShowPasswordOutlet" destination="Q88-LY-UkH" id="ad4-9O-4jP"/>
+                <outlet property="imgViewRedStarIcon" destination="QBo-n6-vcH" id="Bsp-K3-Kpf"/>
                 <outlet property="imgVwEyeIcon" destination="EHD-Hi-sWM" id="gZ8-E5-dxV"/>
                 <outlet property="imgVwIconTextFields" destination="RxV-AU-3Fc" id="pb2-k3-3m9"/>
                 <outlet property="imgVwTextFieldBorder" destination="1WJ-qd-Jou" id="tsJ-cP-4Re"/>
@@ -89,7 +96,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="10o-gQ-DFu" id="6ox-Gh-rXc">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GXh-09-c7g">
@@ -163,7 +170,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Sd-uO-0RS" id="X6n-ue-0jy">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MfB-Ak-OWR">
@@ -238,6 +245,7 @@
         <image name="eye_gray.png" width="64" height="64"/>
         <image name="radio_128x128.png" width="128" height="128"/>
         <image name="radio_lightgray_icon.png" width="256" height="256"/>
+        <image name="star_red_icon.png" width="100" height="100"/>
         <image name="subscription_icon.png" width="300" height="300"/>
     </resources>
 </document>

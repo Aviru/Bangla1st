@@ -22,6 +22,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnShowPasswordOutlet;
 
+@property (strong, nonatomic) IBOutlet UIImageView *imgViewRedStarIcon;
 
 
 ///DROP DOWN CELL
