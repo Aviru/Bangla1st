@@ -19,6 +19,9 @@ pod 'FBSDKMessengerShareKit'
 pod 'Google/SignIn'
 
 pod 'Firebase/Auth'
+pod 'Firebase/Core'
+pod 'Firebase/Messaging'
+
 pod 'GoogleSignIn'
 
 pod 'Fabric'

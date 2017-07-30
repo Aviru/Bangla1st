@@ -12,7 +12,12 @@
 #import "CouponCodePostWebService.h"
 #import "ModelPackageListing.h"
 #import "ModelCouponData.h"
+#import "ModelGateway.h"
 #import "MemberSubscriptionWebService.h"
+
+#import "PaymentModeViewController.h"
+
+#import "Bangla_1st-Swift.h"
 
 @interface PackageListingVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UITextFieldDelegate>
 {
@@ -32,7 +37,8 @@
     
    
     ModelPackageListing *objModelPackage;
-    ModelCouponData *objModelCouponData;
+    ModelCouponData     *objModelCouponData;
+    ModelGateway        *objModelGateway;
     
 }
 
@@ -95,6 +101,14 @@
            if ([response[@"coupon_active"] isEqualToString:@"yes"])
            {
                objModelCouponData = [[ModelCouponData alloc]initWithDictionary:response[@"coupon_data"]];
+           }
+           
+           if ([response[@"gateway_data"] isKindOfClass:[NSArray class]])
+           {
+               if ([response[@"gateway_data"] count] > 0) {
+                   
+                  objModelGateway = [[ModelGateway alloc]initWithDictionary:response[@"gateway_data"][0]];
+               }
            }
            
            if ([response[@"ResponseData"] isKindOfClass:[NSArray class]])
@@ -250,7 +264,11 @@
 {
     NSDictionary *memberSubscrptDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",USERID:self.appDel.objModelUserInfo.strUserId,@"packageID":[_arrPkgListing[indexPath.row]strPackageID]};
     
-    [self callMemberSubscriptionWebServiceWithDict:memberSubscrptDict];
+    AddressViewController *addressVC = [MainStoryBoard instantiateViewControllerWithIdentifier:@"AddressViewController"];
+    addressVC.objModelPackage = _arrPkgListing[indexPath.row];
+    [self.navigationController pushViewController:addressVC animated:YES];
+    
+   // [self callMemberSubscriptionWebServiceWithDict:memberSubscrptDict];
 }
 
 #pragma mark

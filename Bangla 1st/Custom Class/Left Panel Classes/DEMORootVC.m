@@ -26,6 +26,8 @@
         
         [GlobalUserDefaults saveObject:@"showTabBarController" withKey:ROOTCONTROL];
         self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menuController"];
+        
+      
     }
     else
     {

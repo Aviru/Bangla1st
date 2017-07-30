@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SectionHeaderView" customModule="Bangla_1st" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1I-J1-ksR">
+                    <rect key="frame" x="9.5" y="14" width="150" height="17"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="box_empty.png" translatesAutoresizingMaskIntoConstraints="NO" id="L2S-pJ-5BY">
+                    <rect key="frame" x="175.5" y="13" width="18.5" height="19"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="L2S-pJ-5BY" secondAttribute="height" id="Y6B-7Z-l3V"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzW-5x-ZFY">
+                    <rect key="frame" x="158" y="-1" width="52.5" height="47"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="hzW-5x-ZFY" secondAttribute="height" multiplier="1:0.9" id="rEP-Ur-Zfm"/>
+                    </constraints>
+                    <connections>
+                        <action selector="btnCheckBoxAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="zwQ-uZ-AhI"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Same as Billing Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mON-Rp-lNU">
+                    <rect key="frame" x="214.5" y="15.5" width="153.5" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="j1I-J1-ksR" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.4" id="5KK-UC-r9m"/>
+                <constraint firstItem="hzW-5x-ZFY" firstAttribute="centerY" secondItem="L2S-pJ-5BY" secondAttribute="centerY" id="83X-By-7GU"/>
+                <constraint firstItem="mON-Rp-lNU" firstAttribute="leading" secondItem="hzW-5x-ZFY" secondAttribute="trailing" multiplier="1.02" id="Bak-e1-Kcb"/>
+                <constraint firstItem="L2S-pJ-5BY" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.05" id="ERm-Qf-YLX"/>
+                <constraint firstItem="hzW-5x-ZFY" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.14" id="JgB-lw-zfe"/>
+                <constraint firstItem="hzW-5x-ZFY" firstAttribute="centerX" secondItem="L2S-pJ-5BY" secondAttribute="centerX" id="RK2-0I-LH3"/>
+                <constraint firstItem="mON-Rp-lNU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="SIF-Sh-X1U"/>
+                <constraint firstAttribute="centerX" secondItem="j1I-J1-ksR" secondAttribute="leading" multiplier="20" id="fge-9L-X3c"/>
+                <constraint firstItem="L2S-pJ-5BY" firstAttribute="leading" secondItem="j1I-J1-ksR" secondAttribute="trailing" multiplier="1.1" id="pwV-X9-yhv"/>
+                <constraint firstItem="L2S-pJ-5BY" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wng-do-fiL"/>
+                <constraint firstItem="j1I-J1-ksR" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xxb-xC-J9a"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnCheckBoxOutlet" destination="hzW-5x-ZFY" id="OU1-gG-1HV"/>
+                <outlet property="imgVwCheckBoxIcon" destination="L2S-pJ-5BY" id="WQu-D1-CeN"/>
+                <outlet property="lblSameBillingInfo" destination="mON-Rp-lNU" id="w5v-AY-Myl"/>
+                <outlet property="lblSectionHeader" destination="j1I-J1-ksR" id="1lf-gz-eqA"/>
+            </connections>
+            <point key="canvasLocation" x="-52.5" y="-528"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="box_empty.png" width="200" height="200"/>
+    </resources>
+</document>

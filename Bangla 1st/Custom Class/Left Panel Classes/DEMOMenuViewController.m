@@ -38,7 +38,7 @@
     
     arrRedIconNames = [[NSMutableArray alloc]initWithObjects:@"",@"history_red_icon.png",@"notification_red_icon.png",@"aboutUs_red_icon.png",@"",@"share_red_icon.png",@"logOut_red_icon.png", nil]; //,@"settings_red_icon.png"
     
-    
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showNotificationListVC) name:@"ShowNotificationListPageFromFCMPush" object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -312,6 +312,49 @@
 -(void)showHomePage:(REFrostedViewController *)REFrostedObj
 {
     REFrostedObj.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"showTabBarController"];
+}
+
+#pragma mark
+
+#pragma mark
+#pragma mark - Show Notification List from FCM Push
+#pragma mark
+
+-(void)showNotificationListVC
+{
+    navigationController = [MainStoryBoard instantiateViewControllerWithIdentifier:[GlobalUserDefaults getObjectWithKey:ROOTCONTROL]];
+    
+    REFrostedViewController *topController =(REFrostedViewController *) [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    topController.panGestureEnabled = YES;
+    
+    topController.limitMenuViewSize = YES;
+    
+    CGSize c= CGSizeMake([[UIScreen mainScreen] bounds].size.width - 100.0, [[UIScreen mainScreen] bounds].size.height);
+    
+    topController.menuViewSize = c;
+    
+    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
+    
+    NotificationListVC *notificationVC = [MainStoryBoard instantiateViewControllerWithIdentifier:@"NotificationListVC"];
+    notificationVC.leftPanelDelegate = self;
+    navigationController.viewControllers =  @[notificationVC];
+    topController.contentViewController = navigationController;
+    [topController hideMenuViewController];
+}
+
+#pragma mark Gesture recognizer
+
+- (void)panGestureRecognized:(UIPanGestureRecognizer *)sender
+{
+    // Dismiss keyboard (optional)
+    //
+    [self.view endEditing:YES];
+    [self.frostedViewController.view endEditing:YES];
+    
+    // Present the view controller
+    //
+    [self.frostedViewController panGestureRecognized:sender];
 }
 
 #pragma mark

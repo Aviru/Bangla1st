@@ -43,6 +43,8 @@
 #define EMAIL              @"email"
 #define PROFILE_IMAGE      @"profileimageurl"
 #define USER_INFO          @"user_info"
+#define MERCHENT_KEY       @"merchantKey"
+#define MERCHENT_SECRET    @"merchantSecret"
 
 #define kClientID          @"963371718961-lk7d6i59bbhoilstris83ogtjcao3t0f.apps.googleusercontent.com"
 

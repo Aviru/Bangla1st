@@ -531,6 +531,8 @@ NSString *const kAviBeachBallSpinner = @"AviBeachBallSpinner";
               NSLog(@"Unable to delete all Videos");
              
              self.appDel.isLogOut = YES;
+             
+             [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ShowNotificationListPageFromFCMPush" object:nil];
                           
              LoginVC *loginVC
              =[MainStoryBoard instantiateViewControllerWithIdentifier:@"LoginVC"];

@@ -11,7 +11,7 @@
 #import "ModelIMAad.h"
 #import "ModelUserInfo.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,GIDSignInDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (copy) void (^backgroundSessionCompletionHandler)();
 
