@@ -34,6 +34,7 @@
     
     BOOL isViewUp;
     NSString *strPromoCode;
+    int selectedPacakage;
     
    
     ModelPackageListing *objModelPackage;
@@ -55,6 +56,8 @@
     [self initWithParentView:navBarContainerView isTranslateToAutoResizingMaskNeeded:NO leftButton:YES rightButton:NO navigationTitle:@"Package Listing" navigationTitleTextAlignment:NSTextAlignmentCenter navigationTitleFontType:customFont leftImageName:@"back_arrow.png" leftLabelName:@" Back" rightImageName:nil rightLabelName:nil];
     
     [self.navBar.navBarLeftButtonOutlet addTarget:self action:@selector(backBtnTap:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self addObserver:self forKeyPath:@"strPaymentStatus" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     
     txtPromoCode.layer.borderColor = [UIColor grayColor].CGColor;
     txtPromoCode.layer.borderWidth = 1.0;
@@ -262,11 +265,51 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *memberSubscrptDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",USERID:self.appDel.objModelUserInfo.strUserId,@"packageID":[_arrPkgListing[indexPath.row]strPackageID]};
+    selectedPacakage = (int) indexPath.row;
     
+    PaymentModeViewController *paymentView = [[PaymentModeViewController alloc]init];
+    
+    paymentView.ACC_ID = @"25050";       //Merchant has to configure the Account ID
+    paymentView.SECRET_KEY = @"b644e58daa1109732c2912b01d791519";   //Merchant has to configure the Secret Key
+    paymentView.MODE = @"LIVE";     //Merchant has to configure the Mode either TEST or LIVE
+    paymentView.ALGORITHM = @"0";   //Merchant has to configure the Algorithm 0 for md5, 1 for sha1, 2 for sha512
+    
+    paymentView.strSaleAmount= [_arrPkgListing[indexPath.row]strPackagePrice];
+    paymentView.reference_no=@"223"; //Merchant has to change it dynamically
+    
+    paymentView.descriptionString = @"Test Description";
+    paymentView.strCurrency =@"INR";
+    paymentView.strDisplayCurrency =@"USD";
+    paymentView.strDescription = @"Test Description";
+    
+    paymentView.strBillingName = self.appDel.objModelUserInfo.strUserName;
+    paymentView.strBillingAddress = @"Bill address";
+    paymentView.strBillingCity =@"Bill City";
+    paymentView.strBillingState = @"WB";
+    paymentView.strBillingPostal =@"700065";
+    paymentView.strBillingCountry = self.appDel.objModelUserInfo.strUserCountryCode;
+    paymentView.strBillingEmail =self.appDel.objModelUserInfo.strUserEmail;
+    paymentView.strBillingTelephone =@"8961390612";
+    
+    paymentView.strDeliveryName = self.appDel.objModelUserInfo.strUserName;
+    paymentView.strDeliveryAddress = @"Delivery Address";
+    paymentView.strDeliveryCity = @"Deivery City";
+    paymentView.strDeliveryState = @"WB";
+    paymentView.strDeliveryPostal =@"700065";
+    paymentView.strDeliveryCountry = self.appDel.objModelUserInfo.strUserCountryCode;
+    paymentView.strDeliveryTelephone =@"8961390612";
+    
+    //If you want to add any extra parameters dynamically you have to add the Key and value as we mentioned below
+    //[dynamicKeyValueDictionary setValue:@"savings" forKey:@"account_detail"];
+    //paymentView.dynamicKeyValueDictionary = dynamicKeyValueDictionary;
+    
+    [self.navigationController pushViewController:paymentView animated:NO];
+    
+    /*
     AddressViewController *addressVC = [MainStoryBoard instantiateViewControllerWithIdentifier:@"AddressViewController"];
     addressVC.objModelPackage = _arrPkgListing[indexPath.row];
     [self.navigationController pushViewController:addressVC animated:YES];
+     */
     
    // [self callMemberSubscriptionWebServiceWithDict:memberSubscrptDict];
 }
@@ -328,29 +371,46 @@
     }];
 }
 
+#pragma mark - KVO
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"strPaymentStatus"]) {
+        NSLog(@"%@", change);
+        if ([self.strPaymentStatus isEqualToString:@"Success"])
+        {
+            NSDictionary *memberSubscrptDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",USERID:self.appDel.objModelUserInfo.strUserId,@"packageID":[_arrPkgListing[selectedPacakage]strPackageID]};
+            
+            [self callMemberSubscriptionWebServiceWithDict:memberSubscrptDict];
+        }
+    }
+}
+
 #pragma mark
 #pragma mark Member Subscription web service
 #pragma mark
 
 -(void)callMemberSubscriptionWebServiceWithDict:(NSDictionary *)dict
 {
-    [self initializeAndStartActivityIndicator:self.view];
+   // [self initializeAndStartActivityIndicator:self.view];
     
     NSLog(@"MemberSubscriptionDict:%@",dict);
     
     [[MemberSubscriptionWebService service]callMemberSubscriptionWebServiceWithDictParams:dict success:^(id  _Nullable response, NSString * _Nullable strMsg) {
         
-        [self StopActivityIndicator:self.view];
+       // [self StopActivityIndicator:self.view];
         
         if (response != nil)
         {
+            NSLog(@"Response Success for MemberSubscriptionWebService");
+            /*
             UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"" message:response[@"message"] preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                 [alertController dismissViewControllerAnimated:YES completion:^{
                     
                 }];
                 
-                 [self.navigationController popViewControllerAnimated:YES];
+               //  [self.navigationController popViewControllerAnimated:YES];
             }];
             [alertController addAction:actionOK];
             [self presentViewController:alertController animated:YES completion:^{
@@ -358,7 +418,6 @@
             }];
             
             
-            /*
             if ([response[@"ResponseData"] isKindOfClass:[NSArray class]])
             {
                 NSArray *arr = (id)response[@"ResponseData"];
@@ -378,7 +437,7 @@
             {
                 NSLog(@"Response is not an array");
             }
-            */
+        */
 
         }
         else
@@ -425,6 +484,8 @@
     collectionViewPackage = nil;
     collectionViewPackage.dataSource = nil;
     collectionViewPackage.delegate = nil;
+    
+    [self removeObserver:self forKeyPath:@"strPaymentStatus"];
     
     if (isViewUp)
     {

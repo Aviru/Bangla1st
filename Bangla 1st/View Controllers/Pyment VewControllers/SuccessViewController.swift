@@ -21,42 +21,19 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 
 
-class SuccessViewController: UIViewController {
+class SuccessViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    
+    @IBOutlet var tblSuccess: UITableView!
    
     var jsondict = NSDictionary()
     
-    @IBOutlet var scrollView: UIScrollView!
+    var arrFieldNameKeysSorted : [Any] = []
     
-    @IBOutlet var lbl1: UILabel!
-    @IBOutlet var lbl2: UILabel!
-    @IBOutlet var lbl3: UILabel!
-    @IBOutlet var lbl4: UILabel!
-    @IBOutlet var lbl5: UILabel!
-    @IBOutlet var lbl6: UILabel!
-    @IBOutlet var lbl7: UILabel!
-    @IBOutlet var lbl8: UILabel!
-    @IBOutlet var lbl9: UILabel!
-    @IBOutlet var lbl10: UILabel!
-    @IBOutlet var lbl11: UILabel!
-    @IBOutlet var lbl12: UILabel!
-    @IBOutlet var lbl13: UILabel!
-    @IBOutlet var lbl14: UILabel!
-    @IBOutlet var lbl15: UILabel!
-    @IBOutlet var lbl16: UILabel!
-    @IBOutlet var lbl17: UILabel!
-    @IBOutlet var lbl18: UILabel!
-    @IBOutlet var lbl19: UILabel!
-    @IBOutlet var lbl20: UILabel!
-    @IBOutlet var lbl21: UILabel!
-    @IBOutlet var lbl22: UILabel!
-    @IBOutlet var lbl23: UILabel!
-    @IBOutlet var lbl24: UILabel!
-    @IBOutlet var lbl25: UILabel!
-    @IBOutlet var lbl26: UILabel!
-    @IBOutlet var lbl27: UILabel!
-    @IBOutlet var lbl28: UILabel!
-    @IBOutlet var lbl29: UILabel!
-    @IBOutlet var lbl30: UILabel!
+    
+    var keyValuePairArr:[Dictionary<String, AnyObject>] = []
+    
+    var arrFieldNames = ["Account Id","Amount","Billing Address" ,"Billing City","Billing Country","Billing Name" ,"Billing Phone","Billing PostalCode", "Billing State", "Billing Email" , "Date Created", "Delivery Address", "Delivery City", "Delivery Country", "Delivery Name", "Delivery Phone", "Delivery PostalCode", "Delivery State", "Description", "IsFlagged", "Merchant Ref. No.", "Mode", "Payment Id", "Payment Mode", "Payment Status", "Response Message", "Secure Hash", "Transaction Id"]
+    
     
     var error: NSError?
     
@@ -71,8 +48,6 @@ class SuccessViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(SuccessViewController.ResponseNew(_:)), name: NSNotification.Name(rawValue: "JSON_NEW"), object: nil)
         NotificationCenter.default.post(name: Notification.Name(rawValue: "JSON_DICT"), object: nil, userInfo: nil)
         
-        scrollView.contentSize = CGSize(width: 0, height: 2600)
-
 
     }
     override func viewWillAppear(_ animated: Bool)
@@ -86,116 +61,133 @@ class SuccessViewController: UIViewController {
     }
     func ResponseNew(_ message:Notification)
     {
-            print("Response = \(message.object!)", terminator: "")
-            jsondict = message.object as! NSDictionary
-      
+        print("Response = \(message.object!)", terminator: "")
+        jsondict = message.object as! NSDictionary
         
-        let accID:NSString = jsondict.value(forKey: "AccountId") as! NSString
-        lbl1.text = accID as String
         
-        let amtStr:NSString = jsondict.value(forKey: "Amount") as! NSString
-        lbl2.text = amtStr as String
+        let arrJsonDictKeys : NSArray = jsondict.allKeys as NSArray
+        let arrFieldNameKeys : NSArray = arrFieldNames as NSArray //arrSuccessPlaceHolderValues.allKeys
         
-        let billAddStr:NSString = jsondict.value(forKey: "BillingAddress") as! NSString
-        lbl3.text = billAddStr as String
+        let descriptor: NSSortDescriptor = NSSortDescriptor(key: "", ascending: true)
+        arrFieldNameKeysSorted = arrFieldNameKeys.sortedArray(using: [descriptor])
         
-        let billCityStr:NSString = jsondict.value(forKey: "BillingCity") as! NSString
-        lbl4.text = billCityStr as String
+        let descriptor2: NSSortDescriptor = NSSortDescriptor(key: "", ascending: true)
+        var arrJsonDictSortedKeys = arrJsonDictKeys.sortedArray(using: [descriptor2])
         
-        let billCounStr:NSString = jsondict.value(forKey: "BillingCountry") as! NSString
-        lbl5.text = billCounStr as String
+        arrJsonDictSortedKeys.remove(at: 25)
         
-        let billNameStr:NSString = jsondict.value(forKey: "BillingName") as! NSString
-        lbl6.text = billNameStr as String
+        // print("arrFieldNames: \(arrFieldNameKeysSorted)")
+        // print("\narrJsonDictSortedKeys: \(arrJsonDictSortedKeys)")
         
-        let billPhoneStr:NSString = jsondict.value(forKey: "BillingPhone") as! NSString
-        lbl7.text = billPhoneStr as String
         
-        let billPostalStr:NSString = jsondict.value(forKey: "BillingPostalCode") as! NSString
-        lbl8.text = billPostalStr as String
+        for indx in 0..<arrFieldNameKeysSorted.count {
+            
+            print(indx)
+            
+            let dict : [String :String]
+            
+            // if arrJsonDictSortedKeys[indx] as! String != "ResponseCode" {
+            
+            dict = [ arrFieldNameKeysSorted[indx] as! String : jsondict.value(forKey: arrJsonDictSortedKeys[indx] as! String) as Any as! String]
+            
+            //  }
+            keyValuePairArr.append(dict as [String : AnyObject])
+            
+            /*
+             for (indx,_) in arrSuccessPlaceHolderValuesSorted.enumerated() {
+             
+             if arrJsonDictSortedKeys[indx] as! String != "ResponseCode" {
+             
+             let dict : [String :String] = [ arrSuccessPlaceHolderValuesSorted[indx] as! String : jsondict.value(forKey: arrJsonDictSortedKeys[indx] as! String) as Any as! String]
+             
+             
+             arrSuccessPlaceHolderValues[indx] = dict
+             }
+             
+             */
+            
+            
+        }
         
-        let billStateStr:NSString = jsondict.value(forKey: "BillingState") as! NSString
-        lbl9.text = billStateStr as String
+        tblSuccess .reloadData()
         
-        let billEmailStr:NSString = jsondict.value(forKey: "BillingEmail") as! NSString
-        lbl10.text = billEmailStr as String
-        
-        let dateCreStr:NSString = jsondict.value(forKey: "DateCreated") as! NSString
-        lbl11.text = dateCreStr as String
-        
-        let delAddStr:NSString = jsondict.value(forKey: "DeliveryAddress") as! NSString
-        lbl12.text = delAddStr as String
-        
-        let delCityStr:NSString = jsondict.value(forKey: "DeliveryCity") as! NSString
-        lbl13.text = delCityStr as String
-        
-        let delCounStr:NSString = jsondict.value(forKey: "DeliveryCountry") as! NSString
-        lbl14.text = delCounStr as String
-        
-        let delNameStr:NSString = jsondict.value(forKey: "DeliveryName") as! NSString
-        lbl15.text = delNameStr as String
-        
-        let delPhStr:NSString = jsondict.value(forKey: "DeliveryPhone") as! NSString
-        lbl16.text = delPhStr as String
-        
-        let delPostStr:NSString = jsondict.value(forKey: "DeliveryPostalCode") as! NSString
-        lbl17.text = delPostStr as String
-        
-        let delStateStr:NSString = jsondict.value(forKey: "DeliveryState") as! NSString
-        lbl18.text = delStateStr as String
-        
-        let descStr:NSString = jsondict.value(forKey: "Description") as! NSString
-        lbl19.text = descStr as String
-        
-        let isFlagStr:NSString = jsondict.value(forKey: "IsFlagged") as! NSString
-        lbl20.text = isFlagStr as String
-        
-        let mercStr:NSString = jsondict.value(forKey: "MerchantRefNo") as! NSString
-        lbl21.text = mercStr as String
-        
-        let modeStr:NSString = jsondict.value(forKey: "Mode") as! NSString
-        lbl22.text = modeStr as String
-        
-        let payIDStr:NSString = jsondict.value(forKey: "PaymentId") as! NSString
-        lbl23.text = payIDStr as String
-        
-        let payModeStr:NSString = jsondict.value(forKey: "PaymentMode") as! NSString
-        lbl24.text = payModeStr as String
-        
-        let payStautsStr:NSString = jsondict.value(forKey: "PaymentStatus") as! NSString
-        lbl25.text = payStautsStr as String
-        
-        //let resCodeStr:NSString = jsondict.valueForKey("ResponseCode") as! NSString
-        // let resCodeStr:NSInteger = jsondict.valueForKey("ResponseCode") as! NSInteger
-        // lbl26.text = resCodeStr as String
-        
-        lbl26.text = ""
-        
-        let reMsgStr:NSString = jsondict.value(forKey: "ResponseMessage") as! NSString
-        lbl27.text = reMsgStr as String
-        
-        let secHashStr:NSString = jsondict.value(forKey: "SecureHash") as! NSString
-        lbl28.text = secHashStr as String
-        
-        let transStr:NSString = jsondict.value(forKey: "TransactionId") as! NSString
-        lbl29.text = transStr as String
-        
-    }
-
-@IBAction func submitClk(_ sender: AnyObject)
-    {
-for  i in 0..<Int((self.navigationController?.viewControllers.count)!)
-{
+        for  i in 0..<Int((self.navigationController?.viewControllers.count)!)
+        {
             if(self.navigationController?.viewControllers[i].isKind(of: PackageListingVC.self) == true)
             {
-              _ =  self.navigationController?.popToViewController(self.navigationController!.viewControllers[i] as! PackageListingVC, animated: true)
+                let pckgVC : PackageListingVC = self.navigationController?.viewControllers[i] as! PackageListingVC
+                
+                pckgVC.strPaymentStatus = "Success"
+                
+                break;
+            }
+            
+        }
+        
+    }
+    
+    // MARK:- UITableview Delegates and DataSource
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 60.0;
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrFieldNames.count;
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
+        let cell:SuccessAndFailureTableViewCell = tblSuccess.dequeueReusableCell(withIdentifier: "successCell") as! SuccessAndFailureTableViewCell!
+        
+      // print("keyValuePairArr[indexPath.row]: \(String(describing: keyValuePairArr[indexPath.row]))")
+        
+        let dict = keyValuePairArr[indexPath.row]
+        
+        for (key, value) in dict {
+           
+            print("\(key) -> \(value)")
+            
+            cell.lblLeft.text = key
+            cell.lblRight.text = value as? String
+        }
+        
+        cell.selectionStyle = .none
+        
+        return cell
+        
+    }
+    
+    //MARK:- Button Action
+    
+    @IBAction func btnOkAction(_ sender: Any) {
+        
+        for  i in 0..<Int((self.navigationController?.viewControllers.count)!)
+        {
+            if(self.navigationController?.viewControllers[i].isKind(of: MyProfileVC.self) == true)
+            {
+                _ =  self.navigationController?.popToViewController(self.navigationController!.viewControllers[i] as! MyProfileVC, animated: true)
                 
                 break;
             }
             
         }
 
+    }
+
+@IBAction func submitClk(_ sender: AnyObject)
+{
+    for  i in 0..<Int((self.navigationController?.viewControllers.count)!)
+    {
+        if(self.navigationController?.viewControllers[i].isKind(of: PackageListingVC.self) == true)
+        {
+            _ =  self.navigationController?.popToViewController(self.navigationController!.viewControllers[i] as! PackageListingVC, animated: true)
+            
+            break;
+        }
         
+    }
+    
+    
     }
 
      override func didReceiveMemoryWarning() {

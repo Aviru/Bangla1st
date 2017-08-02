@@ -50,6 +50,7 @@
 		001436411EB712B400B5A9B0 /* PackageListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0014363F1EB712B400B5A9B0 /* PackageListCollectionViewCell.xib */; };
 		001C2A5E1EC6F275007E3A5A /* dots_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 001C2A5C1EC6F275007E3A5A /* dots_icon.png */; };
 		001C2A5F1EC6F275007E3A5A /* dots_red_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 001C2A5D1EC6F275007E3A5A /* dots_red_icon.png */; };
+		00231E851F2F207A00FC592F /* SuccessAndFailureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231E841F2F207A00FC592F /* SuccessAndFailureTableViewCell.swift */; };
 		0024E5031E981DDA007EC3D1 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0024E5021E981DDA007EC3D1 /* LoginVC.m */; };
 		0024E5061E98235D007EC3D1 /* LoginWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0024E5051E98235D007EC3D1 /* LoginWebService.m */; };
 		0024E50A1E982C70007EC3D1 /* AviSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0024E5091E982C70007EC3D1 /* AviSpinner.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -317,6 +318,7 @@
 		0014363F1EB712B400B5A9B0 /* PackageListCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PackageListCollectionViewCell.xib; sourceTree = "<group>"; };
 		001C2A5C1EC6F275007E3A5A /* dots_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dots_icon.png; sourceTree = "<group>"; };
 		001C2A5D1EC6F275007E3A5A /* dots_red_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dots_red_icon.png; sourceTree = "<group>"; };
+		00231E841F2F207A00FC592F /* SuccessAndFailureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessAndFailureTableViewCell.swift; sourceTree = "<group>"; };
 		0024E5011E981DDA007EC3D1 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
 		0024E5021E981DDA007EC3D1 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		0024E5041E98235D007EC3D1 /* LoginWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginWebService.h; sourceTree = "<group>"; };
@@ -750,6 +752,14 @@
 			path = "Package List Cell";
 			sourceTree = "<group>";
 		};
+		00231E831F2F203400FC592F /* Payment Success and Failure */ = {
+			isa = PBXGroup;
+			children = (
+				00231E841F2F207A00FC592F /* SuccessAndFailureTableViewCell.swift */,
+			);
+			path = "Payment Success and Failure";
+			sourceTree = "<group>";
+		};
 		0024E5071E982C70007EC3D1 /* Avi Spinner */ = {
 			isa = PBXGroup;
 			children = (
@@ -971,6 +981,7 @@
 				007565891E99689900E96C79 /* Profile */,
 				00ECDB721EA9420E00D17130 /* Sign Up */,
 				0005BE971EDB3891004E96EE /* Transaction History */,
+				00231E831F2F203400FC592F /* Payment Success and Failure */,
 			);
 			path = "Tableview Cell";
 			sourceTree = "<group>";
@@ -1805,6 +1816,7 @@
 				006DFE9F1F2DF5FD001B8A3E /* ModelBillingInfo.swift in Sources */,
 				0005BEA11EDB38A8004E96EE /* NotificationListTableViewCell.m in Sources */,
 				006C67491E8F7EDE00BB15C9 /* Cell_Video.m in Sources */,
+				00231E851F2F207A00FC592F /* SuccessAndFailureTableViewCell.swift in Sources */,
 				0041305E1F2DBF7C00B80BC8 /* SectionHeaderView.swift in Sources */,
 				008230491EA4B1B200663C27 /* AVPlayerVC.m in Sources */,
 				00065B591EA2653400714922 /* BackgroundTimeRemainingUtility.m in Sources */,

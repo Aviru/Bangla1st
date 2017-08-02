@@ -11,5 +11,6 @@
 @interface PackageListingVC : BaseVC
 
 @property(nonatomic,strong)NSMutableArray *arrPkgListing;
+@property (strong, nonatomic)NSString *strPaymentStatus;
 
 @end
