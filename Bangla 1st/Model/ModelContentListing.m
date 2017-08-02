@@ -185,6 +185,15 @@
             self.strCategory=@"";
         }
         
+        if ([dict objectForKey:@"sharetext"] && ![[dict objectForKey:@"sharetext"] isKindOfClass:[NSNull class]])
+        {
+            self.strShareText=[dict objectForKey:@"sharetext"];
+        }
+        else
+        {
+            self.strShareText=@"";
+        }
+        
     }
     return self;
 }

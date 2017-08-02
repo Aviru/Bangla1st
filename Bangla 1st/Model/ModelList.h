@@ -30,6 +30,7 @@
 @property(nonatomic,strong)NSString *strAdId;
 @property(nonatomic,strong)NSString *strAdCodeUrl;
 @property(nonatomic,strong)NSString *strAdTitle;
+@property(nonatomic,strong)NSString *strShareText;
 
 ///Fields will be populated for DB use
 @property(nonatomic,strong)NSString *strVideoLocalPath;

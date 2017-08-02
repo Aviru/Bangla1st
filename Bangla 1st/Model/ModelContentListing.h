@@ -27,6 +27,7 @@
 @property(nonatomic,strong)NSString *strPostedBy;
 @property(nonatomic,strong)NSString *strAuthorImageUrl;
 @property(nonatomic,strong)NSString *strCategory;
+@property(nonatomic,strong)NSString *strShareText;
 
 
 @property(nonatomic,strong)NSString *strAdId;

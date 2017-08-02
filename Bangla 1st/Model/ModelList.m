@@ -175,6 +175,16 @@
             self.strCategory=@"";
         }
         
+        if ([dict objectForKey:@"sharetext"] && ![[dict objectForKey:@"sharetext"] isKindOfClass:[NSNull class]])
+        {
+            self.strShareText=[dict objectForKey:@"sharetext"];
+        }
+        else
+        {
+            self.strShareText=@"";
+        }
+        
+        
         if ([dict objectForKey:@"videoLocalPath"] && ![[dict objectForKey:@"videoLocalPath"] isKindOfClass:[NSNull class]])
         {
             self.strVideoLocalPath=[dict objectForKey:@"videoLocalPath"];

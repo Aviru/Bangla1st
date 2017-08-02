@@ -830,6 +830,8 @@
                             
                         }];
                         
+                        PackageListingVC *pckgListVC=(PackageListingVC *)[MainStoryBoard instantiateViewControllerWithIdentifier:@"PackageListingVC"];
+                        [self.navigationController pushViewController:pckgListVC animated:YES];
                         
                     }];
                     [alertController addAction:actionOK];
@@ -837,8 +839,7 @@
                         
                     }];
                     
-                    PackageListingVC *pckgListVC=(PackageListingVC *)[MainStoryBoard instantiateViewControllerWithIdentifier:@"PackageListingVC"];
-                    [self.navigationController pushViewController:pckgListVC animated:YES];
+                    
                 }
                 
             }
@@ -1076,13 +1077,13 @@
     ///SHARE
     else
     {
-        NSString *text = objContentListing.strVideoTitle;
-        NSURL *url = [NSURL URLWithString:objContentListing.strVideoFileUrl];
+        NSString *text = objContentListing.strShareText; //strVideoTitle
+       // NSURL *url = [NSURL URLWithString:objContentListing.strVideoFileUrl];
        // UIImage *image = arrVideoThumbImg[selectedDotsBtnIndexPath.row-1];
         
         UIActivityViewController *controller =
         [[UIActivityViewController alloc]
-         initWithActivityItems:@[text, url]
+         initWithActivityItems:@[text] //, url
          applicationActivities:nil];
         
         // check if new API supported

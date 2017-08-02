@@ -487,6 +487,9 @@
                      [alertController dismissViewControllerAnimated:YES completion:^{
                      
                      }];
+                         
+                         PackageListingVC *pckgListVC=(PackageListingVC *)[MainStoryBoard instantiateViewControllerWithIdentifier:@"PackageListingVC"];
+                         [self.navigationController pushViewController:pckgListVC animated:YES];
                      
                      }];
                      [alertController addAction:actionOK];
@@ -494,8 +497,7 @@
                      
                      }];
                     
-                    PackageListingVC *pckgListVC=(PackageListingVC *)[MainStoryBoard instantiateViewControllerWithIdentifier:@"PackageListingVC"];
-                    [self.navigationController pushViewController:pckgListVC animated:YES];
+                   
                 }
                 
             }
@@ -808,13 +810,13 @@
     }
     else
     {
-        NSString *text = objModelList.strVideoTitle;
-        NSURL *url = [NSURL URLWithString:objModelList.strVideoFileUrl];
-        UIImage *image = arrVideoThumbImg[selectedDotsBtnIndexPath.row-1];
+        NSString *text = objModelList.strShareText; //strVideoTitle
+        //NSURL *url = [NSURL URLWithString:objModelList.strVideoFileUrl];
+        //UIImage *image = arrVideoThumbImg[selectedDotsBtnIndexPath.row-1];
         
         UIActivityViewController *controller =
         [[UIActivityViewController alloc]
-         initWithActivityItems:@[text, url, image]
+         initWithActivityItems:@[text] // , url, image
          applicationActivities:nil];
         
         // check if new API supported
