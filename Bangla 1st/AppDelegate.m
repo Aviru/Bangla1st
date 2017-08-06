@@ -89,7 +89,8 @@ NSString *const kGCMMessageIDKey = @"gcm.message_id";
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
         UIRemoteNotificationType allNotificationTypes =
-        (UIRemoteNotificationTypeSound |
+        (UIRemoteNotificationTypeNewsstandContentAvailability |
+         UIRemoteNotificationTypeSound |
          UIRemoteNotificationTypeAlert |
          UIRemoteNotificationTypeBadge);
         [application registerForRemoteNotificationTypes:allNotificationTypes];
@@ -99,7 +100,9 @@ NSString *const kGCMMessageIDKey = @"gcm.message_id";
         // [START register_for_notifications]
         if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_9_x_Max) {
             UIUserNotificationType allNotificationTypes =
-            (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
+            (UIUserNotificationTypeSound |
+             UIUserNotificationTypeAlert |
+             UIUserNotificationTypeBadge);
             UIUserNotificationSettings *settings =
             [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
             [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
@@ -108,7 +111,7 @@ NSString *const kGCMMessageIDKey = @"gcm.message_id";
 #if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
             // For iOS 10 display notification (sent via APNS)
             [UNUserNotificationCenter currentNotificationCenter].delegate = self;
-            UNAuthorizationOptions authOptions =
+            UNAuthorizationOptions authOptions = 
             UNAuthorizationOptionAlert
             | UNAuthorizationOptionSound
             | UNAuthorizationOptionBadge;
@@ -316,6 +319,7 @@ NSString *const kGCMMessageIDKey = @"gcm.message_id";
     NSLog(@"%@", userInfo);
 }
 
+
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     // If you are receiving a notification message while your app is in the background,
@@ -335,6 +339,17 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     completionHandler(UIBackgroundFetchResultNewData);
 }
 // [END receive_message]
+
+
+//For interactive notification only
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
+{
+    //handle the actions
+    if ([identifier isEqualToString:@"declineAction"]){
+    }
+    else if ([identifier isEqualToString:@"answerAction"]){
+    }
+}
 
 // [START ios_10_message_handling]
 // Receive displayed notifications for iOS 10 devices.
@@ -400,6 +415,8 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     // should be done.
     NSString *refreshedToken = [[FIRInstanceID instanceID] token];
     NSLog(@"InstanceID token: %@", refreshedToken);
+    
+    [GlobalUserDefaults saveObject:refreshedToken withKey:DEVICETOKEN];
     
     // Connect to FCM since connection may have failed when attempted before having a token.
     [self connectToFcm];

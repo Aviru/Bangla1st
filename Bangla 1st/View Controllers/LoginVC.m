@@ -68,17 +68,6 @@
     btnGoogleLoginOutlet.layer.shadowOpacity = 0.5;
     
     
-    
-#if TARGET_IPHONE_SIMULATOR
-    // Simulator
-    strDeviceToken = @"fe3c1c39fb267847300fd9bd5fb30fc3df6a22c5d00f59743c138bfe15429d48";
-#else
-    //TODO: DEVICE TOKEN NEEDS TO BE CHANGED
-    // iPhones
-    //strDeviceToken =   [GlobalUserDefaults getObjectWithKey:DEVICETOKEN];
-    strDeviceToken = @"fe3c1c39fb267847300fd9bd5fb30fc3df6a22c5d00f59743c138bfe15429d48";
-#endif
-    
     if ([FBSDKAccessToken currentAccessToken]) {
         FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
         [login logOut];
@@ -263,6 +252,17 @@
     {
         [self initializeAndStartActivityIndicator:self.view];
         
+#if TARGET_IPHONE_SIMULATOR
+        // Simulator
+        strDeviceToken = @"fe3c1c39fb267847300fd9bd5fb30fc3df6a22c5d00f59743c138bfe15429d48";
+#else
+        //TODO: DEVICE TOKEN NEEDS TO BE CHANGED
+        // iPhones
+        strDeviceToken =   [GlobalUserDefaults getObjectWithKey:DEVICETOKEN];
+        // strDeviceToken = @"fe3c1c39fb267847300fd9bd5fb30fc3df6a22c5d00f59743c138bfe15429d48";
+#endif
+
+        
         globalLoginDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"username":strUserName,@"password":strPassword,@"deviceToken":strDeviceToken,@"loginType":@"normal"};
         
         [self callNormalLoginWebService];
@@ -369,6 +369,17 @@
                 NSString *fireUserEmail = ([self isEmpty:fireUser.email])?GoogleUser.profile.email:fireUser.email;
                 NSString *fireUserImageURL = ([self isEmpty:[fireUser.photoURL absoluteString]])?strImageURL:[fireUser.photoURL absoluteString];
                 
+#if TARGET_IPHONE_SIMULATOR
+                // Simulator
+                strDeviceToken = @"fe3c1c39fb267847300fd9bd5fb30fc3df6a22c5d00f59743c138bfe15429d48";
+#else
+                //TODO: DEVICE TOKEN NEEDS TO BE CHANGED
+                // iPhones
+                strDeviceToken =   [GlobalUserDefaults getObjectWithKey:DEVICETOKEN];
+                // strDeviceToken = @"fe3c1c39fb267847300fd9bd5fb30fc3df6a22c5d00f59743c138bfe15429d48";
+#endif
+                
+                
                 globalLoginDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"username":fireUserEmail,@"fullName":fireUserFullName,@"social_id":fireUserId,@"img_url":fireUserImageURL,@"deviceToken":strDeviceToken,@"loginType":@"social"};
                 
                 [self callSocialLoginWebService];
@@ -400,9 +411,9 @@
              if (!error) {
                  
                  NSLog(@"fetched user:%@", result);
-                
-                 /*
                  
+                 /*
+                  
                   {
                   email = "avra_bhattacharjee@yahoo.com";
                   "first_name" = Aviru;
@@ -418,6 +429,17 @@
                   */
                  
                  NSString *strFullName = [NSString stringWithFormat:@"%@ %@",result[@"first_name"],result[@"last_name"]];
+                 
+#if TARGET_IPHONE_SIMULATOR
+                 // Simulator
+                 strDeviceToken = @"fe3c1c39fb267847300fd9bd5fb30fc3df6a22c5d00f59743c138bfe15429d48";
+#else
+                 //TODO: DEVICE TOKEN NEEDS TO BE CHANGED
+                 // iPhones
+                 strDeviceToken =   [GlobalUserDefaults getObjectWithKey:DEVICETOKEN];
+                 // strDeviceToken = @"fe3c1c39fb267847300fd9bd5fb30fc3df6a22c5d00f59743c138bfe15429d48";
+#endif
+                 
                  
                  globalLoginDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"username":result[@"email"],@"fullName":strFullName,@"social_id":result[@"id"],@"img_url":result[@"picture"][@"data"][@"url"],@"deviceToken":strDeviceToken,@"loginType":@"social"};
                  

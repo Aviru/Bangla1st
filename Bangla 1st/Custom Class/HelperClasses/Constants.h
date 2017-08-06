@@ -30,7 +30,7 @@
 
 
 #define device             @"iOS"
-#define DEVICETOKEN        @"device_token"
+#define DEVICETOKEN        @"⁠⁠⁠deviceToken"
 #define LOGINTYPE          @"loginType"
 #define ISLOGGEDIN         @"IsLoggedIn"
 #define IS_FIRST_TIME      @"isFirstTime"

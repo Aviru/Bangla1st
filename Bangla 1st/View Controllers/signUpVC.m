@@ -64,9 +64,10 @@
     
     arrCountry = [self.appDel.arrCountryList copy];
     
-    arrPlaceHolder = [[NSMutableArray alloc]initWithObjects:@"Your Name",@"Email",@"Password",@"Re-enter Password",@"Date of birth",@"Country",@"State",@"City",@"", nil]; //@"User Type"
+    arrPlaceHolder = [[NSMutableArray alloc]initWithObjects:@"Your Name",@"Email",@"Password",@"", nil];  // @"Re-enter Password",@"Date of birth",@"Country",@"State",@"City"    //@"User Type"
     
-    arrCellIcon = [[NSArray alloc]initWithObjects:@"user.png",@"email_icon.png",@"password_key.png",@"password_key.png",@"calendar.png",@"country.png",@"location.png",@"location.png",@"", nil]; //@"subscription_icon.png"
+    arrCellIcon = [[NSArray alloc]initWithObjects:@"user.png",@"email_icon.png",@"password_key.png",@"", nil]; //,@"password_key.png",@"calendar.png",@"country.png",@"location.png",@"location.png"
+             //@"subscription_icon.png"
    
     /*
     NSArray *fontFamilies = [UIFont familyNames];
@@ -116,13 +117,13 @@
     strEmail = @"";
     strPassword = @"";
     strRePassword = @"";
-    strDob = @"";
-    strCountry = @"";
-    strState = @"";
-    strCity = @"";
+    strDob = @"1982-03-10";
+    strCountry = @"India";
+    strState = @"West Bengal";
+    strCity = @"Kolkata";
     strGender = @"male";
     strUserSubscriptionType = @"";
-    strCountryId = @"";
+    strCountryId = @"IND";
     strUserTypeId = @"";
     isMaleBtnTap = YES;
     isFemaleBtnTap = NO;
@@ -210,7 +211,7 @@
 {
     if (tableView == tblSignUp)
     {
-        if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2 ||indexPath.row == 3 || indexPath.row == 4 ||indexPath.row == 6 || indexPath.row == 7)
+        if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2)  //||indexPath.row == 3 || indexPath.row == 4 ||indexPath.row == 6 || indexPath.row == 7
         {
             SignUpTableViewCell *cell = (SignUpTableViewCell *)[tblSignUp dequeueReusableCellWithIdentifier:@"normalCell"];
             if (cell==nil)
@@ -241,7 +242,7 @@
             
             cell.imgVwIconTextFields.image = [UIImage imageNamed:arrCellIcon[indexPath.row]];
             
-            if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2 ||indexPath.row == 3)
+            if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2 ) //||indexPath.row == 3
             {
                 cell.imgViewRedStarIcon.hidden = NO;
             }
@@ -262,7 +263,7 @@
             else
               cell.txtSignUpFields.keyboardType = UIKeyboardTypeDefault;  
             
-            if (indexPath.row == 2 ||indexPath.row == 3)
+            if (indexPath.row == 2 )  //||indexPath.row == 3
             {
                 cell.txtSignUpFields.secureTextEntry = YES;
                 
@@ -289,6 +290,7 @@
             return cell;
         }
         
+        /*
         if (indexPath.row == 5 || indexPath.row == 9 )
         {
             SignUpTableViewCell *cell = (SignUpTableViewCell *)[tblSignUp dequeueReusableCellWithIdentifier:@"dropDownCell"];
@@ -324,6 +326,7 @@
             
             return cell;
         }
+        */
         
         else
         {
@@ -1111,6 +1114,8 @@
         return NO;
     }
     
+    
+    /*
     if (strRePassword.length == 0)
     {
         [self displayErrorWithMessage:@"Please re-enter password"];
@@ -1122,8 +1127,7 @@
         [self displayErrorWithMessage:@"Re-enter Password mismatch"];
         return NO;
     }
-    
-    /*
+
     if (strDob.length == 0)
     {
         [self displayErrorWithMessage:@"Please enter your date of birth"];
@@ -1178,8 +1182,8 @@
 #else
     //TODO: DEVICE TOKEN NEEDS TO BE CHANGED
     // iPhones
-    //strDeviceToken =   [GlobalUserDefaults getObjectWithKey:DEVICETOKEN];
-    strDeviceToken = @"fe3c1c39fb267847300fd9bd5fb30fc3df6a22c5d00f59743c138bfe15429d48";
+    strDeviceToken =   [GlobalUserDefaults getObjectWithKey:DEVICETOKEN];
+   // strDeviceToken = @"fe3c1c39fb267847300fd9bd5fb30fc3df6a22c5d00f59743c138bfe15429d48";
 #endif
     
     NSDictionary *LoginDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"username":self.appDel.objModelUserInfo.strUserEmail,@"password":strPassword,@"deviceToken":strDeviceToken,@"loginType":@"normal"};
