@@ -140,6 +140,9 @@
 		0091AE771E993C3C005E3114 /* Search_white_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0091AE761E993C3C005E3114 /* Search_white_icon.png */; };
 		009B16BE1EB79B3600C558B3 /* MemberSubscriptionWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 009B16BD1EB79B3600C558B3 /* MemberSubscriptionWebService.m */; };
 		00A406D01EDABC9F00F143F7 /* PrivacyPolicyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A406CF1EDABC9F00F143F7 /* PrivacyPolicyVC.m */; };
+		00A9F85C1F40E3E40045827E /* CustomNotificationViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A9F85B1F40E3E40045827E /* CustomNotificationViewManager.m */; };
+		00A9F85F1F40E63E0045827E /* icon36.png in Resources */ = {isa = PBXBuildFile; fileRef = 00A9F85D1F40E63E0045827E /* icon36.png */; };
+		00A9F8601F40E63E0045827E /* icon36@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00A9F85E1F40E63E0045827E /* icon36@2x.png */; };
 		00ADFC6A1EBD2132008A7A51 /* TransactionHistoryWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADFC691EBD2132008A7A51 /* TransactionHistoryWebService.m */; };
 		00ADFC6D1EBD236F008A7A51 /* ModelTransactionHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADFC6C1EBD236F008A7A51 /* ModelTransactionHistory.m */; };
 		00B2A8EC1EBF7D0700B319CE /* FileDownloadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B2A8EB1EBF7D0700B319CE /* FileDownloadInfo.m */; };
@@ -458,6 +461,10 @@
 		009B16BD1EB79B3600C558B3 /* MemberSubscriptionWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberSubscriptionWebService.m; sourceTree = "<group>"; };
 		00A406CE1EDABC9F00F143F7 /* PrivacyPolicyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyPolicyVC.h; sourceTree = "<group>"; };
 		00A406CF1EDABC9F00F143F7 /* PrivacyPolicyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyPolicyVC.m; sourceTree = "<group>"; };
+		00A9F85A1F40E3E40045827E /* CustomNotificationViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNotificationViewManager.h; sourceTree = "<group>"; };
+		00A9F85B1F40E3E40045827E /* CustomNotificationViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNotificationViewManager.m; sourceTree = "<group>"; };
+		00A9F85D1F40E63E0045827E /* icon36.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon36.png; sourceTree = "<group>"; };
+		00A9F85E1F40E63E0045827E /* icon36@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon36@2x.png"; sourceTree = "<group>"; };
 		00ADFC681EBD2132008A7A51 /* TransactionHistoryWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionHistoryWebService.h; sourceTree = "<group>"; };
 		00ADFC691EBD2132008A7A51 /* TransactionHistoryWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionHistoryWebService.m; sourceTree = "<group>"; };
 		00ADFC6B1EBD236F008A7A51 /* ModelTransactionHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelTransactionHistory.h; sourceTree = "<group>"; };
@@ -857,6 +864,7 @@
 				00109C7C1E8FE634006B38F3 /* Global UserDefault */,
 				0091AE701E993490005E3114 /* Navigation Bar */,
 				0024E5071E982C70007EC3D1 /* Avi Spinner */,
+				00A9F8591F40E3E40045827E /* Cstom Notification View */,
 				001177F61E9A6FF1009EC0E7 /* Custom Drop Menu */,
 				00C5236A1EAE8C4800A0A4CB /* REFrostedViewController */,
 				00C5237D1EAE8D5F00A0A4CB /* Left Panel Classes */,
@@ -1132,6 +1140,15 @@
 			path = "Navigation Bar";
 			sourceTree = "<group>";
 		};
+		00A9F8591F40E3E40045827E /* Cstom Notification View */ = {
+			isa = PBXGroup;
+			children = (
+				00A9F85A1F40E3E40045827E /* CustomNotificationViewManager.h */,
+				00A9F85B1F40E3E40045827E /* CustomNotificationViewManager.m */,
+			);
+			path = "Cstom Notification View";
+			sourceTree = "<group>";
+		};
 		00B2A8E91EBF7CE500B319CE /* FileDownLoadInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -1362,6 +1379,8 @@
 		55E9053D1E7D014D0039C929 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				00A9F85D1F40E63E0045827E /* icon36.png */,
+				00A9F85E1F40E63E0045827E /* icon36@2x.png */,
 				004130611F2DC52400B80BC8 /* box_empty.png */,
 				004130621F2DC52400B80BC8 /* box_tick.png */,
 				0041305A1F2DB75000B80BC8 /* zip_code.png */,
@@ -1603,6 +1622,7 @@
 				001177FB1E9A705E009EC0E7 /* CustomDropMenu.xib in Resources */,
 				0091AE751E99357F005E3114 /* NavigationBar.xib in Resources */,
 				00D8FC3A1F2C786300280BF0 /* RadioOff.png in Resources */,
+				00A9F85F1F40E63E0045827E /* icon36.png in Resources */,
 				55E905451E7D05E60039C929 /* icon60@2x.png in Resources */,
 				55E905511E7D334A0039C929 /* ic_list_black_48dp.png in Resources */,
 				55E9058F1E7DC5300039C929 /* VKVideoPlayer_pause@2x.png in Resources */,
@@ -1677,6 +1697,7 @@
 				003A61A41EB1316E00DDAAFE /* aboutUs_gray_icon.png in Resources */,
 				00ECDBBD1EA94F5500D17130 /* calendar.png in Resources */,
 				00D8FC251F2C786300280BF0 /* Config.plist in Resources */,
+				00A9F8601F40E63E0045827E /* icon36@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1750,6 +1771,7 @@
 			files = (
 				00CE571E1EAC053D00270B03 /* ModelCountryList.m in Sources */,
 				00CE57241EAC078D00270B03 /* CountryListWebService.m in Sources */,
+				00A9F85C1F40E3E40045827E /* CustomNotificationViewManager.m in Sources */,
 				00109C791E8FE4CC006B38F3 /* Reachability.m in Sources */,
 				0001D8841EB67FB500B37FAE /* PackageListingWebService.m in Sources */,
 				55E904F91E7CF0770039C929 /* AppDelegate.m in Sources */,

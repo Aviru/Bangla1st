@@ -22,6 +22,8 @@
 
 #import <UserNotifications/UserNotifications.h>
 
+#import "CustomNotificationViewManager.h"
+
 #if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 @interface AppDelegate ()<FIRMessagingDelegate,UNUserNotificationCenterDelegate>
 
@@ -35,6 +37,22 @@
 @implementation AppDelegate
 
 NSString *const kGCMMessageIDKey = @"gcm.message_id";
+
+- (id)initWithStyleSheet:(NSObject<CustomNotificationViewStyleSheet> *)stylesheet
+{
+    self = [super init];
+    if (self)
+    {
+        [CustomNotificationViewManager sharedInstance].styleSheet = stylesheet;
+    }
+    return self;
+}
+
+- (id)init
+{
+    return [self initWithStyleSheet:nil];
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -131,6 +149,8 @@ NSString *const kGCMMessageIDKey = @"gcm.message_id";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenRefreshNotification:)name:kFIRInstanceIDTokenRefreshNotification object:nil];
     // [END add_token_refresh_observer]
     
+    // Portrait only for demo
+    [CustomNotificationViewManager sharedInstance].managerSupportedOrientationsMask = UIInterfaceOrientationMaskPortrait;
     
     return YES;
 }
@@ -323,7 +343,7 @@ NSString *const kGCMMessageIDKey = @"gcm.message_id";
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     // If you are receiving a notification message while your app is in the background,
-    // this callback will not be fired till the user taps on the notification launching the application.
+    // this callback will be fired if silent push notification feature is present i.e. if content_available : true .
     // TODO: Handle data of notification
     
     // Print message ID.
@@ -334,9 +354,24 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     // Print full message.
     NSLog(@"%@", userInfo);
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowNotificationListPageFromFCMPush" object:nil];
+    if ([[UIApplication sharedApplication]applicationState] == UIApplicationStateActive) {
+        
+        [[CustomNotificationViewManager sharedInstance] showMessageWithTitle:userInfo[@"aps"][@"alert"][@"title"]
+                                                                 description:userInfo[@"aps"][@"alert"][@"body"]
+                                                                        type:CustomNotificationViewMessage
+                                                              statusBarStyle:UIStatusBarStyleDefault
+                                                                    callback:nil];
+        
+       completionHandler(UIBackgroundFetchResultNoData);
+    }
     
-    completionHandler(UIBackgroundFetchResultNewData);
+    else {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowNotificationListPageFromFCMPush" object:nil];
+        completionHandler(UIBackgroundFetchResultNewData);
+    }
+    
+    
 }
 // [END receive_message]
 
@@ -367,15 +402,9 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     // Print full message.
     NSLog(@"%@", userInfo);
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"You have received a notification" preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        
-    }]];
-    [alert show];
-    
     // Change this to your preferred presentation option
-    completionHandler(UNNotificationPresentationOptionNone);
+  //  completionHandler(UNNotificationPresentationOptionNone);
+    completionHandler(UNNotificationPresentationOptionAlert + UNNotificationPresentationOptionSound);
 }
 
 // Handle notification messages after display notification is tapped by the user.
