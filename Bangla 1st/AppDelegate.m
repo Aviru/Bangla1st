@@ -356,6 +356,8 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
     if ([[UIApplication sharedApplication]applicationState] == UIApplicationStateActive) {
         
+        AudioServicesPlaySystemSound(1315);
+        
         [[CustomNotificationViewManager sharedInstance] showMessageWithTitle:userInfo[@"aps"][@"alert"][@"title"]
                                                                  description:userInfo[@"aps"][@"alert"][@"body"]
                                                                         type:CustomNotificationViewMessage
