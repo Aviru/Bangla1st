@@ -163,10 +163,26 @@ class SuccessViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         for  i in 0..<Int((self.navigationController?.viewControllers.count)!)
         {
-            if(self.navigationController?.viewControllers[i].isKind(of: MyProfileVC.self) == true)
+            if(self.navigationController?.viewControllers[i].isKind(of: UITabBarController.self) == true)
             {
-                _ =  self.navigationController?.popToViewController(self.navigationController!.viewControllers[i] as! MyProfileVC, animated: true)
+               // _ =  self.navigationController?.popToViewController(self.navigationController!.viewControllers[i] as! MyProfileVC, animated: true)
                 
+                let someTabIndex = 3
+                // Get the tabBar
+                let t : UITabBarController = self.navigationController?.viewControllers[i] as! UITabBarController
+                // Change the selected tab item to what you want
+                t.selectedIndex = someTabIndex
+                // Pop the navigation controller of that index
+                
+                // let pkgvc = t.viewControllers![someTabIndex] as! PackageListingVC
+                
+                let pkgvc = self.navigationController?.viewControllers[1] as! PackageListingVC
+                
+                let v = t.viewControllers?[someTabIndex]
+                if let n = v?.navigationController {
+                    pkgvc.removeObserver(pkgvc, forKeyPath: "strPaymentStatus")
+                    n.popToRootViewController(animated: true)
+                }
                 break;
             }
             

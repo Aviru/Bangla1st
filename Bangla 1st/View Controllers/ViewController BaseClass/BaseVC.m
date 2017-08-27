@@ -509,7 +509,7 @@ NSString *const kAviBeachBallSpinner = @"AviBeachBallSpinner";
     
     NSString *strDeviceToken = @"fe3c1c39fb267847300fd9bd5fb30fc3df6a22c5d00f59743c138bfe15429d48";
     
-    NSDictionary *logOutDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",USERID:self.appDel.objModelUserInfo.strUserId,@"deviceToken": strDeviceToken};
+    NSDictionary *logOutDict = @{@"ApiKey":API_KEY,USERID:self.appDel.objModelUserInfo.strUserId,@"deviceToken": strDeviceToken};
     
     [[LogOutWebService service]callLogOutWebServiceWithDictParams:logOutDict success:^(id  _Nullable response, NSString * _Nullable strMsg)
      {

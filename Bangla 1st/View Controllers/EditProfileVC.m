@@ -698,7 +698,7 @@
         {
             [self initializeAndStartActivityIndicator:self.view];
             
-            NSDictionary *editProfileDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",USERID:self.appDel.objModelUserInfo.strUserId,@"name":strFullName,@"email":strEmail,@"dob":strDob,@"country":strCountryId,@"gender":strGender};
+            NSDictionary *editProfileDict = @{@"ApiKey":API_KEY,USERID:self.appDel.objModelUserInfo.strUserId,@"name":strFullName,@"email":strEmail,@"dob":strDob,@"country":strCountryId,@"gender":strGender};
             
             NSLog(@"editProfileDict:%@",editProfileDict);
             

@@ -263,7 +263,7 @@
 #endif
 
         
-        globalLoginDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"username":strUserName,@"password":strPassword,@"deviceToken":strDeviceToken,@"loginType":@"normal"};
+        globalLoginDict = @{@"ApiKey":API_KEY,@"username":strUserName,@"password":strPassword,@"deviceToken":strDeviceToken,@"loginType":@"normal"};
         
         [self callNormalLoginWebService];
     }
@@ -283,9 +283,13 @@
 
 - (void)signInWillDispatch:(GIDSignIn *)signIn error:(NSError *)error
 {
-    [self StopActivityIndicator:self.view];
+    //[self StopActivityIndicator:self.view];
     
-    NSLog(@"signInWillDispatch: %@",error);
+    if (error != nil) {
+        [self StopActivityIndicator:self.view];
+        NSLog(@"signInWillDispatch: %@",error);
+    }
+    
 }
 
 - (void)signIn:(GIDSignIn *)signIn presentViewController:(UIViewController *)viewController
@@ -380,7 +384,7 @@
 #endif
                 
                 
-                globalLoginDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"username":fireUserEmail,@"fullName":fireUserFullName,@"social_id":fireUserId,@"img_url":fireUserImageURL,@"deviceToken":strDeviceToken,@"loginType":@"social"};
+                globalLoginDict = @{@"ApiKey":API_KEY,@"username":fireUserEmail,@"fullName":fireUserFullName,@"social_id":fireUserId,@"img_url":fireUserImageURL,@"deviceToken":strDeviceToken,@"loginType":@"social"};
                 
                 [self callSocialLoginWebService];
             }
@@ -441,7 +445,7 @@
 #endif
                  
                  
-                 globalLoginDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"username":result[@"email"],@"fullName":strFullName,@"social_id":result[@"id"],@"img_url":result[@"picture"][@"data"][@"url"],@"deviceToken":strDeviceToken,@"loginType":@"social"};
+                 globalLoginDict = @{@"ApiKey":API_KEY,@"username":result[@"email"],@"fullName":strFullName,@"social_id":result[@"id"],@"img_url":result[@"picture"][@"data"][@"url"],@"deviceToken":strDeviceToken,@"loginType":@"social"};
                  
                  [self callSocialLoginWebService];
              }

@@ -86,7 +86,7 @@
 {
     [self initializeAndStartActivityIndicator:self.view];
     
-    NSDictionary *dict = @{ @"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",USERID:self.appDel.objModelUserInfo.strUserId };
+    NSDictionary *dict = @{ @"ApiKey":API_KEY,USERID:self.appDel.objModelUserInfo.strUserId };
     
     [[TransactionHistoryWebService service]callTransactionHistoryWebServiceWithDictParams:dict success:^(id  _Nullable response, NSString * _Nullable strMsg) {
         

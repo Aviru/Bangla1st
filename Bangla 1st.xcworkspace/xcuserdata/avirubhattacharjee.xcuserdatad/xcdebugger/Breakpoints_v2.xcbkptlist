@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/HomeVC.m"
-            timestampString = "523397028.438024"
+            timestampString = "524605249.481326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "912"
-            endingLineNumber = "912"
+            startingLineNumber = "911"
+            endingLineNumber = "911"
             landmarkName = "-didSelectDotsButtonAtIndexPath:dropDownSelctedCell:"
             landmarkType = "7">
          </BreakpointContent>
@@ -265,8 +265,8 @@
                   symbolName = "-[signUpVC showDropDown:CountryDropDown:]"
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-08-14/Bangla%201st/View%20Controllers/signUpVC.m"
-                  timestampString = "524433761.180783"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/signUpVC.m"
+                  timestampString = "525473273.192926"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "716"
@@ -280,8 +280,8 @@
                   symbolName = "__41-[signUpVC showDropDown:CountryDropDown:]_block_invoke.447"
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-08-14/Bangla%201st/View%20Controllers/signUpVC.m"
-                  timestampString = "524433761.182807"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/signUpVC.m"
+                  timestampString = "525473273.194373"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "718"
@@ -601,8 +601,8 @@
                   symbolName = "-[ChangePasswordVC btnSubmitAction:]"
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-08-14/Bangla%201st/View%20Controllers/ChangePasswordVC.m"
-                  timestampString = "524433761.238396"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/ChangePasswordVC.m"
+                  timestampString = "525473273.245437"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "257"
@@ -616,8 +616,8 @@
                   symbolName = "__36-[ChangePasswordVC btnSubmitAction:]_block_invoke"
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-08-14/Bangla%201st/View%20Controllers/ChangePasswordVC.m"
-                  timestampString = "524433761.239812"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/ChangePasswordVC.m"
+                  timestampString = "525473273.247456"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "257"
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/HomeVC.m"
-            timestampString = "523397028.438024"
+            timestampString = "524605249.481326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "921"
-            endingLineNumber = "921"
+            startingLineNumber = "920"
+            endingLineNumber = "920"
             landmarkName = "-didSelectDotsButtonAtIndexPath:dropDownSelctedCell:"
             landmarkType = "7">
          </BreakpointContent>
@@ -714,11 +714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/HomeVC.m"
-            timestampString = "517177956.368061"
+            timestampString = "524605249.481326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "671"
-            endingLineNumber = "671"
+            startingLineNumber = "670"
+            endingLineNumber = "670"
             landmarkName = "@implementation HomeVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -730,28 +730,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/HomeVC.m"
-            timestampString = "517177956.368061"
+            timestampString = "524605249.481326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
             landmarkName = "-setUpContentPlayerWithUrl:playerFrame:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Bangla 1st/AppDelegate.m"
-            timestampString = "524348176.634061"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
-            landmarkName = "-findAllButton:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -922,11 +906,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/HomeVC.m"
-            timestampString = "517177956.368061"
+            timestampString = "524605249.481326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "802"
-            endingLineNumber = "802"
+            startingLineNumber = "801"
+            endingLineNumber = "801"
             landmarkName = "-collectionView:didSelectImageItemAtIndexPath:withSelectedContent:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1049,8 +1033,8 @@
                   symbolName = "__32-[MyProfileVC getPackageListing]_block_invoke"
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-08-14/Bangla%201st/View%20Controllers/MyProfileVC.m"
-                  timestampString = "524433761.310958"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/MyProfileVC.m"
+                  timestampString = "525473273.330437"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "211"
@@ -1064,8 +1048,8 @@
                   symbolName = "__32-[MyProfileVC getPackageListing]_block_invoke"
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-08-14/Bangla%201st/View%20Controllers/MyProfileVC.m"
-                  timestampString = "524433761.312393"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/MyProfileVC.m"
+                  timestampString = "525473273.331816"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "211"
@@ -1082,11 +1066,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/HomeVC.m"
-            timestampString = "523397028.438024"
+            timestampString = "524605249.481326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1304"
-            endingLineNumber = "1304"
+            startingLineNumber = "1303"
+            endingLineNumber = "1303"
             landmarkName = "-URLSession:downloadTask:didFinishDownloadingToURL:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1098,11 +1082,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/View Controllers/HomeVC.m"
-            timestampString = "523397028.438024"
+            timestampString = "524605249.481326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1297"
-            endingLineNumber = "1297"
+            startingLineNumber = "1296"
+            endingLineNumber = "1296"
             landmarkName = "-URLSession:downloadTask:didFinishDownloadingToURL:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1305,8 +1289,8 @@
                   symbolName = "-[PackageListingVC callMemberSubscriptionWebServiceWithDict:]"
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-08-14/Bangla%201st/View%20Controllers/PackageListingVC.m"
-                  timestampString = "524433761.361472"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/PackageListingVC.m"
+                  timestampString = "525473273.369986"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "460"
@@ -1320,8 +1304,8 @@
                   symbolName = "__61-[PackageListingVC callMemberSubscriptionWebServiceWithDict:]_block_invoke.395"
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-08-14/Bangla%201st/View%20Controllers/PackageListingVC.m"
-                  timestampString = "524433761.362843"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/PackageListingVC.m"
+                  timestampString = "525473273.371359"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "460"
@@ -1562,11 +1546,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/AppDelegate.m"
-            timestampString = "524348176.634061"
+            timestampString = "525474480.081185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
             landmarkName = "-application:didReceiveRemoteNotification:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1578,11 +1562,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/AppDelegate.m"
-            timestampString = "524348176.634061"
+            timestampString = "525474480.081185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1594,11 +1578,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/AppDelegate.m"
-            timestampString = "524431071.513426"
+            timestampString = "525474480.081185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "399"
-            endingLineNumber = "399"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
             landmarkName = "-userNotificationCenter:willPresentNotification:withCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1610,11 +1594,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/AppDelegate.m"
-            timestampString = "524431071.513426"
+            timestampString = "525474480.081185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "445"
-            endingLineNumber = "445"
+            startingLineNumber = "450"
+            endingLineNumber = "450"
             landmarkName = "-tokenRefreshNotification:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1626,11 +1610,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/AppDelegate.m"
-            timestampString = "524431071.513426"
+            timestampString = "525474480.081185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "456"
-            endingLineNumber = "456"
+            startingLineNumber = "461"
+            endingLineNumber = "461"
             landmarkName = "-tokenRefreshNotification:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1642,11 +1626,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/AppDelegate.m"
-            timestampString = "524431071.513426"
+            timestampString = "525474480.081185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "434"
-            endingLineNumber = "434"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
             landmarkName = "-applicationReceivedRemoteMessage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1913,8 +1897,8 @@
                   symbolName = "Bangla_1st.AddressViewController.tableView (__ObjC.UITableView, viewForHeaderInSection : Swift.Int) -&gt; Swift.Optional&lt;__ObjC.UIView&gt;"
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-08-14/Bangla%201st/View%20Controllers/Pyment%20VewControllers/AddressViewController.swift"
-                  timestampString = "524433761.518741"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/Pyment%20VewControllers/AddressViewController.swift"
+                  timestampString = "525473273.467871"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "179"
@@ -1928,8 +1912,8 @@
                   symbolName = "Bangla_1st.AddressViewController.(tableView (__ObjC.UITableView, viewForHeaderInSection : Swift.Int) -&gt; Swift.Optional&lt;__ObjC.UIView&gt;).(closure #1)"
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-08-14/Bangla%201st/View%20Controllers/Pyment%20VewControllers/AddressViewController.swift"
-                  timestampString = "524433761.522613"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/Pyment%20VewControllers/AddressViewController.swift"
+                  timestampString = "525473273.469241"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "181"
@@ -1993,8 +1977,8 @@
                   symbolName = "Bangla_1st.FailViewController.tableView (__ObjC.UITableView, cellForRowAt : Foundation.IndexPath) -&gt; __ObjC.UITableViewCell"
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-08-14/Bangla%201st/View%20Controllers/Pyment%20VewControllers/FailViewController.swift"
-                  timestampString = "524433761.539252"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/Pyment%20VewControllers/FailViewController.swift"
+                  timestampString = "525473273.477847"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
@@ -2008,8 +1992,8 @@
                   symbolName = "Bangla_1st.FailViewController.tableView (__ObjC.UITableView, cellForRowAt : Foundation.IndexPath) -&gt; __ObjC.UITableViewCell"
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-08-14/Bangla%201st/View%20Controllers/Pyment%20VewControllers/FailViewController.swift"
-                  timestampString = "524433761.54149"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/Pyment%20VewControllers/FailViewController.swift"
+                  timestampString = "525473273.479218"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
@@ -2073,8 +2057,8 @@
                   symbolName = "Bangla_1st.SuccessViewController.ResponseNew (Foundation.Notification) -&gt; ()"
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-08-14/Bangla%201st/View%20Controllers/Pyment%20VewControllers/SuccessViewController.swift"
-                  timestampString = "524433761.558417"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/Pyment%20VewControllers/SuccessViewController.swift"
+                  timestampString = "525473273.487973"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "118"
@@ -2088,8 +2072,8 @@
                   symbolName = "Bangla_1st.SuccessViewController.ResponseNew (Foundation.Notification) -&gt; ()"
                   moduleName = "Bangla 1st"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/2017-08-14/Bangla%201st/View%20Controllers/Pyment%20VewControllers/SuccessViewController.swift"
-                  timestampString = "524433761.561225"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/Pyment%20VewControllers/SuccessViewController.swift"
+                  timestampString = "525473273.489332"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "118"
@@ -2122,11 +2106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/AppDelegate.m"
-            timestampString = "524348176.634061"
+            timestampString = "525474480.081185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "-application:didReceiveRemoteNotification:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2138,11 +2122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/AppDelegate.m"
-            timestampString = "524431071.513426"
+            timestampString = "525474480.081185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
+            startingLineNumber = "378"
+            endingLineNumber = "378"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2154,12 +2138,380 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bangla 1st/AppDelegate.m"
-            timestampString = "524431071.513426"
+            timestampString = "525474480.081185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "361"
-            endingLineNumber = "361"
+            startingLineNumber = "366"
+            endingLineNumber = "366"
             landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/LoginVC.m"
+            timestampString = "524862893.012839"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
+            landmarkName = "-signIn:didSignInForUser:withError:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/LoginVC.m"
+            timestampString = "524862893.012839"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
+            landmarkName = "-signIn:didSignInForUser:withError:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/LoginVC.m"
+            timestampString = "524862893.012839"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "389"
+            endingLineNumber = "389"
+            landmarkName = "-signIn:didSignInForUser:withError:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/LoginVC.m"
+            timestampString = "524862893.012839"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
+            landmarkName = "-signIn:didDisconnectWithUser:withError:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/Pyment VewControllers/SuccessViewController.swift"
+            timestampString = "525470585.930928"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "btnOkAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/Pyment VewControllers/SuccessViewController.swift"
+            timestampString = "525471734.243431"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "btnOkAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/ListVC.m"
+            timestampString = "525472467.835035"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "472"
+            endingLineNumber = "472"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/SplashVC.m"
+            timestampString = "525472729.115098"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "-navigateToNextscreen"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SplashVC navigateToNextscreen]"
+                  moduleName = "Bangla 1st"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/SplashVC.m"
+                  timestampString = "525473273.731744"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "816">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__32-[SplashVC navigateToNextscreen]_block_invoke"
+                  moduleName = "Bangla 1st"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/SplashVC.m"
+                  timestampString = "525473273.733171"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/SplashVC.m"
+            timestampString = "525472796.978966"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "-navigateToNextscreen"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/View Controllers/SplashVC.m"
+            timestampString = "525472806.554868"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "-navigateToNextscreen"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SplashVC navigateToNextscreen]"
+                  moduleName = "Bangla 1st"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/SplashVC.m"
+                  timestampString = "525473273.739278"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "996">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__32-[SplashVC navigateToNextscreen]_block_invoke.115"
+                  moduleName = "Bangla 1st"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/View%20Controllers/SplashVC.m"
+                  timestampString = "525473273.741323"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/Custom Class/ReachabilityManager/ReachabilityManager.m"
+            timestampString = "525472880.851015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "-updateInterfaceWithReachability:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/Custom Class/ReachabilityManager/ReachabilityManager.m"
+            timestampString = "525472883.083213"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "-updateInterfaceWithReachability:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/Custom Class/ReachabilityManager/ReachabilityManager.m"
+            timestampString = "525472892.314891"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "-getIMAadLink"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/Custom Class/ReachabilityManager/ReachabilityManager.m"
+            timestampString = "525472894.419073"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "-getIMAadLink"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ReachabilityManager getIMAadLink]"
+                  moduleName = "Bangla 1st"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/Custom%20Class/ReachabilityManager/ReachabilityManager.m"
+                  timestampString = "525473273.767902"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "174"
+                  endingLineNumber = "174"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__35-[ReachabilityManager getIMAadLink]_block_invoke"
+                  moduleName = "Bangla 1st"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/avirubhattacharjee/Desktop/DOCUMENTS/Files/My%20Projects%20and%20programs/Free%20Lance/Bangla%201st/Video%20App/2017-08-14/Bangla%201st/Custom%20Class/ReachabilityManager/ReachabilityManager.m"
+                  timestampString = "525473273.771161"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "176"
+                  endingLineNumber = "176"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/AppDelegate.m"
+            timestampString = "525474108.242881"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "-application:supportedInterfaceOrientationsForWindow:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/AppDelegate.m"
+            timestampString = "525474110.707058"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "-application:supportedInterfaceOrientationsForWindow:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bangla 1st/AppDelegate.m"
+            timestampString = "525474112.074884"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
+            landmarkName = "-application:supportedInterfaceOrientationsForWindow:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

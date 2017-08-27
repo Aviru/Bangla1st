@@ -31,6 +31,7 @@
 
 #define device             @"iOS"
 #define DEVICETOKEN        @"⁠⁠⁠deviceToken"
+#define API_KEY            @"0a2b8d7f9243305f2a4700e1870f673a"
 #define LOGINTYPE          @"loginType"
 #define ISLOGGEDIN         @"IsLoggedIn"
 #define IS_FIRST_TIME      @"isFirstTime"

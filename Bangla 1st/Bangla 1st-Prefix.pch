@@ -32,6 +32,8 @@
 
 #import "Constants.h"
 
-#define BASE_URL @"http://173.214.180.212/api/v1/"
+//#define BASE_URL @"http://173.214.180.212/api/v1/"
+
+#define BASE_URL @"http://bangla1st.com/api/v1/"
 
 #endif /* Bangla_1st_Prefix_pch */

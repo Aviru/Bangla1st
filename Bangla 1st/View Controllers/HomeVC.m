@@ -208,8 +208,7 @@
    
     [self initializeAndStartActivityIndicator:self.view];
     
-    NSDictionary *dictParams= @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",
-                                };
+    NSDictionary *dictParams= @{@"ApiKey":API_KEY};
     
     [[ContentListingWebService service]callContentListingWebServiceWithDictParams:dictParams success:^(id _Nullable response, NSString * _Nullable strMsg) {
         
@@ -588,7 +587,7 @@
                                                     }
                                                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                                        
-                                                       [arrVideoThumbImg addObject:image];
+                                                     //  [arrVideoThumbImg addObject:image];
                                                        
                                                    }];
                 }
@@ -778,7 +777,7 @@
     {
     
         [self initializeAndStartActivityIndicator:self.view];
-        NSDictionary *videoDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",USERID:self.appDel.objModelUserInfo.strUserId,@"contentType":@"video",@"contentID":objContentListing.strVideoId};
+        NSDictionary *videoDict = @{@"ApiKey":API_KEY,USERID:self.appDel.objModelUserInfo.strUserId,@"contentType":@"video",@"contentID":objContentListing.strVideoId};
         
         [[MemberSubscriptionDetailsWebService service]callMemberSubscriptionDetailsWebServiceWithDictParams:videoDict success:^(id  _Nullable response, NSString * _Nullable strMsg) {
             
@@ -1150,7 +1149,7 @@
     */
 
     [self initializeAndStartActivityIndicator:self.view];
-    NSDictionary *videoDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",USERID:self.appDel.objModelUserInfo.strUserId,@"contentType":@"video",@"contentID":objContentListing.strVideoId};
+    NSDictionary *videoDict = @{@"ApiKey":API_KEY,USERID:self.appDel.objModelUserInfo.strUserId,@"contentType":@"video",@"contentID":objContentListing.strVideoId};
     
     [[MemberSubscriptionDetailsWebService service]callMemberSubscriptionDetailsWebServiceWithDictParams:videoDict success:^(id  _Nullable response, NSString * _Nullable strMsg) {
         

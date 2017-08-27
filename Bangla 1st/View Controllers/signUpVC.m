@@ -534,7 +534,7 @@
     {
          [self initializeAndStartActivityIndicator:self.view];
         
-        NSDictionary *signUpDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"username":strFullName,@"password":strPassword,@"email":strEmail,@"dob":strDob,@"country":strCountryId,@"state":strState,@"city":strCity,@"gender":strGender};
+        NSDictionary *signUpDict = @{@"ApiKey":API_KEY,@"username":strFullName,@"password":strPassword,@"email":strEmail,@"dob":strDob,@"country":strCountryId,@"state":strState,@"city":strCity,@"gender":strGender};
         //@"usercategory":strUserTypeId
         
         NSLog(@"signUpDict:%@",signUpDict);
@@ -1186,7 +1186,7 @@
    // strDeviceToken = @"fe3c1c39fb267847300fd9bd5fb30fc3df6a22c5d00f59743c138bfe15429d48";
 #endif
     
-    NSDictionary *LoginDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"username":self.appDel.objModelUserInfo.strUserEmail,@"password":strPassword,@"deviceToken":strDeviceToken,@"loginType":@"normal"};
+    NSDictionary *LoginDict = @{@"ApiKey":API_KEY,@"username":self.appDel.objModelUserInfo.strUserEmail,@"password":strPassword,@"deviceToken":strDeviceToken,@"loginType":@"normal"};
     
     [[LoginWebService service] callNormalLoginWebServiceWithDictParams:LoginDict success:^(id  _Nullable response, NSString * _Nullable strMsg) {
         

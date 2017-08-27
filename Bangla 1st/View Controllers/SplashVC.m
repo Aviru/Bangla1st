@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     
-   NSDictionary *dict =@{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a"};
+   NSDictionary *dict =@{@"ApiKey":API_KEY};
     
     [[SplashScreenWebService service]callSplashScreenWebServiceWithDictParams:dict success:^(id  _Nullable response, NSString * _Nullable strMsg) {
         

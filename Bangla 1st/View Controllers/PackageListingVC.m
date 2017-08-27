@@ -91,7 +91,7 @@
 
 -(void)getPackageListing
 {
-    NSDictionary *packageListDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",USERID:self.appDel.objModelUserInfo.strUserId};
+    NSDictionary *packageListDict = @{@"ApiKey":API_KEY,USERID:self.appDel.objModelUserInfo.strUserId};
     
     NSLog(@"packageListDict:%@",packageListDict);
     
@@ -379,7 +379,7 @@
         NSLog(@"%@", change);
         if ([self.strPaymentStatus isEqualToString:@"Success"])
         {
-            NSDictionary *memberSubscrptDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",USERID:self.appDel.objModelUserInfo.strUserId,@"packageID":[_arrPkgListing[selectedPacakage]strPackageID]};
+            NSDictionary *memberSubscrptDict = @{@"ApiKey":API_KEY,USERID:self.appDel.objModelUserInfo.strUserId,@"packageID":[_arrPkgListing[selectedPacakage]strPackageID]};
             
             [self callMemberSubscriptionWebServiceWithDict:memberSubscrptDict];
         }
@@ -501,7 +501,7 @@
     {
         [self initializeAndStartActivityIndicator:self.view];
         
-        NSDictionary *couponDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"userid":self.appDel.objModelUserInfo.strUserId,@"couponCode":strPromoCode};
+        NSDictionary *couponDict = @{@"ApiKey":API_KEY,@"userid":self.appDel.objModelUserInfo.strUserId,@"couponCode":strPromoCode};
         
         [[CouponCodePostWebService service] callCouponCodePostWithDictParams:couponDict success:^(id  _Nullable response, NSString * _Nullable strMsg)
          {

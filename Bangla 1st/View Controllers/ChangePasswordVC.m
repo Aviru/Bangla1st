@@ -252,7 +252,7 @@
     {
         [self initializeAndStartActivityIndicator:self.view];
         
-       NSDictionary *changePasswdDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",USERID:self.appDel.objModelUserInfo.strUserId,@"oldPassword":strOldPassword,@"newPassword":strNewRePassword};
+       NSDictionary *changePasswdDict = @{@"ApiKey":API_KEY,USERID:self.appDel.objModelUserInfo.strUserId,@"oldPassword":strOldPassword,@"newPassword":strNewRePassword};
         
         [[ChangePasswordWebService service]callChangePasswordWebServiceWithDictParams:changePasswdDict success:^(id  _Nullable response, NSString * _Nullable strMsg) {
             

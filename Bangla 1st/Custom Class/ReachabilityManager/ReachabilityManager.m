@@ -169,9 +169,7 @@
 
 -(void)getIMAadLink
 {
-    NSDictionary *dictParams= @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a"
-                                };
-    
+    NSDictionary *dictParams= @{@"ApiKey":API_KEY};
     
     [[ContentListingWebService service] callIMAadWebServiceWithDictParams:dictParams success:^(id _Nullable response, NSString * _Nullable strMsg) {
         
@@ -214,7 +212,7 @@
 
 -(void)getCountryList
 {
-    NSDictionary *dictParams= @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a"
+    NSDictionary *dictParams= @{@"ApiKey":API_KEY
                                 };
     
     [[CountryListWebService service] callCountryListWebServiceWithDictParams:dictParams success:^(id  _Nullable response, NSString * _Nullable strMsg) {
@@ -272,8 +270,8 @@
 
 -(void)getUsertypeList
 {
-    NSDictionary *dictParams= @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a"
-                                };
+    NSDictionary *dictParams= @{@"ApiKey":API_KEY};
+    
     [[UserTypeListWebService service] callUserTypeListWebServiceWithDictParams:dictParams success:^(id  _Nullable response, NSString * _Nullable strMsg) {
         
         if (response != nil)

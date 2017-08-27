@@ -21,7 +21,7 @@ NSUInteger const kCustomNotificationViewiOS7Identifier = 7;
 
 // Numerics (CustomNotificationViewManager)
 CGFloat const kCustomNotificationViewManagerDisplayDelay = 3.0f;
-CGFloat const kCustomNotificationViewManagerDismissAnimationDuration = 0.3f;
+CGFloat const kCustomNotificationViewManagerDismissAnimationDuration = 0.4f;
 CGFloat const kCustomNotificationViewManagerPanVelocity = 0.2f;
 CGFloat const kCustomNotificationViewManagerPanAnimationDuration = 0.0002f;
 
@@ -449,7 +449,7 @@ static UIColor *kCustomNotificationViewDefaultMessageBarStyleSheetStrokeColor = 
     {
         self.messageWindow = [[CustomNotificationViewWindow alloc] init];
         
-        int size = 80;
+        int size = 90;
         float screenWidth = [UIApplication sharedApplication].keyWindow.frame.size.width;
         
         self.messageWindow.frame = CGRectMake(kCustomNotificationViewPadding, 10, screenWidth - kCustomNotificationViewPadding * 2, size);
@@ -745,8 +745,6 @@ static UIColor *kCustomNotificationViewDefaultMessageBarStyleSheetStrokeColor = 
 {
     CGRect windowFrame = NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1 ? [self orientFrame:[UIApplication sharedApplication].keyWindow.frame] : [UIApplication sharedApplication].keyWindow.frame;
     CGRect statusFrame = NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1 ?  [self orientFrame:[UIApplication sharedApplication].statusBarFrame] : [UIApplication sharedApplication].statusBarFrame;
-   // return CGRectMake(windowFrame.origin.x, windowFrame.origin.y, windowFrame.size.width, statusFrame.size.height);
-    
      return CGRectMake(windowFrame.origin.x, windowFrame.origin.y, windowFrame.size.width, statusFrame.size.height);
 }
 

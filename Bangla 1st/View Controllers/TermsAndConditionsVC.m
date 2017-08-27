@@ -50,7 +50,7 @@
 {
     [self initializeAndStartActivityIndicator:self.view];
     
-    NSDictionary *aboutUsDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",@"pageID":@"2"};
+    NSDictionary *aboutUsDict = @{@"ApiKey":API_KEY,@"pageID":@"2"};
     
     [[AboutUsAndT_CWebService service]callAboutUsWebServiceWithDictParams:aboutUsDict success:^(id  _Nullable response, NSString * _Nullable strMsg) {
         

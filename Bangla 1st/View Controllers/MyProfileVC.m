@@ -80,7 +80,7 @@
 {
     [self initializeAndStartActivityIndicator:self.view];
     
-    NSDictionary *MyAccountDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",USERID:self.appDel.objModelUserInfo.strUserId};
+    NSDictionary *MyAccountDict = @{@"ApiKey":API_KEY,USERID:self.appDel.objModelUserInfo.strUserId};
     
     NSLog(@"MyAccountDict%@",MyAccountDict);
     
@@ -179,7 +179,7 @@
 
 -(void)getPackageListing
 {
-    NSDictionary *packageListDict = @{@"ApiKey":@"0a2b8d7f9243305f2a4700e1870f673a",USERID:self.appDel.objModelUserInfo.strUserId};
+    NSDictionary *packageListDict = @{@"ApiKey":API_KEY,USERID:self.appDel.objModelUserInfo.strUserId};
     
     NSLog(@"packageListDict:%@",packageListDict);
     

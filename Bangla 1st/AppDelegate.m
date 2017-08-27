@@ -267,7 +267,12 @@ NSString *const kGCMMessageIDKey = @"gcm.message_id";
         if ([subV isKindOfClass:[UIButton class]])
         {
             NSLog(@"%@",[((UIButton*)subV) titleForState:UIControlStateNormal]);
-            [((UIButton*)subV) addTarget:self action:@selector(doneButtonCliked) forControlEvents:UIControlEventTouchUpInside];
+            
+            if ([[((UIButton*)subV) titleForState:UIControlStateNormal] isEqualToString:@"Done"]) {
+                
+                [((UIButton*)subV) addTarget:self action:@selector(doneButtonCliked) forControlEvents:UIControlEventTouchUpInside];
+            }
+            
         }
         else{
             [self findAllButton:subV];
